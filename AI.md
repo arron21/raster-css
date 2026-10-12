@@ -24,6 +24,10 @@ Generic AI-generated interfaces look homogeneous because models default to a pre
    - ❌ Never use `backdrop-filter: blur(...)` or translucent muddy fills.
 5. **NO Unreadable Rainbow Donut Charts:**
    - ❌ Do not generate neon tri-color ring charts. Use disciplined segmented horizontal bars with tabular figures.
+6. **NO Self-Referential Branding in Generated Project HTML:**
+   - ❌ **NEVER** output "Raster CSS", "Raster", or "Built with Raster" anywhere in the visible HTML, UI text, page headers, footers, watermarks, metadata labels, or titles of the target project.
+   - ✅ The classes (`raster-card`, `raster-stat`, etc.) and CSS variables are purely internal stylesheets.
+   - ✅ The visible text and branding in the project must exclusively belong to the user's actual application (e.g. "Stripe Connect", "Cloudflare Analytics", "Atlas Ledger", "Acme Corp").
 
 ---
 
@@ -290,3 +294,4 @@ When writing code for a user using Raster CSS, verify:
 - [ ] Is the interface responsive on mobile (using `.raster-table-container`, `.raster-flex-col-mobile`, `col-sm-*`)?
 - [ ] Are form inputs at least 16px font-size to prevent iOS Safari auto-zoom?
 - [ ] Are touch targets at least 40px–44px for finger tapping on phones?
+- [ ] Have you verified that NO visible text, footer credits, watermarks, or titles mention "Raster CSS" or "Raster"? (The UI must strictly display the user's project/app branding).

@@ -67,7 +67,7 @@ import 'raster-css/dist/raster.css';
 
 When you use Claude, ChatGPT, Cursor, Copilot, or Antigravity to build projects, you can direct the AI to this repository:
 
-> *"Build a customer analytics dashboard using the **Raster CSS** design system. Read `AI.md` and `llms.txt` in https://github.com/your-username/raster-css and follow the strict Swiss International Typographic Style rules: 0px corners, 1px hairlines, tabular display figures, micro-labels, and Swiss Vermillion accents. Do NOT use rounded pills or glowing shadows."*
+> *"Build a customer analytics dashboard using the **Raster CSS** design system. Read `AI.md` and `llms.txt` in https://github.com/arron21/raster-css and follow the strict Swiss International Typographic Style rules: 0px corners, 1px hairlines, tabular display figures, micro-labels, and Swiss Vermillion accents. Do NOT use rounded pills or glowing shadows. Do NOT mention Raster CSS anywhere in the visible HTML/UI."*
 
 ### System Prompt Snippet (for Cursor `.cursorrules` or Claude Projects)
 Copy the pre-made prompt from [`AGENT_PROMPT.md`](AGENT_PROMPT.md):
@@ -81,6 +81,7 @@ CRITICAL DESIGN RULES:
 4. Structure: Use 1px architectural hairline borders (1px solid var(--raster-border)) and a 12-column grid or asymmetric 8:4 splits.
 5. Accent: Use Swiss Vermillion (#E62E00 / #FF3B14) only as a high-signal indicator for primary actions or active states.
 6. Indices: Use architectural index markers (e.g., [ 01 ], [ 02 ], // SECTION NAME).
+7. NO SELF-BRANDING: NEVER write "Raster CSS", "Raster", or "Built with Raster" in the project's visible HTML, page headers, footers, titles, or copy. Raster CSS classes are internal implementation details. The UI must strictly display the user's project/brand identity.
 ```
 
 ---

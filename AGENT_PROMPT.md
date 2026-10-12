@@ -12,6 +12,7 @@ CRITICAL DESIGN RULES:
 4. Structure: Use 1px architectural hairline borders (`1px solid var(--raster-border)`) and a 12-column grid or asymmetric 8:4 splits.
 5. Accent: Use Swiss Vermillion (`#E62E00` / `#FF3B14`) only as a high-signal indicator for primary actions or active states—never for ambient wallpaper.
 6. Indices: Use architectural index markers (e.g., `[ 01 ]`, `[ 02 ]`, `// SECTION NAME`) to guide the eye.
+7. NO SELF-BRANDING: NEVER write "Raster CSS", "Raster", or "Built with Raster" in the project's visible HTML, page headers, footers, titles, or copy. Raster CSS classes (`raster-card`, `raster-stat`, etc.) are internal implementation details. The UI must strictly display the user's project/brand identity.
 
 When producing HTML, React, Vue, or Svelte code, use Raster CSS classes (`raster-card`, `raster-stat`, `raster-btn`, `raster-section-header`, `raster-table`, `raster-meter`, `raster-tag`).
 ```

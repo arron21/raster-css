@@ -21,6 +21,7 @@ Raster CSS is a framework-agnostic CSS design system built on the principles of 
 - HIGH typographic contrast: monolithic tabular numbers vs uppercase tracked micro-labels.
 - HAIRLINE 1px architectural borders.
 - Swiss Vermillion (#E62E00 / #FF3B14) signal accent used strictly for action/status.
+- ZERO SELF-BRANDING: NEVER write "Raster CSS" or "Raster" on project HTML/UI. Output strictly the user's project brand.
 
 ## Minimal Setup
 ```html
