@@ -54,18 +54,22 @@
   --raster-font-display: 'Archivo', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   --raster-font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, Monaco, monospace;
 
-  /* Typography Scales & Tracking */
-  --raster-text-display-2xl: clamp(3.25rem, 7vw, 5.5rem);
-  --raster-lead-display-2xl: 0.95;
-  --raster-track-display-2xl: -0.045em;
+  /* Typography Scales & Tracking (Mobile-Aware Clamps) */
+  --raster-text-display-2xl: clamp(2.25rem, 7vw, 5.5rem);
+  --raster-lead-display-2xl: 1.0;
+  --raster-track-display-2xl: -0.04em;
 
-  --raster-text-display-xl: clamp(2.25rem, 4.5vw, 3.75rem);
-  --raster-lead-display-xl: 1.0;
-  --raster-track-display-xl: -0.04em;
+  --raster-text-display-xl: clamp(1.85rem, 5vw, 3.75rem);
+  --raster-lead-display-xl: 1.05;
+  --raster-track-display-xl: -0.035em;
 
-  --raster-text-display-lg: clamp(1.75rem, 3vw, 2.5rem);
-  --raster-lead-display-lg: 1.08;
-  --raster-track-display-lg: -0.03em;
+  --raster-text-display-lg: clamp(1.5rem, 3.5vw, 2.5rem);
+  --raster-lead-display-lg: 1.1;
+  --raster-track-display-lg: -0.025em;
+
+  /* Mobile Touch Targets */
+  --raster-touch-target: 44px;
+  --raster-touch-target-sm: 36px;
 
   --raster-text-h1: 1.875rem;          /* 30px */
   --raster-lead-h1: 1.15;

@@ -54,18 +54,22 @@
   --raster-font-display: 'Archivo', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   --raster-font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, Monaco, monospace;
 
-  /* Typography Scales & Tracking */
-  --raster-text-display-2xl: clamp(3.25rem, 7vw, 5.5rem);
-  --raster-lead-display-2xl: 0.95;
-  --raster-track-display-2xl: -0.045em;
+  /* Typography Scales & Tracking (Mobile-Aware Clamps) */
+  --raster-text-display-2xl: clamp(2.25rem, 7vw, 5.5rem);
+  --raster-lead-display-2xl: 1.0;
+  --raster-track-display-2xl: -0.04em;
 
-  --raster-text-display-xl: clamp(2.25rem, 4.5vw, 3.75rem);
-  --raster-lead-display-xl: 1.0;
-  --raster-track-display-xl: -0.04em;
+  --raster-text-display-xl: clamp(1.85rem, 5vw, 3.75rem);
+  --raster-lead-display-xl: 1.05;
+  --raster-track-display-xl: -0.035em;
 
-  --raster-text-display-lg: clamp(1.75rem, 3vw, 2.5rem);
-  --raster-lead-display-lg: 1.08;
-  --raster-track-display-lg: -0.03em;
+  --raster-text-display-lg: clamp(1.5rem, 3.5vw, 2.5rem);
+  --raster-lead-display-lg: 1.1;
+  --raster-track-display-lg: -0.025em;
+
+  /* Mobile Touch Targets */
+  --raster-touch-target: 44px;
+  --raster-touch-target-sm: 36px;
 
   --raster-text-h1: 1.875rem;          /* 30px */
   --raster-lead-h1: 1.15;
@@ -476,7 +480,9 @@ p, .raster-body {
   }
   
   .col-lg-12 { grid-column: span 12 / span 12; }
+  .col-lg-8  { grid-column: span 8 / span 8; }
   .col-lg-6  { grid-column: span 6 / span 6; }
+  .col-lg-4  { grid-column: span 4 / span 4; }
 }
 
 @media (max-width: 768px) {
@@ -485,7 +491,21 @@ p, .raster-body {
     padding-right: var(--raster-space-4);
   }
 
-  .raster-grid,
+  /* Default all generic spans to 12 on mobile unless overridden */
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 12 / span 12;
+  }
+
+  /* Explicit mobile column overrides */
+  .col-sm-12 { grid-column: span 12 / span 12; }
+  .col-sm-6  { grid-column: span 6 / span 6; }
+  .col-sm-4  { grid-column: span 4 / span 4; }
+
+  .raster-grid {
+    gap: var(--raster-space-4);
+  }
+
   .raster-split-asymmetric,
   .raster-split-half,
   .raster-split-third,
@@ -494,9 +514,47 @@ p, .raster-body {
     gap: var(--raster-space-4);
   }
 
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-    grid-column: span 1 / -1;
+  /* 2-Column Mobile option (e.g. for compact metrics on phones) */
+  .raster-grid-mobile-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: var(--raster-space-3) !important;
+  }
+
+  .raster-grid-mobile-2 > * {
+    grid-column: auto !important;
+  }
+
+  /* Hairline grid collapse for mobile: ensures borders stay 1px */
+  .raster-grid-hairline {
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--raster-border);
+    border-left: 1px solid var(--raster-border);
+    border-right: 1px solid var(--raster-border);
+  }
+
+  .raster-grid-hairline > * {
+    border-right: none;
+    border-bottom: 1px solid var(--raster-border);
+    padding: var(--raster-space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .raster-container {
+    padding-left: var(--raster-space-3);
+    padding-right: var(--raster-space-3);
+  }
+
+  .raster-grid {
+    gap: var(--raster-space-3);
+  }
+
+  .col-xs-12 {
+    grid-column: span 12 / span 12 !important;
+  }
+
+  .col-xs-6 {
+    grid-column: span 6 / span 6 !important;
   }
 }
 
@@ -1000,6 +1058,168 @@ p, .raster-body {
   border-left-color: var(--raster-accent);
 }
 
+/* ==========================================================================
+   MOBILE ERGONOMICS & RESPONSIVE COMPONENT BEHAVIORS
+   ========================================================================== */
+
+/* Touch-Optimized Action Target */
+.raster-btn-touch {
+  min-height: var(--raster-touch-target);
+  padding: 10px 18px;
+}
+
+/* Full Width Button on Mobile */
+@media (max-width: 768px) {
+  .raster-btn-full-mobile {
+    width: 100%;
+    display: flex;
+  }
+}
+
+/* Responsive Button Group */
+.raster-btn-group-responsive {
+  display: flex;
+  width: 100%;
+}
+
+.raster-btn-group-responsive .raster-btn {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+/* Mobile-Friendly Table & Ledger Scrolling */
+.raster-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+  position: relative;
+}
+
+/* Visual fade hint on table edge for mobile scrollability */
+.raster-table-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, var(--raster-border-subtle));
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Touch-Scrollable Horizontal Tab / Nav Strip */
+.raster-nav-scrollable {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  scrollbar-width: none;
+  gap: var(--raster-space-3);
+  padding-bottom: 2px;
+}
+
+.raster-nav-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile Masthead Navigation Trigger & Drawer */
+.raster-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--raster-border);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-primary);
+  min-height: 38px;
+}
+
+.raster-menu-btn:focus-visible {
+  outline: 2px solid var(--raster-accent);
+}
+
+.raster-nav-mobile {
+  display: none;
+  width: 100%;
+  border-top: 1px solid var(--raster-border);
+  padding: var(--raster-space-4) 0;
+  background-color: var(--raster-canvas);
+}
+
+.raster-nav-mobile.is-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+}
+
+.raster-nav-mobile .raster-nav-link {
+  display: block;
+  padding: var(--raster-space-3) var(--raster-space-4);
+  font-size: var(--raster-text-body);
+  font-weight: 600;
+  border-left: 3px solid transparent;
+}
+
+.raster-nav-mobile .raster-nav-link:hover,
+.raster-nav-mobile .raster-nav-link.is-active {
+  border-left-color: var(--raster-accent);
+  background-color: var(--raster-surface-subtle);
+  color: var(--raster-fg-primary);
+}
+
+/* Global Mobile Component Adjustments (<= 768px) */
+@media (max-width: 768px) {
+  /* Prevent iOS Safari 16px auto-zoom */
+  .raster-input,
+  .raster-select,
+  .raster-textarea {
+    font-size: 16px !important;
+    min-height: 44px;
+  }
+
+  /* Compact card padding for small screens */
+  .raster-card {
+    padding: var(--raster-space-4);
+  }
+
+  /* Accessible touch targets */
+  .raster-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+  }
+
+  /* Adaptive display scale */
+  .raster-stat-value {
+    font-size: clamp(1.6rem, 6.5vw, 2.25rem);
+  }
+
+  /* Show mobile menu trigger & hide desktop nav row */
+  .raster-menu-btn {
+    display: inline-flex;
+  }
+
+  .raster-nav-desktop {
+    display: none !important;
+  }
+
+  /* Wrap segmented bar info on small screens */
+  .raster-meter-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
 /**
  * RASTER CSS - Micro Utilities
  * Minimal, non-bloated utility primitives for Swiss layout precision.
@@ -1065,3 +1285,58 @@ p, .raster-body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE UTILITIES
+   ========================================================================== */
+
+/* Visibility Toggles */
+.raster-hide-mobile { display: block; }
+.raster-show-mobile { display: none !important; }
+
+@media (max-width: 768px) {
+  .raster-hide-mobile { display: none !important; }
+  .raster-show-mobile { display: block !important; }
+  .raster-show-mobile-flex { display: flex !important; }
+
+  /* Responsive Flex & Direction */
+  .raster-flex-col-mobile {
+    flex-direction: column !important;
+  }
+
+  .raster-wrap-mobile {
+    flex-wrap: wrap !important;
+  }
+
+  .raster-items-stretch-mobile {
+    align-items: stretch !important;
+  }
+
+  .raster-justify-start-mobile {
+    justify-content: flex-start !important;
+  }
+
+  /* Responsive Sizing */
+  .w-full-mobile {
+    width: 100% !important;
+  }
+
+  /* Responsive Text Alignment */
+  .text-left-mobile { text-align: left !important; }
+  .text-center-mobile { text-align: center !important; }
+  .text-right-mobile { text-align: right !important; }
+
+  /* Mobile Spacing Adapters */
+  .p-mobile-3 { padding: var(--raster-space-3) !important; }
+  .p-mobile-4 { padding: var(--raster-space-4) !important; }
+  .py-mobile-4 { padding-top: var(--raster-space-4) !important; padding-bottom: var(--raster-space-4) !important; }
+  .gap-mobile-2 { gap: var(--raster-space-2) !important; }
+  .gap-mobile-3 { gap: var(--raster-space-3) !important; }
+  .gap-mobile-4 { gap: var(--raster-space-4) !important; }
+}
+
+@media (max-width: 480px) {
+  .raster-hide-xs { display: none !important; }
+  .raster-show-xs { display: block !important; }
+}
+

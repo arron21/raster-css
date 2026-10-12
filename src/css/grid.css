@@ -103,7 +103,9 @@
   }
   
   .col-lg-12 { grid-column: span 12 / span 12; }
+  .col-lg-8  { grid-column: span 8 / span 8; }
   .col-lg-6  { grid-column: span 6 / span 6; }
+  .col-lg-4  { grid-column: span 4 / span 4; }
 }
 
 @media (max-width: 768px) {
@@ -112,7 +114,21 @@
     padding-right: var(--raster-space-4);
   }
 
-  .raster-grid,
+  /* Default all generic spans to 12 on mobile unless overridden */
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 12 / span 12;
+  }
+
+  /* Explicit mobile column overrides */
+  .col-sm-12 { grid-column: span 12 / span 12; }
+  .col-sm-6  { grid-column: span 6 / span 6; }
+  .col-sm-4  { grid-column: span 4 / span 4; }
+
+  .raster-grid {
+    gap: var(--raster-space-4);
+  }
+
   .raster-split-asymmetric,
   .raster-split-half,
   .raster-split-third,
@@ -121,8 +137,46 @@
     gap: var(--raster-space-4);
   }
 
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-    grid-column: span 1 / -1;
+  /* 2-Column Mobile option (e.g. for compact metrics on phones) */
+  .raster-grid-mobile-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: var(--raster-space-3) !important;
+  }
+
+  .raster-grid-mobile-2 > * {
+    grid-column: auto !important;
+  }
+
+  /* Hairline grid collapse for mobile: ensures borders stay 1px */
+  .raster-grid-hairline {
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--raster-border);
+    border-left: 1px solid var(--raster-border);
+    border-right: 1px solid var(--raster-border);
+  }
+
+  .raster-grid-hairline > * {
+    border-right: none;
+    border-bottom: 1px solid var(--raster-border);
+    padding: var(--raster-space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .raster-container {
+    padding-left: var(--raster-space-3);
+    padding-right: var(--raster-space-3);
+  }
+
+  .raster-grid {
+    gap: var(--raster-space-3);
+  }
+
+  .col-xs-12 {
+    grid-column: span 12 / span 12 !important;
+  }
+
+  .col-xs-6 {
+    grid-column: span 6 / span 6 !important;
   }
 }

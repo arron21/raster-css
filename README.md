@@ -22,6 +22,7 @@ Most AI-generated web interfaces (from ChatGPT, v0, Bolt, Lovable, Cursor) conve
 - 🔠 **Monolithic Typographic Hierarchy:** Huge tabular display numerals contrasted against tracked-out uppercase micro-labels (`11px`, `letter-spacing: 0.08em`).
 - ⬛ **Disciplined Geometry:** 0px sharp corners or 2px micro-chamfers. Zero mushy jelly pills.
 - 🔴 **High-Signal Color Restraint:** Stark paper canvas and deep architectural carbon, accented with precision Swiss Vermillion (`#E62E00` / `#FF3B14`).
+- 📱 **Mobile-First & Touch Ergonomics:** 44px accessible touch targets, iOS Safari auto-zoom prevention (16px base inputs), touch-scrollable ledgers, responsive grid tiers (`col-sm-*`, `col-xs-*`), and collapsible navigation.
 - 🤖 **Engineered for AI Coding Agents:** Pre-baked [`AI.md`](AI.md) and [`llms.txt`](llms.txt) codex files so an AI agent pointed at this repository immediately knows exactly how to build world-class, distinctive UI.
 
 ---

@@ -497,3 +497,165 @@
 .raster-callout-accent {
   border-left-color: var(--raster-accent);
 }
+
+/* ==========================================================================
+   MOBILE ERGONOMICS & RESPONSIVE COMPONENT BEHAVIORS
+   ========================================================================== */
+
+/* Touch-Optimized Action Target */
+.raster-btn-touch {
+  min-height: var(--raster-touch-target);
+  padding: 10px 18px;
+}
+
+/* Full Width Button on Mobile */
+@media (max-width: 768px) {
+  .raster-btn-full-mobile {
+    width: 100%;
+    display: flex;
+  }
+}
+
+/* Responsive Button Group */
+.raster-btn-group-responsive {
+  display: flex;
+  width: 100%;
+}
+
+.raster-btn-group-responsive .raster-btn {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+/* Mobile-Friendly Table & Ledger Scrolling */
+.raster-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+  position: relative;
+}
+
+/* Visual fade hint on table edge for mobile scrollability */
+.raster-table-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, var(--raster-border-subtle));
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Touch-Scrollable Horizontal Tab / Nav Strip */
+.raster-nav-scrollable {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  scrollbar-width: none;
+  gap: var(--raster-space-3);
+  padding-bottom: 2px;
+}
+
+.raster-nav-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile Masthead Navigation Trigger & Drawer */
+.raster-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--raster-border);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-primary);
+  min-height: 38px;
+}
+
+.raster-menu-btn:focus-visible {
+  outline: 2px solid var(--raster-accent);
+}
+
+.raster-nav-mobile {
+  display: none;
+  width: 100%;
+  border-top: 1px solid var(--raster-border);
+  padding: var(--raster-space-4) 0;
+  background-color: var(--raster-canvas);
+}
+
+.raster-nav-mobile.is-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+}
+
+.raster-nav-mobile .raster-nav-link {
+  display: block;
+  padding: var(--raster-space-3) var(--raster-space-4);
+  font-size: var(--raster-text-body);
+  font-weight: 600;
+  border-left: 3px solid transparent;
+}
+
+.raster-nav-mobile .raster-nav-link:hover,
+.raster-nav-mobile .raster-nav-link.is-active {
+  border-left-color: var(--raster-accent);
+  background-color: var(--raster-surface-subtle);
+  color: var(--raster-fg-primary);
+}
+
+/* Global Mobile Component Adjustments (<= 768px) */
+@media (max-width: 768px) {
+  /* Prevent iOS Safari 16px auto-zoom */
+  .raster-input,
+  .raster-select,
+  .raster-textarea {
+    font-size: 16px !important;
+    min-height: 44px;
+  }
+
+  /* Compact card padding for small screens */
+  .raster-card {
+    padding: var(--raster-space-4);
+  }
+
+  /* Accessible touch targets */
+  .raster-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+  }
+
+  /* Adaptive display scale */
+  .raster-stat-value {
+    font-size: clamp(1.6rem, 6.5vw, 2.25rem);
+  }
+
+  /* Show mobile menu trigger & hide desktop nav row */
+  .raster-menu-btn {
+    display: inline-flex;
+  }
+
+  .raster-nav-desktop {
+    display: none !important;
+  }
+
+  /* Wrap segmented bar info on small screens */
+  .raster-meter-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

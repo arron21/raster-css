@@ -40,10 +40,46 @@ Generic AI-generated interfaces look homogeneous because models default to a pre
    - **High-Signal Accent:** Swiss Vermillion (`#E62E00` / `#FF3B14`). Use it like a laser: for primary action triggers, active tabs, or status indicators—never as background wallpaper.
 4. **Index Markers & Structural Brackets:**
    - Use index markers for visual cadence: `[ 01 ]`, `[ 02 ]`, `// 01. METRICS`, `STATUS: ACTIVE`.
+5. **Mobile-First Touch & Layout Adaptations:**
+   - **Accessible Tap Targets:** Use minimum 40px–44px height for interactive elements (`.raster-btn-touch` or default button padding).
+   - **Form Zoom Prevention:** Never set input font sizes below 16px on screens <= 768px (built into `.raster-input`).
+   - **Flexible Stacking:** Use `.raster-flex-col-mobile`, `.w-full-mobile`, and `.col-sm-12` or `.col-sm-6` to adapt multi-column dashboards gracefully to mobile screens.
+   - **Scrollable Tables:** Always wrap `table` elements in `.raster-table-container` for momentum touch-scrolling.
 
 ---
 
-## 3. DESIGN TOKENS QUICK REFERENCE
+## 3. MOBILE & RESPONSIVE DESIGN BLUEPRINTS
+
+### Responsive Stacking for Headers & Actions:
+```html
+<div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline gap-mobile-3">
+  <div>
+    <h1 class="raster-h1">Dashboard</h1>
+    <span class="raster-label">OVERVIEW // FY25</span>
+  </div>
+  <div class="raster-flex raster-wrap-mobile gap-2 w-full-mobile">
+    <button class="raster-btn raster-btn-primary w-full-mobile">+ NEW ENTRY</button>
+  </div>
+</div>
+```
+
+### Mobile Grid Spans:
+- Desktop: `col-3` (4 columns)
+- Tablet (<= 1024px): `col-lg-6` (2 columns)
+- Mobile (<= 768px): `col-sm-6` (2 compact columns) or `col-sm-12` (single stack)
+- Small Mobile (<= 480px): `col-xs-12`
+
+```html
+<div class="raster-grid">
+  <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
+    <!-- Stat card adapts cleanly from 4 cols down to 2 cols then 1 col -->
+  </div>
+</div>
+```
+
+---
+
+## 4. DESIGN TOKENS QUICK REFERENCE
 
 Use these CSS variables or semantic classes in any framework:
 
@@ -251,3 +287,6 @@ When writing code for a user using Raster CSS, verify:
 - [ ] Are borders crisp 1px hairlines without glowing box-shadows?
 - [ ] Is accent color (Swiss Vermillion) used strictly for focus/action, not random backgrounds?
 - [ ] Does the layout follow a clear 12-column grid or asymmetric split?
+- [ ] Is the interface responsive on mobile (using `.raster-table-container`, `.raster-flex-col-mobile`, `col-sm-*`)?
+- [ ] Are form inputs at least 16px font-size to prevent iOS Safari auto-zoom?
+- [ ] Are touch targets at least 40px–44px for finger tapping on phones?

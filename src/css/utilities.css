@@ -63,3 +63,58 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE UTILITIES
+   ========================================================================== */
+
+/* Visibility Toggles */
+.raster-hide-mobile { display: block; }
+.raster-show-mobile { display: none !important; }
+
+@media (max-width: 768px) {
+  .raster-hide-mobile { display: none !important; }
+  .raster-show-mobile { display: block !important; }
+  .raster-show-mobile-flex { display: flex !important; }
+
+  /* Responsive Flex & Direction */
+  .raster-flex-col-mobile {
+    flex-direction: column !important;
+  }
+
+  .raster-wrap-mobile {
+    flex-wrap: wrap !important;
+  }
+
+  .raster-items-stretch-mobile {
+    align-items: stretch !important;
+  }
+
+  .raster-justify-start-mobile {
+    justify-content: flex-start !important;
+  }
+
+  /* Responsive Sizing */
+  .w-full-mobile {
+    width: 100% !important;
+  }
+
+  /* Responsive Text Alignment */
+  .text-left-mobile { text-align: left !important; }
+  .text-center-mobile { text-align: center !important; }
+  .text-right-mobile { text-align: right !important; }
+
+  /* Mobile Spacing Adapters */
+  .p-mobile-3 { padding: var(--raster-space-3) !important; }
+  .p-mobile-4 { padding: var(--raster-space-4) !important; }
+  .py-mobile-4 { padding-top: var(--raster-space-4) !important; padding-bottom: var(--raster-space-4) !important; }
+  .gap-mobile-2 { gap: var(--raster-space-2) !important; }
+  .gap-mobile-3 { gap: var(--raster-space-3) !important; }
+  .gap-mobile-4 { gap: var(--raster-space-4) !important; }
+}
+
+@media (max-width: 480px) {
+  .raster-hide-xs { display: none !important; }
+  .raster-show-xs { display: block !important; }
+}
+

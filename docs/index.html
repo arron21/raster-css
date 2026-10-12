@@ -105,10 +105,10 @@
         <div class="raster-brand">
           <span class="badge-swiss">+</span>
           <span>RASTER</span>
-          <span style="font-family: var(--raster-font-mono); font-size: 0.75rem; color: var(--raster-fg-muted); font-weight: 500;">// SWISS DESIGN SYSTEM</span>
+          <span class="raster-hide-xs" style="font-family: var(--raster-font-mono); font-size: 0.75rem; color: var(--raster-fg-muted); font-weight: 500;">// SWISS DESIGN SYSTEM</span>
         </div>
 
-        <nav>
+        <nav class="raster-nav-desktop">
           <ul class="raster-nav-links">
             <li><a href="#rebuild" class="raster-nav-link">The Rebuild</a></li>
             <li><a href="#manifesto" class="raster-nav-link">Anti-AI Manifesto</a></li>
@@ -117,16 +117,32 @@
           </ul>
         </nav>
 
-        <div class="raster-flex raster-items-center gap-3">
+        <div class="raster-flex raster-items-center gap-2">
           <button id="theme-toggle" class="raster-btn raster-btn-ghost raster-btn-sm" title="Toggle Light/Dark Theme">
             <span id="theme-icon">◐</span>
-            <span id="theme-text">THEME: LIGHT</span>
+            <span id="theme-text" class="raster-hide-xs">THEME: LIGHT</span>
           </button>
-          <button onclick="copyAiCodex()" class="raster-btn raster-btn-primary raster-btn-sm">
+          <button onclick="copyAiCodex()" class="raster-btn raster-btn-primary raster-btn-sm raster-hide-xs">
             <span>COPY AI.MD</span>
+          </button>
+          <button id="mobile-menu-toggle" class="raster-menu-btn" aria-label="Toggle Navigation Menu">
+            <span>MENU</span>
           </button>
         </div>
       </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <nav id="mobile-nav" class="raster-nav-mobile">
+        <a href="#rebuild" class="raster-nav-link" onclick="closeMobileNav()">[ 01 ] The Rebuild</a>
+        <a href="#manifesto" class="raster-nav-link" onclick="closeMobileNav()">[ 02 ] Anti-AI Manifesto</a>
+        <a href="#components" class="raster-nav-link" onclick="closeMobileNav()">[ 03 ] Components</a>
+        <a href="#ai-guide" class="raster-nav-link" onclick="closeMobileNav()">[ 04 ] AI.md Codex</a>
+        <div style="padding: var(--raster-space-3) var(--raster-space-4);">
+          <button onclick="copyAiCodex(); closeMobileNav();" class="raster-btn raster-btn-primary raster-btn-sm w-full">
+            <span>COPY FULL AI.MD CODEX</span>
+          </button>
+        </div>
+      </nav>
     </div>
   </header>
 
@@ -196,17 +212,17 @@
       <div style="border: 2px solid var(--raster-border-strong); padding: var(--raster-space-6); background-color: var(--raster-canvas);">
         
         <!-- App Masthead -->
-        <div class="raster-flex raster-justify-between raster-items-center mb-6 pb-4 border-bottom">
-          <div class="raster-flex raster-items-baseline gap-3">
+        <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-6 pb-4 border-bottom gap-mobile-3">
+          <div class="raster-flex raster-wrap-mobile raster-items-baseline gap-2">
             <span class="badge-swiss">$</span>
-            <div>
+            <div class="raster-flex raster-items-baseline gap-2">
               <span style="font-family: var(--raster-font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">WHAT THE COST</span>
-              <span class="raster-tag raster-tag-accent ml-2">PWA // V2.0</span>
+              <span class="raster-tag raster-tag-accent">PWA // V2.0</span>
             </div>
-            <span class="raster-label ml-4" style="border-left: 1px solid var(--raster-border); padding-left: 12px;">Needs vs. Wants Ledger</span>
+            <span class="raster-label raster-hide-xs" style="border-left: 1px solid var(--raster-border); padding-left: 12px;">Needs vs. Wants Ledger</span>
           </div>
 
-          <div class="raster-flex raster-items-center gap-3">
+          <div class="raster-flex raster-wrap-mobile raster-items-center gap-2 w-full-mobile raster-justify-start-mobile">
             <!-- Segmented Time Period -->
             <div class="raster-btn-group">
               <button class="raster-btn">Day</button>
@@ -216,20 +232,20 @@
             </div>
 
             <button class="raster-btn raster-btn-outline raster-btn-sm">
-              <span>SIMULATE WHAT-IF</span>
+              <span>SIMULATE</span>
             </button>
             
             <button class="raster-btn raster-btn-accent raster-btn-sm">
-              <span>+ ADD ALLOCATION</span>
+              <span>+ ALLOCATION</span>
             </button>
           </div>
         </div>
 
-        <!-- Metric KPI Cards (4-Column Swiss Grid) -->
+        <!-- Metric KPI Cards (Responsive Swiss Grid) -->
         <div class="raster-grid mb-6">
           
           <!-- Annual Cost -->
-          <div class="col-3 col-lg-6">
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
             <div class="raster-card raster-card-accent-top">
               <div class="raster-stat">
                 <div class="raster-stat-label">
@@ -238,14 +254,14 @@
                 </div>
                 <div class="raster-stat-value">$41,111.79</div>
                 <div class="raster-stat-sub">
-                  <span>of $54,000.00 baseline income</span>
+                  <span>of $54k baseline</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Needs -->
-          <div class="col-3 col-lg-6">
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
             <div class="raster-card">
               <div class="raster-stat">
                 <div class="raster-stat-label">
@@ -262,7 +278,7 @@
           </div>
 
           <!-- Wants -->
-          <div class="col-3 col-lg-6">
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
             <div class="raster-card">
               <div class="raster-stat">
                 <div class="raster-stat-label">
@@ -279,7 +295,7 @@
           </div>
 
           <!-- Savings / Surplus -->
-          <div class="col-3 col-lg-6">
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
             <div class="raster-card">
               <div class="raster-stat">
                 <div class="raster-stat-label">
@@ -299,14 +315,14 @@
 
         <!-- 50/30/20 Budget Health Metric Bar -->
         <div class="raster-card mb-6">
-          <div class="raster-flex raster-justify-between raster-items-baseline mb-2">
+          <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-2 gap-mobile-2">
             <div class="raster-flex raster-items-center gap-2">
               <span class="raster-label">50 / 30 / 20 BUDGET HEALTH ALLOCATION</span>
             </div>
-            <div class="raster-label raster-mono">
+            <div class="raster-label raster-mono raster-wrap-mobile raster-flex gap-2">
               <span style="color: var(--raster-fg-primary);">■ NEEDS: 62%</span>
-              <span style="color: var(--raster-accent); margin-left: 12px;">■ WANTS: 14%</span>
-              <span style="color: var(--raster-signal-emerald); margin-left: 12px;">■ SAVINGS: 24%</span>
+              <span style="color: var(--raster-accent);">■ WANTS: 14%</span>
+              <span style="color: var(--raster-signal-emerald);">■ SAVINGS: 24%</span>
             </div>
           </div>
 
@@ -317,7 +333,7 @@
             <div style="width: 24%; background-color: var(--raster-signal-emerald);" title="Savings: 24%"></div>
           </div>
 
-          <div class="raster-flex raster-justify-between mt-2 raster-label" style="font-size: 10px;">
+          <div class="raster-flex raster-wrap-mobile raster-justify-between mt-2 raster-label gap-mobile-1" style="font-size: 10px;">
             <span>TARGET: 50% NEEDS</span>
             <span>TARGET: 30% WANTS</span>
             <span>TARGET: 20% SAVINGS</span>
@@ -334,58 +350,60 @@
               <span class="raster-label">9 Categories Total</span>
             </div>
 
-            <table class="raster-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Classification</th>
-                  <th>Share</th>
-                  <th class="cell-num">Annual Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight: 600;">Housing & Rent</td>
-                  <td><span class="raster-tag raster-tag-solid">Essential</span></td>
-                  <td>
-                    <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                      <div class="raster-meter-fill" style="width: 48%;"></div>
-                    </div>
-                  </td>
-                  <td class="cell-num" style="font-weight: 600;">$19,800.00</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Food & Groceries</td>
-                  <td><span class="raster-tag raster-tag-solid">Essential</span></td>
-                  <td>
-                    <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                      <div class="raster-meter-fill" style="width: 20%;"></div>
-                    </div>
-                  </td>
-                  <td class="cell-num" style="font-weight: 600;">$6,778.59</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Dining Out & Cafes</td>
-                  <td><span class="raster-tag raster-tag-accent">Discretionary</span></td>
-                  <td>
-                    <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                      <div class="raster-meter-fill raster-meter-fill-accent" style="width: 16%;"></div>
-                    </div>
-                  </td>
-                  <td class="cell-num" style="font-weight: 600;">$5,919.60</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Health & Medical</td>
-                  <td><span class="raster-tag raster-tag-solid">Essential</span></td>
-                  <td>
-                    <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                      <div class="raster-meter-fill" style="width: 10%;"></div>
-                    </div>
-                  </td>
-                  <td class="cell-num" style="font-weight: 600;">$3,540.00</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="raster-table-container">
+              <table class="raster-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Classification</th>
+                    <th>Share</th>
+                    <th class="cell-num">Annual Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 600;">Housing & Rent</td>
+                    <td><span class="raster-tag raster-tag-solid">Essential</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
+                        <div class="raster-meter-fill" style="width: 48%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num" style="font-weight: 600;">$19,800.00</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600;">Food & Groceries</td>
+                    <td><span class="raster-tag raster-tag-solid">Essential</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
+                        <div class="raster-meter-fill" style="width: 20%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num" style="font-weight: 600;">$6,778.59</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600;">Dining Out & Cafes</td>
+                    <td><span class="raster-tag raster-tag-accent">Discretionary</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
+                        <div class="raster-meter-fill raster-meter-fill-accent" style="width: 16%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num" style="font-weight: 600;">$5,919.60</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600;">Health & Medical</td>
+                    <td><span class="raster-tag raster-tag-solid">Essential</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
+                        <div class="raster-meter-fill" style="width: 10%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num" style="font-weight: 600;">$3,540.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             <div class="raster-card-footer">
               <span class="raster-label">Showing Top 4 / +5 Remaining</span>

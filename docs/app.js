@@ -25,7 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
       themeText.textContent = 'THEME: LIGHT';
     }
   }
+
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  if (mobileToggle && mobileNav) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('is-open');
+      mobileToggle.textContent = isOpen ? 'CLOSE' : 'MENU';
+    });
+  }
 });
+
+function closeMobileNav() {
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  if (mobileNav && mobileNav.classList.contains('is-open')) {
+    mobileNav.classList.remove('is-open');
+    if (mobileToggle) mobileToggle.textContent = 'MENU';
+  }
+}
 
 // Tab Switcher
 function switchTab(framework) {
