@@ -1,0 +1,1067 @@
+/**
+ * RASTER CSS - Design Tokens
+ * Rooted in the International Typographic Style (Swiss Design)
+ * 
+ * Core Principles:
+ * - Asymmetrical grid discipline
+ * - Extreme typographic contrast (Monolithic displays vs Micro-labels)
+ * - Ruthless elimination of decorative noise (No glowing blur, no rounded jelly pills)
+ * - Hairline structural precision (1px architectural borders)
+ * - Swiss Vermillion signal accent
+ */
+
+:root {
+  /* Color Palette - Light Mode (Default) */
+  --raster-canvas: #f6f6f4;            /* Warm editorial paper */
+  --raster-surface: #ffffff;           /* Crisp surface */
+  --raster-surface-subtle: #eeeee9;    /* Secondary card / pill fill */
+  --raster-surface-hover: #e5e5de;     /* Interactive hover */
+  
+  --raster-fg-primary: #0a0a0a;       /* Deepest rich black */
+  --raster-fg-secondary: #4a4a47;     /* High-legibility editorial neutral */
+  --raster-fg-muted: #7e7e78;         /* Micro-labels and metadata */
+  --raster-fg-faint: #adada6;         /* Indices and disabled text */
+
+  /* Hairlines & Structural Borders */
+  --raster-border: #d8d8d0;           /* Clean architectural hairline */
+  --raster-border-strong: #0a0a0a;    /* High-contrast division line */
+  --raster-border-subtle: #e7e7e0;    /* Muted inner divider */
+
+  /* Signal Accents - Classic Swiss Palette */
+  --raster-accent: #e62e00;           /* Swiss Vermillion / Signal Red */
+  --raster-accent-hover: #c42600;
+  --raster-accent-subtle: rgba(230, 46, 0, 0.08);
+  --raster-accent-fg: #ffffff;
+
+  --raster-signal-blue: #0044ff;      /* Bauhaus / International Klein Blue */
+  --raster-signal-emerald: #058249;   /* Functional status green */
+  --raster-signal-amber: #c47700;     /* Functional warning */
+
+  /* Shadows - Minimalist Architectural Offset (Never blurred gradients) */
+  --raster-shadow-none: none;
+  --raster-shadow-hard-sm: 2px 2px 0px var(--raster-border-strong);
+  --raster-shadow-hard: 4px 4px 0px var(--raster-border-strong);
+  --raster-shadow-hard-lg: 6px 6px 0px var(--raster-border-strong);
+
+  /* Geometry / Radii - Strict Swiss Discipline */
+  --raster-radius-none: 0px;          /* Canonical Swiss: Strict 90-degree corners */
+  --raster-radius-sm: 2px;            /* Micro-radius (only for tactile affordance) */
+  --raster-radius-md: 4px;            /* Maximum allowed corner radius */
+  --raster-radius: var(--raster-radius-none);
+
+  /* Typography Stacks */
+  --raster-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Neue Haas Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --raster-font-display: 'Archivo', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --raster-font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, Monaco, monospace;
+
+  /* Typography Scales & Tracking */
+  --raster-text-display-2xl: clamp(3.25rem, 7vw, 5.5rem);
+  --raster-lead-display-2xl: 0.95;
+  --raster-track-display-2xl: -0.045em;
+
+  --raster-text-display-xl: clamp(2.25rem, 4.5vw, 3.75rem);
+  --raster-lead-display-xl: 1.0;
+  --raster-track-display-xl: -0.04em;
+
+  --raster-text-display-lg: clamp(1.75rem, 3vw, 2.5rem);
+  --raster-lead-display-lg: 1.08;
+  --raster-track-display-lg: -0.03em;
+
+  --raster-text-h1: 1.875rem;          /* 30px */
+  --raster-lead-h1: 1.15;
+  --raster-track-h1: -0.025em;
+
+  --raster-text-h2: 1.375rem;          /* 22px */
+  --raster-lead-h2: 1.25;
+  --raster-track-h2: -0.02em;
+
+  --raster-text-h3: 1.0625rem;         /* 17px */
+  --raster-lead-h3: 1.35;
+  --raster-track-h3: -0.015em;
+
+  --raster-text-body: 0.9375rem;       /* 15px */
+  --raster-lead-body: 1.6;
+  --raster-track-body: -0.005em;
+
+  --raster-text-small: 0.8125rem;      /* 13px */
+  --raster-lead-small: 1.5;
+  --raster-track-small: 0em;
+
+  --raster-text-micro: 0.6875rem;      /* 11px */
+  --raster-lead-micro: 1.3;
+  --raster-track-micro: 0.08em;        /* Expressive wide letter-spacing for labels */
+
+  /* Spacing Scale (Disciplined 4px/8px modular rhythm) */
+  --raster-space-1: 4px;
+  --raster-space-2: 8px;
+  --raster-space-3: 12px;
+  --raster-space-4: 16px;
+  --raster-space-5: 20px;
+  --raster-space-6: 24px;
+  --raster-space-8: 32px;
+  --raster-space-10: 40px;
+  --raster-space-12: 48px;
+  --raster-space-16: 64px;
+  --raster-space-20: 80px;
+  --raster-space-24: 96px;
+
+  /* Layout Widths */
+  --raster-max-width: 1360px;
+  --raster-max-width-narrow: 860px;
+}
+
+/* Dark Mode Tokens - High Contrast Carbon / Architectural Graphite (Never muddy neon/purple) */
+[data-theme="dark"],
+.dark {
+  --raster-canvas: #0c0c0c;            /* Pure graphite / deep carbon */
+  --raster-surface: #141414;           /* Slightly elevated surface */
+  --raster-surface-subtle: #1c1c1c;    /* Card fill */
+  --raster-surface-hover: #262626;
+
+  --raster-fg-primary: #f5f5f3;        /* Stark white */
+  --raster-fg-secondary: #b5b5ae;      /* Clean neutral text */
+  --raster-fg-muted: #808078;          /* Micro-labels */
+  --raster-fg-faint: #4d4d47;          /* Indices */
+
+  --raster-border: #282826;           /* Crisp architectural hairline */
+  --raster-border-strong: #f5f5f3;    /* Sharp division line */
+  --raster-border-subtle: #1e1e1d;
+
+  --raster-accent: #ff3b14;           /* Vivid Swiss Vermillion in dark */
+  --raster-accent-hover: #ff5433;
+  --raster-accent-subtle: rgba(255, 59, 20, 0.12);
+  --raster-accent-fg: #0c0c0c;
+
+  --raster-signal-blue: #3b82f6;
+  --raster-signal-emerald: #10b981;
+  --raster-signal-amber: #f59e0b;
+
+  --raster-shadow-hard-sm: 2px 2px 0px var(--raster-border-strong);
+  --raster-shadow-hard: 4px 4px 0px var(--raster-border-strong);
+  --raster-shadow-hard-lg: 6px 6px 0px var(--raster-border-strong);
+}
+
+/**
+ * RASTER CSS - Modern Architectural Reset
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--raster-canvas);
+  color: var(--raster-fg-primary);
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-body);
+  line-height: var(--raster-lead-body);
+  letter-spacing: var(--raster-track-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+}
+
+/**
+ * RASTER CSS - Typography
+ * Rooted in Josef Müller-Brockmann, Max Bill, and Armin Hofmann's typographic discipline.
+ */
+
+/* Display Typography */
+.raster-display-2xl {
+  font-family: var(--raster-font-display);
+  font-size: var(--raster-text-display-2xl);
+  line-height: var(--raster-lead-display-2xl);
+  letter-spacing: var(--raster-track-display-2xl);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.raster-display-xl {
+  font-family: var(--raster-font-display);
+  font-size: var(--raster-text-display-xl);
+  line-height: var(--raster-lead-display-xl);
+  letter-spacing: var(--raster-track-display-xl);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.raster-display-lg {
+  font-family: var(--raster-font-display);
+  font-size: var(--raster-text-display-lg);
+  line-height: var(--raster-lead-display-lg);
+  letter-spacing: var(--raster-track-display-lg);
+  font-weight: 700;
+}
+
+/* Headings */
+h1, .raster-h1 {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h1);
+  line-height: var(--raster-lead-h1);
+  letter-spacing: var(--raster-track-h1);
+  font-weight: 600;
+}
+
+h2, .raster-h2 {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h2);
+  line-height: var(--raster-lead-h2);
+  letter-spacing: var(--raster-track-h2);
+  font-weight: 600;
+}
+
+h3, .raster-h3 {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h3);
+  line-height: var(--raster-lead-h3);
+  letter-spacing: var(--raster-track-h3);
+  font-weight: 600;
+}
+
+/* Paragraphs & Copy */
+p, .raster-body {
+  font-size: var(--raster-text-body);
+  line-height: var(--raster-lead-body);
+  letter-spacing: var(--raster-track-body);
+  color: var(--raster-fg-secondary);
+}
+
+.raster-lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--raster-fg-primary);
+  font-weight: 400;
+}
+
+.raster-small {
+  font-size: var(--raster-text-small);
+  line-height: var(--raster-lead-small);
+  letter-spacing: var(--raster-track-small);
+}
+
+/* Swiss Micro-Labels (Crucial signature of Swiss Graphic Design) */
+.raster-label,
+.raster-micro {
+  font-size: var(--raster-text-micro);
+  line-height: var(--raster-lead-micro);
+  letter-spacing: var(--raster-track-micro);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--raster-fg-muted);
+}
+
+.raster-label-accent {
+  color: var(--raster-accent);
+}
+
+/* Monospace & Tabular Data Figures */
+.raster-mono {
+  font-family: var(--raster-font-mono);
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.raster-tabular {
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Section Header with Architectural Hairline Rule */
+.raster-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--raster-space-4);
+  padding-bottom: var(--raster-space-3);
+  border-bottom: 1px solid var(--raster-border-strong);
+  margin-bottom: var(--raster-space-6);
+}
+
+.raster-section-header .raster-index {
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-small);
+  color: var(--raster-accent);
+  font-weight: 600;
+}
+
+.raster-section-header .raster-rule {
+  flex: 1;
+  height: 1px;
+  background-color: var(--raster-border);
+  align-self: center;
+}
+
+.raster-section-header .raster-meta {
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+}
+
+/* Typographic Rules & Hairlines */
+.raster-hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--raster-border);
+  margin: var(--raster-space-6) 0;
+}
+
+.raster-hr-strong {
+  background-color: var(--raster-border-strong);
+}
+
+.raster-hr-accent {
+  background-color: var(--raster-accent);
+  height: 2px;
+}
+
+/**
+ * RASTER CSS - Modular Grid System
+ * Based on Josef Müller-Brockmann's 12-column architectural raster.
+ */
+
+.raster-container {
+  width: 100%;
+  max-width: var(--raster-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--raster-space-6);
+  padding-right: var(--raster-space-6);
+}
+
+.raster-container-narrow {
+  max-width: var(--raster-max-width-narrow);
+}
+
+.raster-container-fluid {
+  max-width: 100%;
+}
+
+/* 12-Column Grid */
+.raster-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+  width: 100%;
+}
+
+.raster-grid-tight {
+  gap: var(--raster-space-3);
+}
+
+.raster-grid-loose {
+  gap: var(--raster-space-10);
+}
+
+.raster-grid-none {
+  gap: 0;
+}
+
+/* Spans (1-12) */
+.col-1  { grid-column: span 1 / span 1; }
+.col-2  { grid-column: span 2 / span 2; }
+.col-3  { grid-column: span 3 / span 3; }
+.col-4  { grid-column: span 4 / span 4; }
+.col-5  { grid-column: span 5 / span 5; }
+.col-6  { grid-column: span 6 / span 6; }
+.col-7  { grid-column: span 7 / span 7; }
+.col-8  { grid-column: span 8 / span 8; }
+.col-9  { grid-column: span 9 / span 9; }
+.col-10 { grid-column: span 10 / span 10; }
+.col-11 { grid-column: span 11 / span 11; }
+.col-12 { grid-column: span 12 / span 12; }
+
+/* Asymmetrical & Standard Splits */
+.raster-split-asymmetric {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: var(--raster-space-6);
+}
+
+.raster-split-half {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+}
+
+.raster-split-third {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+}
+
+.raster-split-quarter {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+}
+
+/* Architectural Hairline Grid (Cells share 1px hairline borders without gap doubling) */
+.raster-grid-hairline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  border-top: 1px solid var(--raster-border);
+  border-left: 1px solid var(--raster-border);
+  gap: 0;
+}
+
+.raster-grid-hairline > * {
+  border-right: 1px solid var(--raster-border);
+  border-bottom: 1px solid var(--raster-border);
+  padding: var(--raster-space-6);
+  background-color: var(--raster-surface);
+}
+
+/* Responsive Grid Adapters */
+@media (max-width: 1024px) {
+  .raster-split-asymmetric,
+  .raster-split-quarter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .col-lg-12 { grid-column: span 12 / span 12; }
+  .col-lg-6  { grid-column: span 6 / span 6; }
+}
+
+@media (max-width: 768px) {
+  .raster-container {
+    padding-left: var(--raster-space-4);
+    padding-right: var(--raster-space-4);
+  }
+
+  .raster-grid,
+  .raster-split-asymmetric,
+  .raster-split-half,
+  .raster-split-third,
+  .raster-split-quarter {
+    grid-template-columns: 1fr;
+    gap: var(--raster-space-4);
+  }
+
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 1 / -1;
+  }
+}
+
+/**
+ * RASTER CSS - Component Architecture
+ * Pure CSS components built for extreme legibility, speed, and AI predictability.
+ */
+
+/* ==========================================================================
+   CARDS & PANELS
+   ========================================================================== */
+
+.raster-card {
+  position: relative;
+  background-color: var(--raster-surface);
+  border: 1px solid var(--raster-border);
+  border-radius: var(--raster-radius);
+  padding: var(--raster-space-6);
+  transition: border-color 0.15s ease;
+}
+
+.raster-card-subtle {
+  background-color: var(--raster-surface-subtle);
+}
+
+.raster-card-interactive {
+  cursor: pointer;
+}
+
+.raster-card-interactive:hover {
+  border-color: var(--raster-border-strong);
+}
+
+.raster-card-accent-top {
+  border-top: 3px solid var(--raster-accent);
+}
+
+.raster-card-hard-shadow {
+  box-shadow: var(--raster-shadow-hard);
+}
+
+.raster-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--raster-space-4);
+}
+
+.raster-card-title {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h3);
+  font-weight: 600;
+  letter-spacing: var(--raster-track-h3);
+}
+
+.raster-card-footer {
+  margin-top: var(--raster-space-6);
+  padding-top: var(--raster-space-3);
+  border-top: 1px solid var(--raster-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================================================================
+   STAT & METRIC BLOCKS (Anti-AI slop: massive numbers, strict micro-labels)
+   ========================================================================== */
+
+.raster-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+}
+
+.raster-stat-label {
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.raster-stat-value {
+  font-family: var(--raster-font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--raster-fg-primary);
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.raster-stat-sub {
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--raster-space-2);
+  margin-top: var(--raster-space-1);
+}
+
+.raster-delta {
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  padding: 1px 4px;
+}
+
+.raster-delta-positive {
+  color: var(--raster-signal-emerald);
+  background-color: rgba(5, 130, 73, 0.1);
+}
+
+.raster-delta-negative {
+  color: var(--raster-accent);
+  background-color: var(--raster-accent-subtle);
+}
+
+/* ==========================================================================
+   BUTTONS & CONTROLS
+   ========================================================================== */
+
+.raster-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--raster-space-2);
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: var(--raster-space-2) var(--raster-space-4);
+  border-radius: var(--raster-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: none;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.raster-btn:focus-visible {
+  outline: 2px solid var(--raster-accent);
+  outline-offset: 2px;
+}
+
+/* Primary Button: Stark contrast inversion */
+.raster-btn-primary {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+  border-color: var(--raster-fg-primary);
+}
+
+.raster-btn-primary:hover {
+  background-color: var(--raster-accent);
+  border-color: var(--raster-accent);
+  color: #ffffff;
+}
+
+/* Accent Button: Swiss Vermillion */
+.raster-btn-accent {
+  background-color: var(--raster-accent);
+  color: #ffffff;
+  border-color: var(--raster-accent);
+}
+
+.raster-btn-accent:hover {
+  background-color: var(--raster-accent-hover);
+  border-color: var(--raster-accent-hover);
+}
+
+/* Outline Button */
+.raster-btn-outline {
+  border-color: var(--raster-border-strong);
+  color: var(--raster-fg-primary);
+  background-color: transparent;
+}
+
+.raster-btn-outline:hover {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+}
+
+/* Subtle / Ghost Button */
+.raster-btn-ghost {
+  border-color: var(--raster-border);
+  color: var(--raster-fg-secondary);
+  background-color: var(--raster-surface);
+}
+
+.raster-btn-ghost:hover {
+  border-color: var(--raster-border-strong);
+  color: var(--raster-fg-primary);
+}
+
+/* Micro Button */
+.raster-btn-sm {
+  font-size: var(--raster-text-micro);
+  padding: 4px 8px;
+  letter-spacing: var(--raster-track-micro);
+  text-transform: uppercase;
+}
+
+/* Segmented Control / Button Group */
+.raster-btn-group {
+  display: inline-flex;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+  padding: 2px;
+  gap: 2px;
+}
+
+.raster-btn-group .raster-btn {
+  border: none;
+  padding: 4px 10px;
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+}
+
+.raster-btn-group .raster-btn.is-active {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+}
+
+/* ==========================================================================
+   BADGES & TAGS
+   ========================================================================== */
+
+.raster-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  padding: 2px 6px;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+  color: var(--raster-fg-secondary);
+  white-space: nowrap;
+}
+
+.raster-tag-accent {
+  border-color: var(--raster-accent);
+  color: var(--raster-accent);
+  background-color: var(--raster-accent-subtle);
+}
+
+.raster-tag-solid {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+  border-color: var(--raster-fg-primary);
+}
+
+/* Bracket indicator signature */
+.raster-bracket::before { content: "[ "; color: var(--raster-fg-faint); }
+.raster-bracket::after  { content: " ]"; color: var(--raster-fg-faint); }
+
+/* ==========================================================================
+   METERS & BARS (High-discipline data visualization)
+   ========================================================================== */
+
+.raster-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
+.raster-meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--raster-text-small);
+}
+
+.raster-meter-track {
+  height: 6px;
+  background-color: var(--raster-border-subtle);
+  border: 1px solid var(--raster-border);
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.raster-meter-fill {
+  height: 100%;
+  background-color: var(--raster-fg-primary);
+  transition: width 0.3s ease;
+}
+
+.raster-meter-fill-accent {
+  background-color: var(--raster-accent);
+}
+
+.raster-meter-fill-blue {
+  background-color: var(--raster-signal-blue);
+}
+
+/* Segmented Multi-Bar (Clean replacement for muddy donut charts) */
+.raster-segmented-bar {
+  display: flex;
+  height: 8px;
+  width: 100%;
+  background-color: var(--raster-border-subtle);
+  border: 1px solid var(--raster-border);
+  gap: 1px;
+}
+
+.raster-segmented-bar > * {
+  height: 100%;
+}
+
+/* ==========================================================================
+   DATA TABLES & LEDGERS
+   ========================================================================== */
+
+.raster-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+}
+
+.raster-table {
+  width: 100%;
+  text-align: left;
+}
+
+.raster-table th {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+  background-color: var(--raster-surface-subtle);
+  padding: var(--raster-space-3) var(--raster-space-4);
+  border-bottom: 1px solid var(--raster-border-strong);
+}
+
+.raster-table td {
+  padding: var(--raster-space-3) var(--raster-space-4);
+  font-size: var(--raster-text-small);
+  border-bottom: 1px solid var(--raster-border-subtle);
+  vertical-align: middle;
+}
+
+.raster-table tr:last-child td {
+  border-bottom: none;
+}
+
+.raster-table tr:hover td {
+  background-color: var(--raster-surface-subtle);
+}
+
+.raster-table .cell-num {
+  text-align: right;
+  font-family: var(--raster-font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ==========================================================================
+   FORM INPUTS & CONTROLS
+   ========================================================================== */
+
+.raster-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
+.raster-field-label {
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+}
+
+.raster-input,
+.raster-select,
+.raster-textarea {
+  width: 100%;
+  padding: var(--raster-space-2) var(--raster-space-3);
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-body);
+  background-color: var(--raster-surface);
+  border: 1px solid var(--raster-border);
+  border-radius: var(--raster-radius);
+  color: var(--raster-fg-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.raster-input:focus,
+.raster-select:focus,
+.raster-textarea:focus {
+  border-color: var(--raster-fg-primary);
+  box-shadow: 0 0 0 1px var(--raster-fg-primary);
+}
+
+.raster-input::placeholder {
+  color: var(--raster-fg-faint);
+}
+
+/* Underline variant (Architectural draughtsman style) */
+.raster-input-underline {
+  border: none;
+  border-bottom: 1px solid var(--raster-border);
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.raster-input-underline:focus {
+  border-bottom-color: var(--raster-accent);
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   MASTHEAD & NAVIGATION
+   ========================================================================== */
+
+.raster-masthead {
+  border-bottom: 1px solid var(--raster-border);
+  background-color: var(--raster-canvas);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.raster-masthead-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--raster-space-4);
+  padding-bottom: var(--raster-space-4);
+}
+
+.raster-brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--raster-space-2);
+  font-family: var(--raster-font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  color: var(--raster-fg-primary);
+}
+
+.raster-brand-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--raster-accent);
+}
+
+.raster-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--raster-space-6);
+  list-style: none;
+}
+
+.raster-nav-link {
+  font-size: var(--raster-text-small);
+  font-weight: 500;
+  color: var(--raster-fg-secondary);
+  transition: color 0.15s ease;
+}
+
+.raster-nav-link:hover,
+.raster-nav-link.is-active {
+  color: var(--raster-fg-primary);
+}
+
+/* ==========================================================================
+   CALLOUTS & NOTICES
+   ========================================================================== */
+
+.raster-callout {
+  padding: var(--raster-space-4);
+  border-left: 3px solid var(--raster-border-strong);
+  background-color: var(--raster-surface-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-1);
+}
+
+.raster-callout-accent {
+  border-left-color: var(--raster-accent);
+}
+
+/**
+ * RASTER CSS - Micro Utilities
+ * Minimal, non-bloated utility primitives for Swiss layout precision.
+ */
+
+/* Flexbox Primitives */
+.raster-flex { display: flex; }
+.raster-flex-col { display: flex; flex-direction: column; }
+.raster-items-center { align-items: center; }
+.raster-items-baseline { align-items: baseline; }
+.raster-items-start { align-items: flex-start; }
+.raster-justify-between { justify-content: space-between; }
+.raster-justify-end { justify-content: flex-end; }
+.raster-justify-center { justify-content: center; }
+
+/* Gap Primitives */
+.gap-1 { gap: var(--raster-space-1); }
+.gap-2 { gap: var(--raster-space-2); }
+.gap-3 { gap: var(--raster-space-3); }
+.gap-4 { gap: var(--raster-space-4); }
+.gap-6 { gap: var(--raster-space-6); }
+.gap-8 { gap: var(--raster-space-8); }
+
+/* Spacing Helpers */
+.mt-1 { margin-top: var(--raster-space-1); }
+.mt-2 { margin-top: var(--raster-space-2); }
+.mt-4 { margin-top: var(--raster-space-4); }
+.mt-6 { margin-top: var(--raster-space-6); }
+.mt-8 { margin-top: var(--raster-space-8); }
+.mt-12 { margin-top: var(--raster-space-12); }
+
+.mb-1 { margin-bottom: var(--raster-space-1); }
+.mb-2 { margin-bottom: var(--raster-space-2); }
+.mb-4 { margin-bottom: var(--raster-space-4); }
+.mb-6 { margin-bottom: var(--raster-space-6); }
+.mb-8 { margin-bottom: var(--raster-space-8); }
+.mb-12 { margin-bottom: var(--raster-space-12); }
+
+.py-4 { padding-top: var(--raster-space-4); padding-bottom: var(--raster-space-4); }
+.py-6 { padding-top: var(--raster-space-6); padding-bottom: var(--raster-space-6); }
+.py-8 { padding-top: var(--raster-space-8); padding-bottom: var(--raster-space-8); }
+.py-12 { padding-top: var(--raster-space-12); padding-bottom: var(--raster-space-12); }
+
+/* Text Alignment & Tone */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--raster-fg-primary); }
+.text-secondary { color: var(--raster-fg-secondary); }
+.text-muted { color: var(--raster-fg-muted); }
+.text-accent { color: var(--raster-accent); }
+
+/* Borders & Separators */
+.border-top { border-top: 1px solid var(--raster-border); }
+.border-bottom { border-bottom: 1px solid var(--raster-border); }
+.border-hairline { border: 1px solid var(--raster-border); }
+
+/* Overflow & Display */
+.w-full { width: 100%; }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

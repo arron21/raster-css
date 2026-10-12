@@ -1,0 +1,499 @@
+/**
+ * RASTER CSS - Component Architecture
+ * Pure CSS components built for extreme legibility, speed, and AI predictability.
+ */
+
+/* ==========================================================================
+   CARDS & PANELS
+   ========================================================================== */
+
+.raster-card {
+  position: relative;
+  background-color: var(--raster-surface);
+  border: 1px solid var(--raster-border);
+  border-radius: var(--raster-radius);
+  padding: var(--raster-space-6);
+  transition: border-color 0.15s ease;
+}
+
+.raster-card-subtle {
+  background-color: var(--raster-surface-subtle);
+}
+
+.raster-card-interactive {
+  cursor: pointer;
+}
+
+.raster-card-interactive:hover {
+  border-color: var(--raster-border-strong);
+}
+
+.raster-card-accent-top {
+  border-top: 3px solid var(--raster-accent);
+}
+
+.raster-card-hard-shadow {
+  box-shadow: var(--raster-shadow-hard);
+}
+
+.raster-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--raster-space-4);
+}
+
+.raster-card-title {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h3);
+  font-weight: 600;
+  letter-spacing: var(--raster-track-h3);
+}
+
+.raster-card-footer {
+  margin-top: var(--raster-space-6);
+  padding-top: var(--raster-space-3);
+  border-top: 1px solid var(--raster-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================================================================
+   STAT & METRIC BLOCKS (Anti-AI slop: massive numbers, strict micro-labels)
+   ========================================================================== */
+
+.raster-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+}
+
+.raster-stat-label {
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.raster-stat-value {
+  font-family: var(--raster-font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--raster-fg-primary);
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.raster-stat-sub {
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--raster-space-2);
+  margin-top: var(--raster-space-1);
+}
+
+.raster-delta {
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  padding: 1px 4px;
+}
+
+.raster-delta-positive {
+  color: var(--raster-signal-emerald);
+  background-color: rgba(5, 130, 73, 0.1);
+}
+
+.raster-delta-negative {
+  color: var(--raster-accent);
+  background-color: var(--raster-accent-subtle);
+}
+
+/* ==========================================================================
+   BUTTONS & CONTROLS
+   ========================================================================== */
+
+.raster-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--raster-space-2);
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: var(--raster-space-2) var(--raster-space-4);
+  border-radius: var(--raster-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: none;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.raster-btn:focus-visible {
+  outline: 2px solid var(--raster-accent);
+  outline-offset: 2px;
+}
+
+/* Primary Button: Stark contrast inversion */
+.raster-btn-primary {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+  border-color: var(--raster-fg-primary);
+}
+
+.raster-btn-primary:hover {
+  background-color: var(--raster-accent);
+  border-color: var(--raster-accent);
+  color: #ffffff;
+}
+
+/* Accent Button: Swiss Vermillion */
+.raster-btn-accent {
+  background-color: var(--raster-accent);
+  color: #ffffff;
+  border-color: var(--raster-accent);
+}
+
+.raster-btn-accent:hover {
+  background-color: var(--raster-accent-hover);
+  border-color: var(--raster-accent-hover);
+}
+
+/* Outline Button */
+.raster-btn-outline {
+  border-color: var(--raster-border-strong);
+  color: var(--raster-fg-primary);
+  background-color: transparent;
+}
+
+.raster-btn-outline:hover {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+}
+
+/* Subtle / Ghost Button */
+.raster-btn-ghost {
+  border-color: var(--raster-border);
+  color: var(--raster-fg-secondary);
+  background-color: var(--raster-surface);
+}
+
+.raster-btn-ghost:hover {
+  border-color: var(--raster-border-strong);
+  color: var(--raster-fg-primary);
+}
+
+/* Micro Button */
+.raster-btn-sm {
+  font-size: var(--raster-text-micro);
+  padding: 4px 8px;
+  letter-spacing: var(--raster-track-micro);
+  text-transform: uppercase;
+}
+
+/* Segmented Control / Button Group */
+.raster-btn-group {
+  display: inline-flex;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+  padding: 2px;
+  gap: 2px;
+}
+
+.raster-btn-group .raster-btn {
+  border: none;
+  padding: 4px 10px;
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+}
+
+.raster-btn-group .raster-btn.is-active {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+}
+
+/* ==========================================================================
+   BADGES & TAGS
+   ========================================================================== */
+
+.raster-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  padding: 2px 6px;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+  color: var(--raster-fg-secondary);
+  white-space: nowrap;
+}
+
+.raster-tag-accent {
+  border-color: var(--raster-accent);
+  color: var(--raster-accent);
+  background-color: var(--raster-accent-subtle);
+}
+
+.raster-tag-solid {
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+  border-color: var(--raster-fg-primary);
+}
+
+/* Bracket indicator signature */
+.raster-bracket::before { content: "[ "; color: var(--raster-fg-faint); }
+.raster-bracket::after  { content: " ]"; color: var(--raster-fg-faint); }
+
+/* ==========================================================================
+   METERS & BARS (High-discipline data visualization)
+   ========================================================================== */
+
+.raster-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
+.raster-meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--raster-text-small);
+}
+
+.raster-meter-track {
+  height: 6px;
+  background-color: var(--raster-border-subtle);
+  border: 1px solid var(--raster-border);
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.raster-meter-fill {
+  height: 100%;
+  background-color: var(--raster-fg-primary);
+  transition: width 0.3s ease;
+}
+
+.raster-meter-fill-accent {
+  background-color: var(--raster-accent);
+}
+
+.raster-meter-fill-blue {
+  background-color: var(--raster-signal-blue);
+}
+
+/* Segmented Multi-Bar (Clean replacement for muddy donut charts) */
+.raster-segmented-bar {
+  display: flex;
+  height: 8px;
+  width: 100%;
+  background-color: var(--raster-border-subtle);
+  border: 1px solid var(--raster-border);
+  gap: 1px;
+}
+
+.raster-segmented-bar > * {
+  height: 100%;
+}
+
+/* ==========================================================================
+   DATA TABLES & LEDGERS
+   ========================================================================== */
+
+.raster-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-surface);
+}
+
+.raster-table {
+  width: 100%;
+  text-align: left;
+}
+
+.raster-table th {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+  background-color: var(--raster-surface-subtle);
+  padding: var(--raster-space-3) var(--raster-space-4);
+  border-bottom: 1px solid var(--raster-border-strong);
+}
+
+.raster-table td {
+  padding: var(--raster-space-3) var(--raster-space-4);
+  font-size: var(--raster-text-small);
+  border-bottom: 1px solid var(--raster-border-subtle);
+  vertical-align: middle;
+}
+
+.raster-table tr:last-child td {
+  border-bottom: none;
+}
+
+.raster-table tr:hover td {
+  background-color: var(--raster-surface-subtle);
+}
+
+.raster-table .cell-num {
+  text-align: right;
+  font-family: var(--raster-font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ==========================================================================
+   FORM INPUTS & CONTROLS
+   ========================================================================== */
+
+.raster-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
+.raster-field-label {
+  font-size: var(--raster-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+  color: var(--raster-fg-muted);
+}
+
+.raster-input,
+.raster-select,
+.raster-textarea {
+  width: 100%;
+  padding: var(--raster-space-2) var(--raster-space-3);
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-body);
+  background-color: var(--raster-surface);
+  border: 1px solid var(--raster-border);
+  border-radius: var(--raster-radius);
+  color: var(--raster-fg-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.raster-input:focus,
+.raster-select:focus,
+.raster-textarea:focus {
+  border-color: var(--raster-fg-primary);
+  box-shadow: 0 0 0 1px var(--raster-fg-primary);
+}
+
+.raster-input::placeholder {
+  color: var(--raster-fg-faint);
+}
+
+/* Underline variant (Architectural draughtsman style) */
+.raster-input-underline {
+  border: none;
+  border-bottom: 1px solid var(--raster-border);
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.raster-input-underline:focus {
+  border-bottom-color: var(--raster-accent);
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   MASTHEAD & NAVIGATION
+   ========================================================================== */
+
+.raster-masthead {
+  border-bottom: 1px solid var(--raster-border);
+  background-color: var(--raster-canvas);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.raster-masthead-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--raster-space-4);
+  padding-bottom: var(--raster-space-4);
+}
+
+.raster-brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--raster-space-2);
+  font-family: var(--raster-font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  color: var(--raster-fg-primary);
+}
+
+.raster-brand-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--raster-accent);
+}
+
+.raster-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--raster-space-6);
+  list-style: none;
+}
+
+.raster-nav-link {
+  font-size: var(--raster-text-small);
+  font-weight: 500;
+  color: var(--raster-fg-secondary);
+  transition: color 0.15s ease;
+}
+
+.raster-nav-link:hover,
+.raster-nav-link.is-active {
+  color: var(--raster-fg-primary);
+}
+
+/* ==========================================================================
+   CALLOUTS & NOTICES
+   ========================================================================== */
+
+.raster-callout {
+  padding: var(--raster-space-4);
+  border-left: 3px solid var(--raster-border-strong);
+  background-color: var(--raster-surface-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-1);
+}
+
+.raster-callout-accent {
+  border-left-color: var(--raster-accent);
+}

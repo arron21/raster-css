@@ -1,0 +1,25 @@
+{
+  "name": "raster-css",
+  "version": "1.0.0",
+  "description": "The International Typographic Design System for Humans and AI Agents. Distinct Swiss Design framework.",
+  "main": "dist/raster.css",
+  "style": "dist/raster.css",
+  "scripts": {
+    "build": "node -e \"const fs = require('fs'); const files = ['src/css/tokens.css', 'src/css/reset.css', 'src/css/typography.css', 'src/css/grid.css', 'src/css/components.css', 'src/css/utilities.css']; fs.writeFileSync('dist/raster.css', files.map(f => fs.readFileSync(f, 'utf8')).join('\\n')); console.log('dist/raster.css built successfully!');\"",
+    "serve": "npx serve docs"
+  },
+  "keywords": [
+    "swiss-design",
+    "international-typographic-style",
+    "css-framework",
+    "ai-friendly",
+    "typography",
+    "design-system",
+    "react",
+    "vue",
+    "svelte",
+    "angular"
+  ],
+  "author": "Raster UI Core Team",
+  "license": "MIT"
+}

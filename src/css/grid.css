@@ -1,0 +1,128 @@
+/**
+ * RASTER CSS - Modular Grid System
+ * Based on Josef Müller-Brockmann's 12-column architectural raster.
+ */
+
+.raster-container {
+  width: 100%;
+  max-width: var(--raster-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--raster-space-6);
+  padding-right: var(--raster-space-6);
+}
+
+.raster-container-narrow {
+  max-width: var(--raster-max-width-narrow);
+}
+
+.raster-container-fluid {
+  max-width: 100%;
+}
+
+/* 12-Column Grid */
+.raster-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+  width: 100%;
+}
+
+.raster-grid-tight {
+  gap: var(--raster-space-3);
+}
+
+.raster-grid-loose {
+  gap: var(--raster-space-10);
+}
+
+.raster-grid-none {
+  gap: 0;
+}
+
+/* Spans (1-12) */
+.col-1  { grid-column: span 1 / span 1; }
+.col-2  { grid-column: span 2 / span 2; }
+.col-3  { grid-column: span 3 / span 3; }
+.col-4  { grid-column: span 4 / span 4; }
+.col-5  { grid-column: span 5 / span 5; }
+.col-6  { grid-column: span 6 / span 6; }
+.col-7  { grid-column: span 7 / span 7; }
+.col-8  { grid-column: span 8 / span 8; }
+.col-9  { grid-column: span 9 / span 9; }
+.col-10 { grid-column: span 10 / span 10; }
+.col-11 { grid-column: span 11 / span 11; }
+.col-12 { grid-column: span 12 / span 12; }
+
+/* Asymmetrical & Standard Splits */
+.raster-split-asymmetric {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: var(--raster-space-6);
+}
+
+.raster-split-half {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+}
+
+.raster-split-third {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+}
+
+.raster-split-quarter {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--raster-space-6);
+}
+
+/* Architectural Hairline Grid (Cells share 1px hairline borders without gap doubling) */
+.raster-grid-hairline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  border-top: 1px solid var(--raster-border);
+  border-left: 1px solid var(--raster-border);
+  gap: 0;
+}
+
+.raster-grid-hairline > * {
+  border-right: 1px solid var(--raster-border);
+  border-bottom: 1px solid var(--raster-border);
+  padding: var(--raster-space-6);
+  background-color: var(--raster-surface);
+}
+
+/* Responsive Grid Adapters */
+@media (max-width: 1024px) {
+  .raster-split-asymmetric,
+  .raster-split-quarter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .col-lg-12 { grid-column: span 12 / span 12; }
+  .col-lg-6  { grid-column: span 6 / span 6; }
+}
+
+@media (max-width: 768px) {
+  .raster-container {
+    padding-left: var(--raster-space-4);
+    padding-right: var(--raster-space-4);
+  }
+
+  .raster-grid,
+  .raster-split-asymmetric,
+  .raster-split-half,
+  .raster-split-third,
+  .raster-split-quarter {
+    grid-template-columns: 1fr;
+    gap: var(--raster-space-4);
+  }
+
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 1 / -1;
+  }
+}

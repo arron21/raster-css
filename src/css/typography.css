@@ -1,0 +1,155 @@
+/**
+ * RASTER CSS - Typography
+ * Rooted in Josef Müller-Brockmann, Max Bill, and Armin Hofmann's typographic discipline.
+ */
+
+/* Display Typography */
+.raster-display-2xl {
+  font-family: var(--raster-font-display);
+  font-size: var(--raster-text-display-2xl);
+  line-height: var(--raster-lead-display-2xl);
+  letter-spacing: var(--raster-track-display-2xl);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.raster-display-xl {
+  font-family: var(--raster-font-display);
+  font-size: var(--raster-text-display-xl);
+  line-height: var(--raster-lead-display-xl);
+  letter-spacing: var(--raster-track-display-xl);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.raster-display-lg {
+  font-family: var(--raster-font-display);
+  font-size: var(--raster-text-display-lg);
+  line-height: var(--raster-lead-display-lg);
+  letter-spacing: var(--raster-track-display-lg);
+  font-weight: 700;
+}
+
+/* Headings */
+h1, .raster-h1 {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h1);
+  line-height: var(--raster-lead-h1);
+  letter-spacing: var(--raster-track-h1);
+  font-weight: 600;
+}
+
+h2, .raster-h2 {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h2);
+  line-height: var(--raster-lead-h2);
+  letter-spacing: var(--raster-track-h2);
+  font-weight: 600;
+}
+
+h3, .raster-h3 {
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-h3);
+  line-height: var(--raster-lead-h3);
+  letter-spacing: var(--raster-track-h3);
+  font-weight: 600;
+}
+
+/* Paragraphs & Copy */
+p, .raster-body {
+  font-size: var(--raster-text-body);
+  line-height: var(--raster-lead-body);
+  letter-spacing: var(--raster-track-body);
+  color: var(--raster-fg-secondary);
+}
+
+.raster-lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--raster-fg-primary);
+  font-weight: 400;
+}
+
+.raster-small {
+  font-size: var(--raster-text-small);
+  line-height: var(--raster-lead-small);
+  letter-spacing: var(--raster-track-small);
+}
+
+/* Swiss Micro-Labels (Crucial signature of Swiss Graphic Design) */
+.raster-label,
+.raster-micro {
+  font-size: var(--raster-text-micro);
+  line-height: var(--raster-lead-micro);
+  letter-spacing: var(--raster-track-micro);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--raster-fg-muted);
+}
+
+.raster-label-accent {
+  color: var(--raster-accent);
+}
+
+/* Monospace & Tabular Data Figures */
+.raster-mono {
+  font-family: var(--raster-font-mono);
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.raster-tabular {
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Section Header with Architectural Hairline Rule */
+.raster-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--raster-space-4);
+  padding-bottom: var(--raster-space-3);
+  border-bottom: 1px solid var(--raster-border-strong);
+  margin-bottom: var(--raster-space-6);
+}
+
+.raster-section-header .raster-index {
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-small);
+  color: var(--raster-accent);
+  font-weight: 600;
+}
+
+.raster-section-header .raster-rule {
+  flex: 1;
+  height: 1px;
+  background-color: var(--raster-border);
+  align-self: center;
+}
+
+.raster-section-header .raster-meta {
+  font-family: var(--raster-font-mono);
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--raster-track-micro);
+}
+
+/* Typographic Rules & Hairlines */
+.raster-hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--raster-border);
+  margin: var(--raster-space-6) 0;
+}
+
+.raster-hr-strong {
+  background-color: var(--raster-border-strong);
+}
+
+.raster-hr-accent {
+  background-color: var(--raster-accent);
+  height: 2px;
+}

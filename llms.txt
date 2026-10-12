@@ -1,0 +1,32 @@
+# RASTER CSS
+
+> The International Typographic Design System for Humans & AI Agents.
+> Clean, distinct, architecture-grade Swiss typography with zero generic AI slop.
+
+## Overview
+Raster CSS is a framework-agnostic CSS design system built on the principles of Swiss Design (International Typographic Style), Josef Müller-Brockmann's modular grids, and modern CSS custom properties. It is designed to work seamlessly across React, Vue, Svelte, Angular, Astro, and plain HTML.
+
+## Key Links
+- [AI Agent Codex & Strict Rules](AI.md): Complete machine-readable instructions, rules, anti-patterns, and component blueprints.
+- [Main Bundle](dist/raster.css): Consolidated single-file distribution.
+- [Design Tokens](src/css/tokens.css): CSS variables for Light & Dark mode, colors, typography, spacing.
+- [Typography](src/css/typography.css): Display scales, micro-labels, tabular numerals.
+- [Grid System](src/css/grid.css): 12-column Müller-Brockmann grid and asymmetric split utilities.
+- [Components](src/css/components.css): Cards, stat blocks, buttons, meters, ledgers, inputs.
+
+## The Anti-AI Aesthetic Rules
+- NO neon glows, glowing shadows, or purple radial gradients.
+- NO 9999px pills or mushy 16-24px rounded corners (Corners are 0px or 2px).
+- NO floating icons in rounded pastel boxes without purpose.
+- HIGH typographic contrast: monolithic tabular numbers vs uppercase tracked micro-labels.
+- HAIRLINE 1px architectural borders.
+- Swiss Vermillion (#E62E00 / #FF3B14) signal accent used strictly for action/status.
+
+## Minimal Setup
+```html
+<link rel="stylesheet" href="dist/raster.css">
+<!-- or import in React/Vue/Svelte -->
+```
+
+## Theme Switching
+Add `data-theme="dark"` or `data-theme="light"` to the `<html>` or container tag.

@@ -1,0 +1,65 @@
+/**
+ * RASTER CSS - Micro Utilities
+ * Minimal, non-bloated utility primitives for Swiss layout precision.
+ */
+
+/* Flexbox Primitives */
+.raster-flex { display: flex; }
+.raster-flex-col { display: flex; flex-direction: column; }
+.raster-items-center { align-items: center; }
+.raster-items-baseline { align-items: baseline; }
+.raster-items-start { align-items: flex-start; }
+.raster-justify-between { justify-content: space-between; }
+.raster-justify-end { justify-content: flex-end; }
+.raster-justify-center { justify-content: center; }
+
+/* Gap Primitives */
+.gap-1 { gap: var(--raster-space-1); }
+.gap-2 { gap: var(--raster-space-2); }
+.gap-3 { gap: var(--raster-space-3); }
+.gap-4 { gap: var(--raster-space-4); }
+.gap-6 { gap: var(--raster-space-6); }
+.gap-8 { gap: var(--raster-space-8); }
+
+/* Spacing Helpers */
+.mt-1 { margin-top: var(--raster-space-1); }
+.mt-2 { margin-top: var(--raster-space-2); }
+.mt-4 { margin-top: var(--raster-space-4); }
+.mt-6 { margin-top: var(--raster-space-6); }
+.mt-8 { margin-top: var(--raster-space-8); }
+.mt-12 { margin-top: var(--raster-space-12); }
+
+.mb-1 { margin-bottom: var(--raster-space-1); }
+.mb-2 { margin-bottom: var(--raster-space-2); }
+.mb-4 { margin-bottom: var(--raster-space-4); }
+.mb-6 { margin-bottom: var(--raster-space-6); }
+.mb-8 { margin-bottom: var(--raster-space-8); }
+.mb-12 { margin-bottom: var(--raster-space-12); }
+
+.py-4 { padding-top: var(--raster-space-4); padding-bottom: var(--raster-space-4); }
+.py-6 { padding-top: var(--raster-space-6); padding-bottom: var(--raster-space-6); }
+.py-8 { padding-top: var(--raster-space-8); padding-bottom: var(--raster-space-8); }
+.py-12 { padding-top: var(--raster-space-12); padding-bottom: var(--raster-space-12); }
+
+/* Text Alignment & Tone */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--raster-fg-primary); }
+.text-secondary { color: var(--raster-fg-secondary); }
+.text-muted { color: var(--raster-fg-muted); }
+.text-accent { color: var(--raster-accent); }
+
+/* Borders & Separators */
+.border-top { border-top: 1px solid var(--raster-border); }
+.border-bottom { border-bottom: 1px solid var(--raster-border); }
+.border-hairline { border: 1px solid var(--raster-border); }
+
+/* Overflow & Display */
+.w-full { width: 100%; }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
