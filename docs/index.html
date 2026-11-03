@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RASTER CSS — Swiss International Typographic Design System</title>
+  <title>RASTER CSS — Swiss International Typographic Design System & Live Demo</title>
+  <meta name="description" content="A distinct, AI-friendly CSS framework based on Swiss Design (International Typographic Style). Built for React, Vue, Svelte, Angular, and HTML.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../dist/raster.css">
+  <link rel="stylesheet" href="./raster.css">
   <style>
-    /* Documentation specific accents */
+    /* ==========================================================================
+       DEMO PAGE & INTERACTIVE SHOWCASE STYLES
+       ========================================================================== */
+    html {
+      scroll-behavior: smooth;
+    }
+
     .hero-poster {
       border-bottom: 2px solid var(--raster-border-strong);
-      padding: clamp(3rem, 6vw, 6rem) 0;
+      padding: clamp(2.5rem, 6vw, 5.5rem) 0;
       position: relative;
     }
+
     .badge-swiss {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       font-family: var(--raster-font-mono);
       font-size: var(--raster-text-micro);
@@ -28,21 +37,25 @@
       color: #ffffff;
       font-weight: 700;
     }
+
     .code-preview {
       background-color: var(--raster-surface-subtle);
       border: 1px solid var(--raster-border);
       padding: var(--raster-space-4);
       font-family: var(--raster-font-mono);
       font-size: var(--raster-text-small);
-      line-height: 1.5;
+      line-height: 1.55;
       overflow-x: auto;
       white-space: pre;
+      color: var(--raster-fg-primary);
     }
+
     .comparison-box {
       border: 1px solid var(--raster-border);
       background-color: var(--raster-surface);
       overflow: hidden;
     }
+
     .comparison-header {
       padding: var(--raster-space-3) var(--raster-space-4);
       border-bottom: 1px solid var(--raster-border);
@@ -53,71 +66,243 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      background-color: var(--raster-surface-subtle);
     }
+
     .tab-nav {
       display: flex;
       border-bottom: 1px solid var(--raster-border);
       background: var(--raster-surface-subtle);
-      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
+
     .tab-btn {
-      padding: 8px 16px;
+      padding: 10px 18px;
       border: none;
       background: transparent;
       font-family: var(--raster-font-mono);
       font-size: var(--raster-text-micro);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       cursor: pointer;
       border-right: 1px solid var(--raster-border);
       color: var(--raster-fg-secondary);
+      white-space: nowrap;
+      transition: all 0.15s ease;
     }
+
+    .tab-btn:hover {
+      color: var(--raster-fg-primary);
+      background-color: var(--raster-surface-hover);
+    }
+
     .tab-btn.active {
       background: var(--raster-surface);
       color: var(--raster-fg-primary);
       border-bottom: 2px solid var(--raster-accent);
       margin-bottom: -1px;
     }
+
+    /* Demo App Switcher Bar */
+    .demo-switcher-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--raster-fg-primary);
+      color: var(--raster-canvas);
+      padding: var(--raster-space-2) var(--raster-space-4);
+      border: 2px solid var(--raster-border-strong);
+      border-bottom: none;
+      flex-wrap: wrap;
+      gap: var(--raster-space-2);
+    }
+
+    .demo-tab-btn {
+      background: transparent;
+      border: 1px solid rgba(128, 128, 128, 0.4);
+      color: var(--raster-canvas);
+      opacity: 0.7;
+      padding: 6px 14px;
+      font-family: var(--raster-font-mono);
+      font-size: var(--raster-text-micro);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .demo-tab-btn:hover {
+      opacity: 1;
+    }
+
+    .demo-tab-btn.active {
+      background-color: var(--raster-accent);
+      border-color: var(--raster-accent);
+      color: #ffffff;
+      opacity: 1;
+    }
+
+    .demo-viewport {
+      border: 2px solid var(--raster-border-strong);
+      padding: var(--raster-space-6);
+      background-color: var(--raster-canvas);
+    }
+
+    @media (max-width: 768px) {
+      .demo-viewport {
+        padding: var(--raster-space-4);
+      }
+    }
+
+    /* Anti-AI Visual Slop Mockup (For Contrast Demonstration Only) */
+    .ai-slop-showcase {
+      background: radial-gradient(circle at top right, #312e81, #0f172a 70%);
+      border-radius: 24px;
+      padding: 24px;
+      color: #e2e8f0;
+      box-shadow: 0 12px 32px -4px rgba(99, 102, 241, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      font-family: system-ui, sans-serif;
+    }
+
+    .ai-slop-inner-card {
+      background: rgba(30, 41, 59, 0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 20px;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
+    }
+
+    .ai-slop-icon-pill {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    /* Interactive Color Swatches */
+    .swatch-card {
+      border: 1px solid var(--raster-border);
+      background-color: var(--raster-surface);
+      cursor: pointer;
+      transition: border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .swatch-card:hover {
+      border-color: var(--raster-border-strong);
+    }
+
+    .swatch-color {
+      height: 72px;
+      width: 100%;
+      border-bottom: 1px solid var(--raster-border);
+    }
+
+    .swatch-meta {
+      padding: var(--raster-space-3);
+    }
+
+    /* 12-Column Swiss Grid Inspector Overlay */
+    .grid-inspector-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      display: none;
+    }
+
+    .grid-inspector-overlay.is-visible {
+      display: block;
+    }
+
+    .grid-inspector-overlay .raster-container,
+    .grid-inspector-overlay .raster-grid {
+      height: 100%;
+    }
+
+    .grid-inspector-col {
+      height: 100%;
+      background-color: rgba(230, 46, 0, 0.07);
+      border-left: 1px dashed rgba(230, 46, 0, 0.35);
+      border-right: 1px dashed rgba(230, 46, 0, 0.35);
+    }
+
+    /* Toast Notification */
     .toast {
       position: fixed;
       bottom: 24px;
       right: 24px;
       background: var(--raster-fg-primary);
       color: var(--raster-canvas);
-      padding: 10px 18px;
+      padding: 12px 20px;
       font-family: var(--raster-font-mono);
       font-size: var(--raster-text-micro);
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       box-shadow: var(--raster-shadow-hard);
+      border: 1px solid var(--raster-border-strong);
       display: none;
-      z-index: 1000;
+      z-index: 10000;
     }
   </style>
 </head>
 <body>
 
+  <!-- 12-Column Architectural Grid Inspector Overlay -->
+  <div id="grid-inspector" class="grid-inspector-overlay" aria-hidden="true">
+    <div class="raster-container">
+      <div class="raster-grid">
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+        <div class="col-1 grid-inspector-col"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Masthead -->
   <header class="raster-masthead">
     <div class="raster-container">
       <div class="raster-masthead-inner">
-        <div class="raster-brand">
+        <a href="#" class="raster-brand">
           <span class="badge-swiss">+</span>
           <span>RASTER</span>
           <span class="raster-hide-xs" style="font-family: var(--raster-font-mono); font-size: 0.75rem; color: var(--raster-fg-muted); font-weight: 500;">// SWISS DESIGN SYSTEM</span>
-        </div>
+        </a>
 
         <nav class="raster-nav-desktop">
           <ul class="raster-nav-links">
-            <li><a href="#rebuild" class="raster-nav-link">The Rebuild</a></li>
-            <li><a href="#manifesto" class="raster-nav-link">Anti-AI Manifesto</a></li>
-            <li><a href="#components" class="raster-nav-link">Components</a></li>
-            <li><a href="#ai-guide" class="raster-nav-link">AI.md Codex</a></li>
+            <li><a href="#demos" class="raster-nav-link">Live Demos</a></li>
+            <li><a href="#manifesto" class="raster-nav-link">Anti-AI vs Swiss</a></li>
+            <li><a href="#tokens" class="raster-nav-link">Typography & Tokens</a></li>
+            <li><a href="#components" class="raster-nav-link">Kitchen Sink</a></li>
+            <li><a href="#ai-guide" class="raster-nav-link">AI Codex</a></li>
           </ul>
         </nav>
 
         <div class="raster-flex raster-items-center gap-2">
+          <button id="grid-toggle" class="raster-btn raster-btn-ghost raster-btn-sm" title="Toggle 12-Column Müller-Brockmann Grid Overlay">
+            <span>⊞</span>
+            <span id="grid-text" class="raster-hide-xs">GRID: OFF</span>
+          </button>
           <button id="theme-toggle" class="raster-btn raster-btn-ghost raster-btn-sm" title="Toggle Light/Dark Theme">
             <span id="theme-icon">◐</span>
             <span id="theme-text" class="raster-hide-xs">THEME: LIGHT</span>
@@ -133,57 +318,73 @@
 
       <!-- Mobile Navigation Drawer -->
       <nav id="mobile-nav" class="raster-nav-mobile">
-        <a href="#rebuild" class="raster-nav-link" onclick="closeMobileNav()">[ 01 ] The Rebuild</a>
+        <a href="#demos" class="raster-nav-link" onclick="closeMobileNav()">[ 01 ] Interactive Live Demos</a>
         <a href="#manifesto" class="raster-nav-link" onclick="closeMobileNav()">[ 02 ] Anti-AI Manifesto</a>
-        <a href="#components" class="raster-nav-link" onclick="closeMobileNav()">[ 03 ] Components</a>
-        <a href="#ai-guide" class="raster-nav-link" onclick="closeMobileNav()">[ 04 ] AI.md Codex</a>
-        <div style="padding: var(--raster-space-3) var(--raster-space-4);">
+        <a href="#tokens" class="raster-nav-link" onclick="closeMobileNav()">[ 03 ] Typography & Tokens</a>
+        <a href="#components" class="raster-nav-link" onclick="closeMobileNav()">[ 04 ] Component Kitchen Sink</a>
+        <a href="#ai-guide" class="raster-nav-link" onclick="closeMobileNav()">[ 05 ] AI Agent Codex</a>
+        <div style="padding: var(--raster-space-3) var(--raster-space-4);" class="raster-flex raster-flex-col gap-2">
           <button onclick="copyAiCodex(); closeMobileNav();" class="raster-btn raster-btn-primary raster-btn-sm w-full">
             <span>COPY FULL AI.MD CODEX</span>
           </button>
+          <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener" class="raster-btn raster-btn-outline raster-btn-sm w-full">
+            <span>VIEW GITHUB REPOSITORY ↗</span>
+          </a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Poster -->
   <section class="hero-poster">
     <div class="raster-container">
-      <div class="raster-label raster-label-accent mb-2">INTERNATIONAL TYPOGRAPHIC STYLE FOR HUMANS & AI AGENTS</div>
-      <h1 class="raster-display-2xl mb-4" style="max-width: 1100px;">
+      <div class="raster-flex raster-wrap-mobile raster-justify-between raster-items-baseline mb-3 gap-2">
+        <span class="raster-label raster-label-accent">INTERNATIONAL TYPOGRAPHIC STYLE FOR HUMANS & AI AGENTS</span>
+        <span class="raster-mono raster-label">[ ZÜRICH // 1957 — 2026 ]</span>
+      </div>
+
+      <h1 class="raster-display-2xl mb-6" style="max-width: 1120px;">
         DISCIPLINED TYPOGRAPHY. ARCHITECTURAL GRIDS. ZERO AI SLOP.
       </h1>
       
-      <div class="raster-split-asymmetric mt-8 raster-items-baseline">
+      <div class="raster-split-asymmetric mt-8 raster-items-start">
         <div>
           <p class="raster-lead" style="max-width: 680px;">
-            Generic AI web apps all converge on the same aesthetic: dark purple glow meshes, rounded jelly pills, translucent blurs, and floating icon clutter. <strong>Raster CSS</strong> is a framework-agnostic design system rooted in Swiss Modernism, Josef Müller-Brockmann grid mathematics, and ruthless negative space.
+            Generic AI web interfaces all converge on the same visual clichés: dark purple glow meshes, mushy 24px rounded pills, translucent glass blurs, and floating icon clutter. <strong>Raster CSS</strong> is a framework-agnostic design system rooted in Swiss Modernism, Josef Müller-Brockmann grid mathematics, and ruthless negative space.
           </p>
-          <div class="raster-flex gap-4 mt-6">
-            <a href="#rebuild" class="raster-btn raster-btn-primary">INSPECT REBUILT DASHBOARD</a>
-            <a href="#ai-guide" class="raster-btn raster-btn-outline">AGENT PROMPT GUIDE</a>
+          <div class="raster-flex raster-wrap-mobile gap-3 mt-6">
+            <a href="#demos" class="raster-btn raster-btn-primary raster-btn-touch">EXPLORE LIVE DEMOS ↓</a>
+            <button onclick="copyAgentRepoPrompt()" class="raster-btn raster-btn-accent raster-btn-touch">COPY AI REPO PROMPT</button>
+            <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener" class="raster-btn raster-btn-outline raster-btn-touch">GITHUB REPO ↗</a>
           </div>
         </div>
         
         <div class="raster-card raster-card-subtle">
-          <div class="raster-label mb-2">[ SPECIFICATION ]</div>
+          <div class="raster-flex raster-justify-between raster-items-baseline mb-2">
+            <span class="raster-label">[ SPECIFICATION SHEET ]</span>
+            <span class="raster-tag raster-tag-solid">V1.0.0</span>
+          </div>
           <table class="raster-table" style="background: transparent;">
             <tbody>
               <tr>
-                <td class="raster-label" style="padding: 6px 0;">Philosophy</td>
-                <td style="text-align: right; font-weight: 600;">Swiss Style / 1957–Present</td>
+                <td class="raster-label" style="padding: 8px 0;">Aesthetic Lineage</td>
+                <td style="text-align: right; font-weight: 600; padding: 8px 0;">Swiss International Style</td>
               </tr>
               <tr>
-                <td class="raster-label" style="padding: 6px 0;">Dependencies</td>
-                <td style="text-align: right; font-weight: 600;">0 (Pure Modern CSS)</td>
+                <td class="raster-label" style="padding: 8px 0;">Dependencies</td>
+                <td style="text-align: right; font-weight: 600; padding: 8px 0;">0 (Pure CSS Custom Props)</td>
               </tr>
               <tr>
-                <td class="raster-label" style="padding: 6px 0;">Compatibility</td>
-                <td style="text-align: right; font-weight: 600;">React, Vue, Svelte, Angular</td>
+                <td class="raster-label" style="padding: 8px 0;">Frameworks</td>
+                <td style="text-align: right; font-weight: 600; padding: 8px 0;">React, Vue, Svelte, Angular</td>
               </tr>
               <tr>
-                <td class="raster-label" style="padding: 6px 0;">AI Readability</td>
-                <td style="text-align: right; font-weight: 600; color: var(--raster-accent);">100% LLMS.txt / AI.md</td>
+                <td class="raster-label" style="padding: 8px 0;">Self-Branding</td>
+                <td style="text-align: right; font-weight: 600; padding: 8px 0;">Strictly Forbidden in Output</td>
+              </tr>
+              <tr>
+                <td class="raster-label" style="padding: 8px 0;">AI Discovery</td>
+                <td style="text-align: right; font-weight: 600; color: var(--raster-accent); padding: 8px 0;">AI.md + llms.txt Included</td>
               </tr>
             </tbody>
           </table>
@@ -195,21 +396,41 @@
   <!-- Main Content Container -->
   <main class="raster-container py-12">
 
-    <!-- Section 01: The Live Rebuild -->
-    <section id="rebuild" class="mb-16">
+    <!-- ========================================================================
+         SECTION 01: INTERACTIVE MULTI-APPLICATION DEMOS
+         ======================================================================== -->
+    <section id="demos" class="mb-16">
       <div class="raster-section-header">
         <span class="raster-index">[ 01 ]</span>
-        <h2 class="raster-h2">THE TRANSFORMATION // DIRECT REBUILD</h2>
+        <h2 class="raster-h2">INTERACTIVE APPLICATION DEMOS</h2>
         <div class="raster-rule"></div>
-        <span class="raster-meta">REBUILDING THE USER'S BUDGET APP</span>
+        <span class="raster-meta">3 REAL-WORLD SWISS INTERFACES</span>
       </div>
 
       <p class="raster-body mb-6">
-        Below is a direct architectural rebuild of the user's financial dashboard (<em>"What The Cost — Needs vs. Wants Budgeting"</em>). Notice the elimination of glowing gradients, mushy pill cards, and redundant icons. In their place: massive tabular numbers, razor hairlines, crisp proportional bars, and structural tension.
+        Switch between three complete application interfaces built with Raster CSS. Notice that none of these applications mention "Raster CSS" in their UI—each carries its own authentic product identity while sharing strict Swiss typographic and structural discipline.
       </p>
 
-      <!-- Rebuilt App Container -->
-      <div style="border: 2px solid var(--raster-border-strong); padding: var(--raster-space-6); background-color: var(--raster-canvas);">
+      <!-- Demo Switcher Top Bar -->
+      <div class="demo-switcher-bar">
+        <div class="raster-flex raster-wrap-mobile gap-2">
+          <button class="demo-tab-btn active" onclick="switchDemoApp('finance', this)">
+            01 // FINANCIAL LEDGER (REBUILD)
+          </button>
+          <button class="demo-tab-btn" onclick="switchDemoApp('telemetry', this)">
+            02 // CLOUD & AI TELEMETRY
+          </button>
+          <button class="demo-tab-btn" onclick="switchDemoApp('editorial', this)">
+            03 // EDITORIAL ARCHIVE
+          </button>
+        </div>
+        <span class="raster-mono" style="font-size: 11px; opacity: 0.75;">INTERACTIVE SANDBOX // TRY THE CONTROLS</span>
+      </div>
+
+      <!-- ======================================================================
+           DEMO APP 1: WHAT THE COST (INTERACTIVE FINANCIAL LEDGER REBUILD)
+           ====================================================================== -->
+      <div id="demo-app-finance" class="demo-viewport">
         
         <!-- App Masthead -->
         <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-6 pb-4 border-bottom gap-mobile-3">
@@ -217,31 +438,65 @@
             <span class="badge-swiss">$</span>
             <div class="raster-flex raster-items-baseline gap-2">
               <span style="font-family: var(--raster-font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">WHAT THE COST</span>
-              <span class="raster-tag raster-tag-accent">PWA // V2.0</span>
+              <span class="raster-tag raster-tag-accent">PWA // V2.4</span>
             </div>
-            <span class="raster-label raster-hide-xs" style="border-left: 1px solid var(--raster-border); padding-left: 12px;">Needs vs. Wants Ledger</span>
+            <span class="raster-label raster-hide-xs" style="border-left: 1px solid var(--raster-border); padding-left: 12px;">Needs vs. Wants Capital Ledger</span>
           </div>
 
           <div class="raster-flex raster-wrap-mobile raster-items-center gap-2 w-full-mobile raster-justify-start-mobile">
-            <!-- Segmented Time Period -->
-            <div class="raster-btn-group">
-              <button class="raster-btn">Day</button>
-              <button class="raster-btn">Wk</button>
-              <button class="raster-btn">Mo</button>
-              <button class="raster-btn is-active">Yr</button>
+            <!-- Interactive Segmented Time Horizon -->
+            <div class="raster-btn-group" id="horizon-group">
+              <button class="raster-btn" onclick="setBudgetHorizon('day', this)">Day</button>
+              <button class="raster-btn" onclick="setBudgetHorizon('wk', this)">Wk</button>
+              <button class="raster-btn" onclick="setBudgetHorizon('mo', this)">Mo</button>
+              <button class="raster-btn is-active" onclick="setBudgetHorizon('yr', this)">Yr</button>
             </div>
 
-            <button class="raster-btn raster-btn-outline raster-btn-sm">
-              <span>SIMULATE</span>
+            <button class="raster-btn raster-btn-outline raster-btn-sm" onclick="toggleWhatIfSimulation()">
+              <span id="whatif-btn-label">SIMULATE -10% RENT</span>
             </button>
             
-            <button class="raster-btn raster-btn-accent raster-btn-sm">
+            <button class="raster-btn raster-btn-accent raster-btn-sm" onclick="toggleAddEntryRow()">
               <span>+ ALLOCATION</span>
             </button>
           </div>
         </div>
 
-        <!-- Metric KPI Cards (Responsive Swiss Grid) -->
+        <!-- Add Allocation Inline Drawer (Hidden by default) -->
+        <div id="add-allocation-drawer" class="raster-card raster-card-subtle mb-6" style="display: none; border-left: 3px solid var(--raster-accent);">
+          <div class="raster-flex raster-justify-between raster-items-baseline mb-3">
+            <span class="raster-label" style="color: var(--raster-accent);">// NEW LEDGER ALLOCATION ENTRY</span>
+            <button class="raster-btn raster-btn-ghost raster-btn-sm" onclick="toggleAddEntryRow()">CLOSE ✕</button>
+          </div>
+          <div class="raster-grid">
+            <div class="col-5 col-sm-12">
+              <div class="raster-field">
+                <label class="raster-field-label">Category Name</label>
+                <input type="text" id="new-cat-name" class="raster-input" placeholder="e.g. Cloud Compute & Tools" value="Transit & Commute" />
+              </div>
+            </div>
+            <div class="col-3 col-sm-6">
+              <div class="raster-field">
+                <label class="raster-field-label">Classification</label>
+                <select id="new-cat-type" class="raster-select">
+                  <option value="Essential">Essential (Need)</option>
+                  <option value="Discretionary">Discretionary (Want)</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-2 col-sm-6">
+              <div class="raster-field">
+                <label class="raster-field-label">Annual USD ($)</label>
+                <input type="number" id="new-cat-amount" class="raster-input" value="2400" />
+              </div>
+            </div>
+            <div class="col-2 col-sm-12 raster-flex raster-items-center" style="padding-top: 20px;">
+              <button class="raster-btn raster-btn-primary w-full" onclick="addNewAllocation()">COMMIT ENTRY</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric KPI Cards (4-Column Swiss Grid) -->
         <div class="raster-grid mb-6">
           
           <!-- Annual Cost -->
@@ -249,12 +504,12 @@
             <div class="raster-card raster-card-accent-top">
               <div class="raster-stat">
                 <div class="raster-stat-label">
-                  <span>ANNUAL COST</span>
+                  <span id="stat-cost-title">ANNUAL COST</span>
                   <span class="raster-mono">[ 01 ]</span>
                 </div>
-                <div class="raster-stat-value">$41,111.79</div>
+                <div class="raster-stat-value" id="stat-cost-val">$41,111.79</div>
                 <div class="raster-stat-sub">
-                  <span>of $54k baseline</span>
+                  <span id="stat-income-sub">of $54,000.00 baseline income</span>
                 </div>
               </div>
             </div>
@@ -268,9 +523,9 @@
                   <span>NEEDS <span class="raster-tag raster-tag-solid" style="font-size: 9px; padding: 1px 4px;">REQ</span></span>
                   <span class="raster-mono">[ 02 ]</span>
                 </div>
-                <div class="raster-stat-value">$33,344.31</div>
+                <div class="raster-stat-value" id="stat-needs-val">$33,344.31</div>
                 <div class="raster-stat-sub">
-                  <span class="raster-delta raster-delta-negative">62% OF INC</span>
+                  <span class="raster-delta raster-delta-negative" id="stat-needs-pct">62% OF INC</span>
                   <span class="raster-mono">GOAL: ~50%</span>
                 </div>
               </div>
@@ -285,9 +540,9 @@
                   <span>WANTS <span class="raster-tag" style="font-size: 9px; padding: 1px 4px;">OPT</span></span>
                   <span class="raster-mono">[ 03 ]</span>
                 </div>
-                <div class="raster-stat-value">$7,767.48</div>
+                <div class="raster-stat-value" id="stat-wants-val">$7,767.48</div>
                 <div class="raster-stat-sub">
-                  <span class="raster-delta raster-delta-positive">14% OF INC</span>
+                  <span class="raster-delta raster-delta-positive" id="stat-wants-pct">14% OF INC</span>
                   <span class="raster-mono">GOAL: ~30%</span>
                 </div>
               </div>
@@ -302,9 +557,9 @@
                   <span>SAVINGS / SURPLUS</span>
                   <span class="raster-mono">[ 04 ]</span>
                 </div>
-                <div class="raster-stat-value">$12,888.21</div>
+                <div class="raster-stat-value" id="stat-savings-val">$12,888.21</div>
                 <div class="raster-stat-sub">
-                  <span class="raster-delta raster-delta-positive">24% SAVED</span>
+                  <span class="raster-delta raster-delta-positive" id="stat-savings-pct">24% SAVED</span>
                   <span class="raster-mono">GOAL: ~20%</span>
                 </div>
               </div>
@@ -319,18 +574,18 @@
             <div class="raster-flex raster-items-center gap-2">
               <span class="raster-label">50 / 30 / 20 BUDGET HEALTH ALLOCATION</span>
             </div>
-            <div class="raster-label raster-mono raster-wrap-mobile raster-flex gap-2">
-              <span style="color: var(--raster-fg-primary);">■ NEEDS: 62%</span>
-              <span style="color: var(--raster-accent);">■ WANTS: 14%</span>
-              <span style="color: var(--raster-signal-emerald);">■ SAVINGS: 24%</span>
+            <div class="raster-label raster-mono raster-wrap-mobile raster-flex gap-3">
+              <span style="color: var(--raster-fg-primary);" id="bar-label-needs">■ NEEDS: 62%</span>
+              <span style="color: var(--raster-accent);" id="bar-label-wants">■ WANTS: 14%</span>
+              <span style="color: var(--raster-signal-emerald);" id="bar-label-savings">■ SAVINGS: 24%</span>
             </div>
           </div>
 
           <!-- Segmented Multi-Bar -->
           <div class="raster-segmented-bar" style="height: 12px;">
-            <div style="width: 62%; background-color: var(--raster-fg-primary);" title="Needs: 62%"></div>
-            <div style="width: 14%; background-color: var(--raster-accent);" title="Wants: 14%"></div>
-            <div style="width: 24%; background-color: var(--raster-signal-emerald);" title="Savings: 24%"></div>
+            <div id="bar-seg-needs" style="width: 62%; background-color: var(--raster-fg-primary);" title="Needs"></div>
+            <div id="bar-seg-wants" style="width: 14%; background-color: var(--raster-accent);" title="Wants"></div>
+            <div id="bar-seg-savings" style="width: 24%; background-color: var(--raster-signal-emerald);" title="Savings"></div>
           </div>
 
           <div class="raster-flex raster-wrap-mobile raster-justify-between mt-2 raster-label gap-mobile-1" style="font-size: 10px;">
@@ -343,75 +598,47 @@
         <!-- Asymmetric Split: Category Breakdown vs Financial Ledger -->
         <div class="raster-split-asymmetric">
           
-          <!-- Left: Ledger Table (Replaces generic list) -->
+          <!-- Left: Interactive Ledger Table -->
           <div class="raster-card">
-            <div class="raster-card-header">
-              <span class="raster-card-title">Category Spending Allocation</span>
-              <span class="raster-label">9 Categories Total</span>
+            <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-4 gap-2">
+              <div>
+                <span class="raster-card-title">Category Spending Allocation</span>
+                <span class="raster-label ml-2" id="ledger-count-badge">[ 6 ITEMS ]</span>
+              </div>
+
+              <!-- Filter & Search Controls -->
+              <div class="raster-flex raster-wrap-mobile gap-2">
+                <div class="raster-btn-group">
+                  <button class="raster-btn is-active" onclick="filterLedger('ALL', this)">All</button>
+                  <button class="raster-btn" onclick="filterLedger('Essential', this)">Needs</button>
+                  <button class="raster-btn" onclick="filterLedger('Discretionary', this)">Wants</button>
+                </div>
+              </div>
             </div>
 
             <div class="raster-table-container">
-              <table class="raster-table">
+              <table class="raster-table" id="finance-ledger-table">
                 <thead>
                   <tr>
                     <th>Category</th>
                     <th>Classification</th>
                     <th>Share</th>
-                    <th class="cell-num">Annual Amount</th>
+                    <th class="cell-num" id="table-amount-col-header">Annual Amount</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td style="font-weight: 600;">Housing & Rent</td>
-                    <td><span class="raster-tag raster-tag-solid">Essential</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                        <div class="raster-meter-fill" style="width: 48%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num" style="font-weight: 600;">$19,800.00</td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 600;">Food & Groceries</td>
-                    <td><span class="raster-tag raster-tag-solid">Essential</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                        <div class="raster-meter-fill" style="width: 20%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num" style="font-weight: 600;">$6,778.59</td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 600;">Dining Out & Cafes</td>
-                    <td><span class="raster-tag raster-tag-accent">Discretionary</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                        <div class="raster-meter-fill raster-meter-fill-accent" style="width: 16%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num" style="font-weight: 600;">$5,919.60</td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 600;">Health & Medical</td>
-                    <td><span class="raster-tag raster-tag-solid">Essential</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 4px; width: 80px;">
-                        <div class="raster-meter-fill" style="width: 10%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num" style="font-weight: 600;">$3,540.00</td>
-                  </tr>
+                <tbody id="finance-ledger-tbody">
+                  <!-- Populated dynamically by app.js -->
                 </tbody>
               </table>
             </div>
 
             <div class="raster-card-footer">
-              <span class="raster-label">Showing Top 4 / +5 Remaining</span>
-              <button class="raster-btn raster-btn-ghost raster-btn-sm">View Full Ledger →</button>
+              <span class="raster-label">TABULAR NUMERIC ALIGNMENT // TNUM-1</span>
+              <span class="raster-mono raster-label" id="simulation-status-tag">BASELINE MODE</span>
             </div>
           </div>
 
-          <!-- Right: Direct Swiss Surplus Ratio (Replacing the muddy donut chart) -->
+          <!-- Right: Direct Swiss Surplus Ratio -->
           <div class="raster-card raster-flex-col raster-justify-between">
             <div>
               <div class="raster-label mb-1">// SURPLUS RATIO</div>
@@ -420,15 +647,19 @@
               <!-- Huge architectural percentage -->
               <div style="padding: var(--raster-space-4) 0; border-top: 1px solid var(--raster-border); border-bottom: 1px solid var(--raster-border);">
                 <div class="raster-label">Net Surplus Rate</div>
-                <div class="raster-display-xl" style="color: var(--raster-accent);">24.0%</div>
-                <div class="raster-label" style="color: var(--raster-fg-secondary);">$12,888.21 retained after taxes & expenditures</div>
+                <div class="raster-display-xl" style="color: var(--raster-accent);" id="surplus-big-rate">24.0%</div>
+                <div class="raster-label" style="color: var(--raster-fg-secondary);" id="surplus-sub-caption">$12,888.21 retained after taxes & expenditures</div>
               </div>
 
               <div class="mt-4">
                 <div class="raster-label mb-2">TARGET VELOCITY METRICS</div>
                 <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
-                  <span class="raster-mono">Burn Rate:</span>
-                  <span class="raster-mono">$3,425.98 / mo</span>
+                  <span class="raster-mono">Monthly Burn:</span>
+                  <span class="raster-mono" id="metric-burn-rate">$3,425.98 / mo</span>
+                </div>
+                <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
+                  <span class="raster-mono">Daily Allowance:</span>
+                  <span class="raster-mono" id="metric-daily-rate">$112.63 / day</span>
                 </div>
                 <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
                   <span class="raster-mono">Runway Margin:</span>
@@ -438,63 +669,425 @@
             </div>
 
             <div class="raster-callout raster-callout-accent mt-6">
-              <span class="raster-label" style="color: var(--raster-accent);">EXPENDITURE NOTICE</span>
-              <span class="raster-small">Housing accounts for 48.1% of total expenditures. Recommend cap below 40%.</span>
+              <span class="raster-label" style="color: var(--raster-accent);">EXPENDITURE AUDIT</span>
+              <span class="raster-small" id="audit-callout-copy">Housing accounts for 48.1% of total expenditures. Click "SIMULATE -10% RENT" above to test surplus impact.</span>
             </div>
           </div>
 
         </div>
 
       </div>
+
+      <!-- ======================================================================
+           DEMO APP 2: KRONOS CLOUD & AI TELEMETRY CONSOLE
+           ====================================================================== -->
+      <div id="demo-app-telemetry" class="demo-viewport" style="display: none;">
+        <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-6 pb-4 border-bottom gap-mobile-3">
+          <div class="raster-flex raster-wrap-mobile raster-items-baseline gap-3">
+            <span class="badge-swiss" style="background-color: var(--raster-fg-primary); color: var(--raster-canvas);">▲</span>
+            <span style="font-family: var(--raster-font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">KRONOS // TELEMETRY</span>
+            <span class="raster-tag raster-tag-solid">CLUSTER: EU-CENTRAL-1</span>
+            <span class="raster-tag" style="color: var(--raster-signal-emerald); border-color: var(--raster-signal-emerald);">● ALL SYSTEMS NOMINAL</span>
+          </div>
+          <div class="raster-flex gap-2">
+            <span class="raster-mono raster-label">UTC 19:50:14 // REFRESH: 5S</span>
+          </div>
+        </div>
+
+        <div class="raster-grid mb-6">
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
+            <div class="raster-card">
+              <div class="raster-stat">
+                <div class="raster-stat-label"><span>INGEST THROUGHPUT</span><span class="raster-mono">[ 01 ]</span></div>
+                <div class="raster-stat-value">142,890<span style="font-size: 1rem; color: var(--raster-fg-muted);">/s</span></div>
+                <div class="raster-stat-sub"><span class="raster-delta raster-delta-positive">+8.2%</span><span>peak load window</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
+            <div class="raster-card raster-card-accent-top">
+              <div class="raster-stat">
+                <div class="raster-stat-label"><span>P99 EDGE LATENCY</span><span class="raster-mono">[ 02 ]</span></div>
+                <div class="raster-stat-value">14.2<span style="font-size: 1rem; color: var(--raster-fg-muted);">ms</span></div>
+                <div class="raster-stat-sub"><span class="raster-delta raster-delta-positive">-2.1ms</span><span>SLA target &lt; 25.0ms</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
+            <div class="raster-card">
+              <div class="raster-stat">
+                <div class="raster-stat-label"><span>ERROR BUDGET</span><span class="raster-mono">[ 03 ]</span></div>
+                <div class="raster-stat-value">99.984%</div>
+                <div class="raster-stat-sub"><span class="raster-delta raster-delta-positive">5XX: 0.001%</span><span>30d rolling</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
+            <div class="raster-card">
+              <div class="raster-stat">
+                <div class="raster-stat-label"><span>ACTIVE WORKER NODES</span><span class="raster-mono">[ 04 ]</span></div>
+                <div class="raster-stat-value">64 / 64</div>
+                <div class="raster-stat-sub"><span class="raster-mono">CPU: 68.4% // MEM: 71.2%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="raster-split-asymmetric">
+          <div class="raster-card">
+            <div class="raster-card-header">
+              <span class="raster-card-title">Regional Worker Pool Status</span>
+              <span class="raster-label">4 Active Zones</span>
+            </div>
+            <div class="raster-table-container">
+              <table class="raster-table">
+                <thead>
+                  <tr>
+                    <th>Region ID</th>
+                    <th>State</th>
+                    <th>Saturation</th>
+                    <th class="cell-num">P95 Latency</th>
+                    <th class="cell-num">Req / Sec</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="raster-mono" style="font-weight: 600;">eu-central-z1 (Frankfurt)</td>
+                    <td><span class="raster-tag raster-tag-solid">HEALTHY</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
+                        <div class="raster-meter-fill" style="width: 72%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num">9.4 ms</td>
+                    <td class="cell-num">64,120</td>
+                  </tr>
+                  <tr>
+                    <td class="raster-mono" style="font-weight: 600;">us-east-va1 (Ashburn)</td>
+                    <td><span class="raster-tag raster-tag-solid">HEALTHY</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
+                        <div class="raster-meter-fill" style="width: 58%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num">11.8 ms</td>
+                    <td class="cell-num">48,910</td>
+                  </tr>
+                  <tr>
+                    <td class="raster-mono" style="font-weight: 600;">ap-northeast-tk1 (Tokyo)</td>
+                    <td><span class="raster-tag raster-tag-accent">ELEVATED</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
+                        <div class="raster-meter-fill raster-meter-fill-accent" style="width: 89%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num" style="color: var(--raster-accent); font-weight: 700;">22.6 ms</td>
+                    <td class="cell-num">21,400</td>
+                  </tr>
+                  <tr>
+                    <td class="raster-mono" style="font-weight: 600;">eu-west-ln1 (London)</td>
+                    <td><span class="raster-tag raster-tag-solid">HEALTHY</span></td>
+                    <td>
+                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
+                        <div class="raster-meter-fill" style="width: 34%;"></div>
+                      </div>
+                    </td>
+                    <td class="cell-num">8.1 ms</td>
+                    <td class="cell-num">8,460</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="raster-card">
+            <div class="raster-label mb-2">// EVENT STREAM</div>
+            <h3 class="raster-h3 mb-4">Audit Log</h3>
+            <div class="raster-flex raster-flex-col gap-3">
+              <div style="border-bottom: 1px solid var(--raster-border-subtle); padding-bottom: 8px;">
+                <div class="raster-flex raster-justify-between raster-label">
+                  <span style="color: var(--raster-accent);">[ WARN // 19:48:02 ]</span>
+                  <span>AP-NORTHEAST</span>
+                </div>
+                <p class="raster-small mt-1">Auto-scaler provisioned +4 replica pods due to 89% ingress threshold.</p>
+              </div>
+              <div style="border-bottom: 1px solid var(--raster-border-subtle); padding-bottom: 8px;">
+                <div class="raster-flex raster-justify-between raster-label">
+                  <span>[ INFO // 19:30:00 ]</span>
+                  <span>GLOBAL-TLS</span>
+                </div>
+                <p class="raster-small mt-1">Zero-downtime certificate rotation completed across 64 edge nodes.</p>
+              </div>
+              <div>
+                <div class="raster-flex raster-justify-between raster-label">
+                  <span>[ DEPLOY // 18:15:44 ]</span>
+                  <span>BUILD #8841</span>
+                </div>
+                <p class="raster-small mt-1">Canary rollout promoted to 100% production traffic.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           DEMO APP 3: KUNSTHALLE ZÜRICH (EDITORIAL / EXHIBITION ARCHIVE)
+           ====================================================================== -->
+      <div id="demo-app-editorial" class="demo-viewport" style="display: none;">
+        <div class="raster-grid" style="border-bottom: 2px solid var(--raster-border-strong); padding-bottom: var(--raster-space-6); margin-bottom: var(--raster-space-6);">
+          <div class="col-4 col-sm-12">
+            <div class="raster-label raster-label-accent mb-2">KUNSTHALLE ZÜRICH // ARCHIVE</div>
+            <div class="raster-mono raster-small">LIMMATSTRASSE 270<br>CH-8005 ZÜRICH<br>SWITZERLAND</div>
+          </div>
+          <div class="col-8 col-sm-12">
+            <h2 class="raster-display-xl mb-3">KONSTRUKTIVE GRAFIK: 1955–1972</h2>
+            <p class="raster-lead">
+              An architectural retrospective examining mathematical grid systems, objective photography, and sans-serif typographic hierarchy in post-war Swiss visual communication.
+            </p>
+          </div>
+        </div>
+
+        <div class="raster-grid">
+          <div class="col-4 col-sm-12">
+            <div class="raster-label mb-3">[ EXHIBITION SCHEDULE ]</div>
+            <div class="raster-card">
+              <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
+                <span class="raster-label">TUE – FRI</span>
+                <span class="raster-mono">11:00 – 18:00</span>
+              </div>
+              <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
+                <span class="raster-label">THU (LATE)</span>
+                <span class="raster-mono">11:00 – 20:00</span>
+              </div>
+              <div class="raster-flex raster-justify-between py-2 raster-small">
+                <span class="raster-label">SAT – SUN</span>
+                <span class="raster-mono">10:00 – 17:00</span>
+              </div>
+              <button class="raster-btn raster-btn-primary w-full mt-4">RESERVE TIMED ENTRY →</button>
+            </div>
+          </div>
+
+          <div class="col-8 col-sm-12">
+            <div class="raster-label mb-3">[ CATALOG OF WORKS // SELECTED PLATES ]</div>
+            <div class="raster-table-container">
+              <table class="raster-table">
+                <thead>
+                  <tr>
+                    <th>Cat. No</th>
+                    <th>Artist / Designer</th>
+                    <th>Title of Work</th>
+                    <th class="cell-num">Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="raster-mono">[ 001 ]</td>
+                    <td style="font-weight: 600;">Josef Müller-Brockmann</td>
+                    <td>Tonhalle Zürich — Beethoven Poster</td>
+                    <td class="cell-num">1955</td>
+                  </tr>
+                  <tr>
+                    <td class="raster-mono">[ 002 ]</td>
+                    <td style="font-weight: 600;">Armin Hofmann</td>
+                    <td>Giselle — Basler Freilichtspiele</td>
+                    <td class="cell-num">1959</td>
+                  </tr>
+                  <tr>
+                    <td class="raster-mono">[ 003 ]</td>
+                    <td style="font-weight: 600;">Max Bill</td>
+                    <td>Die Gute Form — Werkbund Exhibition</td>
+                    <td class="cell-num">1949</td>
+                  </tr>
+                  <tr>
+                    <td class="raster-mono">[ 004 ]</td>
+                    <td style="font-weight: 600;">Karl Gerstner</td>
+                    <td>National-Zeitung Modular Typography</td>
+                    <td class="cell-num">1962</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
-    <!-- Section 02: Anti-AI Manifesto vs Swiss Canon -->
+    <!-- ========================================================================
+         SECTION 02: THE ANTI-AI MANIFESTO (VISUAL COMPARISON)
+         ======================================================================== -->
     <section id="manifesto" class="mb-16">
       <div class="raster-section-header">
         <span class="raster-index">[ 02 ]</span>
-        <h2 class="raster-h2">THE ANTI-AI MANIFESTO // SYSTEMIC COMPARISON</h2>
+        <h2 class="raster-h2">THE ANTI-AI MANIFESTO // SIDE-BY-SIDE ANATOMY</h2>
         <div class="raster-rule"></div>
-        <span class="raster-meta">AESTHETIC DECONSTRUCTION</span>
+        <span class="raster-meta">WHY AI UI LOOKS THE SAME VS SWISS CLARITY</span>
       </div>
 
-      <div class="raster-split-half">
+      <div class="raster-split-half mb-8">
         
-        <!-- The Generic AI Trap -->
-        <div class="raster-card" style="border-left: 3px solid #6366f1;">
-          <div class="raster-label mb-2" style="color: #6366f1;">[ ✕ THE GENERIC AI AESTHETIC TRAP ]</div>
-          <h3 class="raster-h3 mb-3">Why Every AI App Looks The Same</h3>
-          <ul style="padding-left: 20px; line-height: 1.8; color: var(--raster-fg-secondary); font-size: var(--raster-text-small);">
-            <li><strong>Neon Glow Shadows:</strong> Stacking <code>0 0 25px rgba(99, 102, 241, 0.4)</code> on dark slate backgrounds.</li>
-            <li><strong>Over-Rounded Jelly Cards:</strong> Defaulting to <code>rounded-2xl</code> and <code>rounded-3xl</code> (16px–24px) for everything.</li>
-            <li><strong>Obligatory Floating Icons:</strong> Cramming Lucide outline icons inside rounded squares in every single stat card corner.</li>
-            <li><strong>Muddy Donut Charts:</strong> Squeezing 3-color circular rings with low data-ink ratio into card bodies.</li>
-            <li><strong>Homogeneous Hierarchy:</strong> All text is medium weight with identical line-height and letter-spacing.</li>
-          </ul>
+        <!-- Left: Live Visual Mockup of Generic AI Slop -->
+        <div>
+          <div class="raster-label mb-2" style="color: #6366f1;">✕ BEFORE: THE DEFAULT AI AESTHETIC TRAP</div>
+          <div class="ai-slop-showcase">
+            <div class="ai-slop-inner-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 13px; color: #94a3b8; font-weight: 500;">Annual Revenue</span>
+                <div class="ai-slop-icon-pill">✨</div>
+              </div>
+              <div style="font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 8px;">$41,111.79</div>
+              <div style="display: inline-block; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 12px; border-radius: 9999px; font-size: 12px;">
+                ↗ +12.4% from last month
+              </div>
+            </div>
+            <ul style="margin-top: 16px; padding-left: 18px; font-size: 13px; color: #cbd5e1; line-height: 1.7;">
+              <li>Muddy dark indigo/purple radial gradient background</li>
+              <li>20px–24px mushy jelly border-radius &amp; 9999px pills</li>
+              <li>Glowing neon drop-shadows &amp; glassmorphic blur</li>
+              <li>Obligatory floating gradient icon box in the top-right corner</li>
+            </ul>
+          </div>
         </div>
 
-        <!-- The Swiss Resolution -->
-        <div class="raster-card" style="border-left: 3px solid var(--raster-accent);">
-          <div class="raster-label mb-2" style="color: var(--raster-accent);">[ ✓ THE RASTER CANONICAL RESOLUTION ]</div>
-          <h3 class="raster-h3 mb-3">Swiss International Typographic Clarity</h3>
-          <ul style="padding-left: 20px; line-height: 1.8; color: var(--raster-fg-secondary); font-size: var(--raster-text-small);">
-            <li><strong>Architectural Hairlines:</strong> Crisp 1px solid dividers (<code>1px solid var(--raster-border)</code>), zero blurred shadows.</li>
-            <li><strong>Disciplined Geometry:</strong> 0px sharp corners or 2px micro-chamfers. Real architectural weight.</li>
-            <li><strong>Monolithic Typographic Scale:</strong> Giant tabular display numbers contrasted against tracked-out micro-labels.</li>
-            <li><strong>Data-Ink Efficiency:</strong> High-density horizontal proportional meters and financial ledger tables.</li>
-            <li><strong>Singular Signal Accent:</strong> Swiss Vermillion (<code>#E62E00</code>) used like a laser for primary interaction.</li>
-          </ul>
+        <!-- Right: Live Visual Mockup of Raster Swiss Resolution -->
+        <div class="raster-flex raster-flex-col raster-justify-between">
+          <div>
+            <div class="raster-label mb-2" style="color: var(--raster-accent);">✓ AFTER: RASTER SWISS ARCHITECTURAL PRECISION</div>
+            <div style="border: 1px solid var(--raster-border-strong); padding: var(--raster-space-6); background-color: var(--raster-canvas);">
+              <div class="raster-card raster-card-accent-top">
+                <div class="raster-stat">
+                  <div class="raster-stat-label">
+                    <span>ANNUAL REVENUE // FY26</span>
+                    <span class="raster-mono">[ 01 ]</span>
+                  </div>
+                  <div class="raster-stat-value">$41,111.79</div>
+                  <div class="raster-stat-sub">
+                    <span class="raster-delta raster-delta-positive">+12.4%</span>
+                    <span class="raster-mono">VS PRIOR BASELINE</span>
+                  </div>
+                </div>
+              </div>
+              <ul style="margin-top: 18px; padding-left: 18px; font-size: var(--raster-text-small); color: var(--raster-fg-secondary); line-height: 1.75;">
+                <li><strong>0px Sharp Corners:</strong> Crisp 1px architectural hairline borders</li>
+                <li><strong>Extreme Typographic Contrast:</strong> Monumental tabular figures vs 11px tracked-out micro-labels</li>
+                <li><strong>Zero Decorative Clutter:</strong> Index numeration <code>[ 01 ]</code> replaces pointless floating icons</li>
+                <li><strong>Restrained Signal Color:</strong> Editorial paper/carbon with laser-focused Swiss Vermillion</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Section 03: Component Architecture -->
-    <section id="components" class="mb-16">
+    <!-- ========================================================================
+         SECTION 03: TYPOGRAPHY & DESIGN TOKENS (CLICK TO COPY)
+         ======================================================================== -->
+    <section id="tokens" class="mb-16">
       <div class="raster-section-header">
         <span class="raster-index">[ 03 ]</span>
-        <h2 class="raster-h2">COMPONENT ARCHITECTURE</h2>
+        <h2 class="raster-h2">TYPOGRAPHY &amp; COLOR TOKENS</h2>
         <div class="raster-rule"></div>
-        <span class="raster-meta">MODULAR PRIMITIVES</span>
+        <span class="raster-meta">CLICK ANY TOKEN TO COPY CSS VARIABLE</span>
+      </div>
+
+      <!-- Color Swatches Grid -->
+      <div class="raster-label mb-3">// ARCHITECTURAL COLOR PALETTE (ADAPTS AUTOMATICALLY TO LIGHT &amp; DARK MODE)</div>
+      <div class="raster-grid mb-8">
+        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-canvas')">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: var(--raster-canvas);"></div>
+            <div class="swatch-meta">
+              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-canvas</div>
+              <div class="raster-label mt-1">Paper #F6F6F4 / Carbon #0C0C0C</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-surface')">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: var(--raster-surface);"></div>
+            <div class="swatch-meta">
+              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-surface</div>
+              <div class="raster-label mt-1">Crisp #FFFFFF / Graphite #141414</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-fg-primary')">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: var(--raster-fg-primary);"></div>
+            <div class="swatch-meta">
+              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-fg-primary</div>
+              <div class="raster-label mt-1">Ink #0A0A0A / Stark White #F5F5F3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-accent')">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: var(--raster-accent);"></div>
+            <div class="swatch-meta">
+              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-accent</div>
+              <div class="raster-label mt-1">Swiss Vermillion #E62E00 / #FF3B14</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography Scale Specimen -->
+      <div class="raster-label mb-3">// MODULAR TYPOGRAPHIC SCALE SPECIMEN</div>
+      <div class="raster-table-container">
+        <table class="raster-table">
+          <thead>
+            <tr>
+              <th style="width: 180px;">Class / Token</th>
+              <th style="width: 160px;">Specification</th>
+              <th>Live Typographic Specimen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="raster-mono">.raster-display-xl</td>
+              <td class="raster-mono text-muted">clamp(1.85rem, 5vw, 3.75rem)<br>track: -0.035em</td>
+              <td><span class="raster-display-xl">NEUE GRAFIK 59</span></td>
+            </tr>
+            <tr>
+              <td class="raster-mono">.raster-h1</td>
+              <td class="raster-mono text-muted">1.875rem (30px)<br>track: -0.025em</td>
+              <td><span class="raster-h1">International Typographic Grid</span></td>
+            </tr>
+            <tr>
+              <td class="raster-mono">.raster-h2</td>
+              <td class="raster-mono text-muted">1.375rem (22px)<br>track: -0.02em</td>
+              <td><span class="raster-h2">Objective Visual Communication</span></td>
+            </tr>
+            <tr>
+              <td class="raster-mono">.raster-body</td>
+              <td class="raster-mono text-muted">0.9375rem (15px)<br>line-height: 1.6</td>
+              <td><span class="raster-body">The grid is an organizational system that makes information easier to read and comprehend.</span></td>
+            </tr>
+            <tr>
+              <td class="raster-mono">.raster-mono</td>
+              <td class="raster-mono text-muted">Tabular Numerals<br>tnum: 1</td>
+              <td><span class="raster-mono" style="font-size: 1.1rem; font-weight: 600;">$19,800.00 // 99.984% // [ 01 ]</span></td>
+            </tr>
+            <tr>
+              <td class="raster-mono">.raster-label</td>
+              <td class="raster-mono text-muted">0.6875rem (11px)<br>track: +0.08em UPPER</td>
+              <td><span class="raster-label">ARCHITECTURAL MICRO-LABEL // METADATA</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 04: COMPONENT KITCHEN SINK
+         ======================================================================== -->
+    <section id="components" class="mb-16">
+      <div class="raster-section-header">
+        <span class="raster-index">[ 04 ]</span>
+        <h2 class="raster-h2">COMPONENT KITCHEN SINK</h2>
+        <div class="raster-rule"></div>
+        <span class="raster-meta">MODULAR UI PRIMITIVES</span>
       </div>
 
       <!-- Hairline Grid of Components -->
@@ -502,44 +1095,50 @@
         
         <!-- Button Variations -->
         <div>
-          <div class="raster-label mb-3">// BUTTON SPECIFICATION</div>
+          <div class="raster-label mb-3">// 01. BUTTON SPECIFICATION</div>
           <div class="raster-flex raster-flex-col gap-3">
             <button class="raster-btn raster-btn-primary">PRIMARY ACTION</button>
             <button class="raster-btn raster-btn-accent">ACCENT VERMILLION</button>
             <button class="raster-btn raster-btn-outline">OUTLINE DRAUGHTSMAN</button>
-            <button class="raster-btn raster-btn-ghost">GHOST CONTAINER</button>
+            <button class="raster-btn raster-btn-ghost">GHOST SURFACE</button>
           </div>
         </div>
 
         <!-- Form Fields -->
         <div>
-          <div class="raster-label mb-3">// FORM FIELDS & INPUTS</div>
+          <div class="raster-label mb-3">// 02. FORM FIELDS &amp; INPUTS</div>
           <div class="raster-flex raster-flex-col gap-3">
             <div class="raster-field">
-              <label class="raster-field-label">Allocation Title</label>
-              <input type="text" class="raster-input" value="Commercial Office Lease" />
+              <label class="raster-field-label">Standard Boxed Input (16px Mobile Safe)</label>
+              <input type="text" class="raster-input" value="Zürich Hauptbahnhof" />
             </div>
             <div class="raster-field">
-              <label class="raster-field-label">Architectural Underline Style</label>
-              <input type="text" class="raster-input raster-input-underline" placeholder="Type here..." />
+              <label class="raster-field-label">Architectural Underline Input</label>
+              <input type="text" class="raster-input raster-input-underline" placeholder="Enter specification..." />
             </div>
           </div>
         </div>
 
-        <!-- Badges & Brackets -->
+        <!-- Badges, Tags & Meters -->
         <div>
-          <div class="raster-label mb-3">// BADGES & METADATA TAGS</div>
+          <div class="raster-label mb-3">// 03. TAGS, BRACKETS &amp; METERS</div>
           <div class="raster-flex raster-flex-col gap-3">
-            <div class="raster-flex gap-2">
+            <div class="raster-flex raster-wrap-mobile gap-2">
               <span class="raster-tag raster-tag-solid">STATUS: ACTIVE</span>
-              <span class="raster-tag raster-tag-accent">REVISE // 01</span>
-            </div>
-            <div class="raster-flex gap-2">
+              <span class="raster-tag raster-tag-accent">SIGNAL // 01</span>
               <span class="raster-tag">CODE [ 200 ]</span>
-              <span class="raster-tag">LATENCY: 14MS</span>
             </div>
             <div class="raster-small raster-bracket">
-              INDEX NUMERATION
+              STRUCTURAL BRACKET NUMERATION
+            </div>
+            <div class="raster-meter mt-2">
+              <div class="raster-meter-header">
+                <span class="raster-label">CPU SATURATION</span>
+                <span class="raster-mono raster-small">74%</span>
+              </div>
+              <div class="raster-meter-track">
+                <div class="raster-meter-fill raster-meter-fill-accent" style="width: 74%;"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -547,23 +1146,47 @@
       </div>
     </section>
 
-    <!-- Section 04: AI Agent Codex & Prompts -->
+    <!-- ========================================================================
+         SECTION 05: AI AGENT CODEX & PROMPTS
+         ======================================================================== -->
     <section id="ai-guide" class="mb-16">
       <div class="raster-section-header">
-        <span class="raster-index">[ 04 ]</span>
-        <h2 class="raster-h2">AI AGENT CODEX & PROMPTS</h2>
+        <span class="raster-index">[ 05 ]</span>
+        <h2 class="raster-h2">AI AGENT CODEX &amp; INTEGRATION</h2>
         <div class="raster-rule"></div>
-        <span class="raster-meta">PROMPT INJECTION READY</span>
+        <span class="raster-meta">POINT ANY AI AGENT TO THIS REPO</span>
       </div>
 
-      <p class="raster-body mb-6">
-        When pointing an AI agent (Cursor, Claude, Copilot, ChatGPT, or Antigravity) to this repository or using it in a project, copy the prompt below into your instructions.
-      </p>
+      <div class="raster-split-half mb-6">
+        <div class="raster-card">
+          <div class="raster-label raster-label-accent mb-2">// OPTION A: POINT AI TO GITHUB REPOSITORY</div>
+          <h3 class="raster-h3 mb-2">One-Line Agent Instruction</h3>
+          <p class="raster-small text-secondary mb-4">
+            Paste this instruction into Claude, Cursor, ChatGPT, or Antigravity when starting any new project:
+          </p>
+          <pre class="code-preview" id="repo-prompt-snippet" style="white-space: pre-wrap;">Use the UI/UX framework from https://github.com/arron21/raster-css (read AI.md and llms.txt). Follow its Swiss Design rules: 0px corners, 1px hairline borders, massive tabular numbers vs 11px uppercase micro-labels, and Swiss Vermillion accents. Never mention "Raster CSS" in the visible HTML.</pre>
+          <button onclick="copyAgentRepoPrompt()" class="raster-btn raster-btn-primary raster-btn-sm mt-3">COPY REPO PROMPT</button>
+        </div>
+
+        <div class="raster-card">
+          <div class="raster-label mb-2">// OPTION B: DIRECT HTML / CSS INSTALLATION</div>
+          <h3 class="raster-h3 mb-2">Include in Any Project</h3>
+          <p class="raster-small text-secondary mb-4">
+            Works zero-build in plain HTML or imported inside React, Vue, Svelte, or Angular:
+          </p>
+          <pre class="code-preview" style="white-space: pre-wrap;">&lt;!-- Direct Stylesheet Link --&gt;
+&lt;link rel="stylesheet" href="https://arron21.github.io/raster-css/raster.css"&gt;
+
+// Or in React / Vite / Next.js / Vue / Svelte:
+import 'raster-css/dist/raster.css';</pre>
+          <a href="./raster.css" download="raster.css" class="raster-btn raster-btn-outline raster-btn-sm mt-3">DOWNLOAD RASTER.CSS (RAW) ↓</a>
+        </div>
+      </div>
 
       <div class="comparison-box">
         <div class="comparison-header">
-          <span>AI AGENT SYSTEM PROMPT (SYSTEM_PROMPT.MD)</span>
-          <button onclick="copyPromptText()" class="raster-btn raster-btn-primary raster-btn-sm">COPY SNIPPET</button>
+          <span>SYSTEM PROMPT FOR .CURSORRULES / CLAUDE PROJECTS (AGENT_PROMPT.MD)</span>
+          <button onclick="copyPromptText()" class="raster-btn raster-btn-primary raster-btn-sm">COPY SYSTEM PROMPT</button>
         </div>
         <pre class="code-preview" id="prompt-snippet">You are a frontend engineer and UI designer adhering strictly to the **RASTER CSS (Swiss International Typographic Style)** design system.
 
@@ -593,7 +1216,7 @@ When producing HTML, React, Vue, or Svelte code, use Raster CSS classes (raster-
 &lt;div class="raster-card"&gt;
   &lt;div class="raster-stat"&gt;
     &lt;div class="raster-stat-label"&gt;
-      &lt;span&gt;Annual Cost // FY25&lt;/span&gt;
+      &lt;span&gt;Annual Cost // FY26&lt;/span&gt;
       &lt;span class="raster-mono"&gt;[ 01 ]&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="raster-stat-value"&gt;$41,111.79&lt;/div&gt;
@@ -613,12 +1236,12 @@ export default function Dashboard() {
     &lt;div className="raster-grid"&gt;
       &lt;StatCard 
         index="01"
-        label="Annual Cost // FY25"
+        label="Annual Cost // FY26"
         value="$41,111.79"
         delta="+12.4%"
         deltaType="positive"
         subtext="vs previous baseline"
-        className="col-3"
+        className="col-3 col-lg-6 col-sm-6 col-xs-12"
       /&gt;
     &lt;/div&gt;
   );
@@ -664,19 +1287,25 @@ export default function Dashboard() {
 
   <!-- Footer -->
   <footer style="border-top: 1px solid var(--raster-border); padding: var(--raster-space-8) 0; background-color: var(--raster-surface);">
-    <div class="raster-container raster-flex raster-justify-between raster-items-center">
+    <div class="raster-container raster-flex raster-flex-col-mobile raster-justify-between raster-items-center gap-4">
       <div class="raster-brand">
         <span class="badge-swiss">+</span>
         <span>RASTER CSS</span>
       </div>
+      <div class="raster-flex raster-wrap-mobile gap-4 raster-label">
+        <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener">GITHUB REPOSITORY ↗</a>
+        <a href="./AI.md" target="_blank">RAW AI.MD</a>
+        <a href="./llms.txt" target="_blank">LLMS.TXT</a>
+        <a href="./raster.css" target="_blank">RASTER.CSS</a>
+      </div>
       <div class="raster-label">
-        BUILT ON JOSEF MÜLLER-BROCKMANN GRID STANDARDS // MIT LICENSE
+        JOSEF MÜLLER-BROCKMANN GRID STANDARDS // MIT LICENSE
       </div>
     </div>
   </footer>
 
   <div id="toast" class="toast">COPIED TO CLIPBOARD</div>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>

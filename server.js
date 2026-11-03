@@ -30,6 +30,14 @@ const server = http.createServer((req, res) => {
 
   let filePath = path.join(ROOT, reqPath);
 
+  // If not found at root, fallback to /docs directory (matches GitHub Pages /docs root behavior)
+  if (!fs.existsSync(filePath)) {
+    const docsFallback = path.join(ROOT, 'docs', reqPath);
+    if (fs.existsSync(docsFallback)) {
+      filePath = docsFallback;
+    }
+  }
+
   // Security: prevent path traversal outside ROOT
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403, { 'Content-Type': 'text/plain' });

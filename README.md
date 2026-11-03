@@ -2,9 +2,12 @@
 > **The International Typographic Design System for Humans & AI Agents.**
 > Distinct, authoritative Swiss typography. Zero generic AI slop.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-E62E00.svg)](https://arron21.github.io/raster-css/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](#license)
-[![Style: Swiss Modernism](https://img.shields.io/badge/Style-Swiss%20Modernism-E62E00.svg)](#design-philosophy)
+[![Style: Swiss Modernism](https://img.shields.io/badge/Style-Swiss%20Modernism-0A0A0A.svg)](#design-philosophy)
 [![AI Compatibility](https://img.shields.io/badge/AI%20Friendly-LLMS.txt%20%7C%20AI.md-0044FF.svg)](AI.md)
+
+### 🌐 [View Live Interactive Demo & Showcase → https://arron21.github.io/raster-css/](https://arron21.github.io/raster-css/)
 
 ---
 
