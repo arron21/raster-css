@@ -1,103 +1,104 @@
 /**
  * RASTER CSS - Design Tokens
- * Rooted in the International Typographic Style (Swiss Design)
+ * Aesthetic: Refined Neo-Swiss Editorial (Motus / Dieter Rams / Quiet Modernism)
  * 
  * Core Principles:
- * - Asymmetrical grid discipline
- * - Extreme typographic contrast (Monolithic displays vs Micro-labels)
- * - Ruthless elimination of decorative noise (No glowing blur, no rounded jelly pills)
- * - Hairline structural precision (1px architectural borders)
- * - Swiss Vermillion signal accent
+ * - Whisper-quiet monochrome palette (#FFFFFF canvas, #F4F4F4 soft surfaces, #111111 ink)
+ * - Sentence-case Grotesque typography (400 regular & 500 medium weights, never shouty)
+ * - Ultra-fine 1px architectural hairlines (#E6E6E6 light / #222222 dark)
+ * - Sticky 4:8 asymmetric split layouts & tight 8px-gap media/surface mosaics
+ * - Zero AI slop (no glowing gradients, no mushy 24px pills, no floating icon clutter)
  */
 
 :root {
-  /* Color Palette - Light Mode (Default) */
-  --raster-canvas: #f6f6f4;            /* Warm editorial paper */
-  --raster-surface: #ffffff;           /* Crisp surface */
-  --raster-surface-subtle: #eeeee9;    /* Secondary card / pill fill */
-  --raster-surface-hover: #e5e5de;     /* Interactive hover */
+  /* Color Palette - Light Mode (Default: Crisp Gallery White & Soft Studio Gray) */
+  --raster-canvas: #ffffff;            /* Pure gallery white background */
+  --raster-surface: #f4f4f4;           /* Soft studio gray surface (cards, media wells) */
+  --raster-surface-subtle: #fafafa;    /* Whisper-light secondary fill */
+  --raster-surface-hover: #ebebeb;     /* Interactive surface hover */
   
-  --raster-fg-primary: #0a0a0a;       /* Deepest rich black */
-  --raster-fg-secondary: #4a4a47;     /* High-legibility editorial neutral */
-  --raster-fg-muted: #7e7e78;         /* Micro-labels and metadata */
-  --raster-fg-faint: #adada6;         /* Indices and disabled text */
+  --raster-fg-primary: #111111;        /* Deep architectural ink */
+  --raster-fg-secondary: #484848;      /* High-legibility editorial body copy */
+  --raster-fg-muted: #767676;          /* Sentence-case specification labels */
+  --raster-fg-faint: #a8a8a8;          /* Disabled states and subtle hints */
 
   /* Hairlines & Structural Borders */
-  --raster-border: #d8d8d0;           /* Clean architectural hairline */
-  --raster-border-strong: #0a0a0a;    /* High-contrast division line */
-  --raster-border-subtle: #e7e7e0;    /* Muted inner divider */
+  --raster-border: #e6e6e6;            /* Whisper-thin 1px architectural divider */
+  --raster-border-strong: #111111;     /* Active underline / high-contrast focus */
+  --raster-border-subtle: #f0f0f0;     /* Inner row hairline */
 
-  /* Signal Accents - Classic Swiss Palette */
-  --raster-accent: #e62e00;           /* Swiss Vermillion / Signal Red */
-  --raster-accent-hover: #c42600;
-  --raster-accent-subtle: rgba(230, 46, 0, 0.08);
+  /* Primary Interactive Fill (Pure Monochrome Inversion) */
+  --raster-accent: #111111;            /* Primary CTA fill in quiet Swiss style */
+  --raster-accent-hover: #2a2a2a;
+  --raster-accent-subtle: rgba(17, 17, 17, 0.05);
   --raster-accent-fg: #ffffff;
 
-  --raster-signal-blue: #0044ff;      /* Bauhaus / International Klein Blue */
-  --raster-signal-emerald: #058249;   /* Functional status green */
-  --raster-signal-amber: #c47700;     /* Functional warning */
+  /* Functional Status Signals (Muted, objective tones) */
+  --raster-signal-blue: #2563eb;
+  --raster-signal-emerald: #15803d;
+  --raster-signal-amber: #b45309;
+  --raster-signal-red: #dc2626;
 
-  /* Shadows - Minimalist Architectural Offset (Never blurred gradients) */
+  /* Shadows - Eliminated in favor of pure surface contrast and 1px hairlines */
   --raster-shadow-none: none;
-  --raster-shadow-hard-sm: 2px 2px 0px var(--raster-border-strong);
-  --raster-shadow-hard: 4px 4px 0px var(--raster-border-strong);
-  --raster-shadow-hard-lg: 6px 6px 0px var(--raster-border-strong);
+  --raster-shadow-floating: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --raster-shadow-hard-sm: none;
+  --raster-shadow-hard: none;
 
-  /* Geometry / Radii - Strict Swiss Discipline */
-  --raster-radius-none: 0px;          /* Canonical Swiss: Strict 90-degree corners */
-  --raster-radius-sm: 2px;            /* Micro-radius (only for tactile affordance) */
-  --raster-radius-md: 4px;            /* Maximum allowed corner radius */
+  /* Geometry / Radii - Strict 0px Architectural Discipline */
+  --raster-radius-none: 0px;
+  --raster-radius-sm: 2px;
   --raster-radius: var(--raster-radius-none);
 
-  /* Typography Stacks */
+  /* Typography Stacks - Pure Neo-Grotesque */
   --raster-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Neue Haas Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --raster-font-display: 'Archivo', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --raster-font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, Monaco, monospace;
+  --raster-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Neue Haas Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --raster-font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, Monaco, monospace;
 
-  /* Typography Scales & Tracking (Mobile-Aware Clamps) */
-  --raster-text-display-2xl: clamp(2.25rem, 7vw, 5.5rem);
-  --raster-lead-display-2xl: 1.0;
-  --raster-track-display-2xl: -0.04em;
+  /* Typography Scales & Tracking (Refined Sentence-Case Proportions) */
+  --raster-text-display-2xl: clamp(2.25rem, 5vw, 4rem);
+  --raster-lead-display-2xl: 1.04;
+  --raster-track-display-2xl: -0.035em;
 
-  --raster-text-display-xl: clamp(1.85rem, 5vw, 3.75rem);
-  --raster-lead-display-xl: 1.05;
-  --raster-track-display-xl: -0.035em;
+  --raster-text-display-xl: clamp(1.75rem, 3.2vw, 2.5rem); /* Matches "Essential T-Shirt" & "You may like" */
+  --raster-lead-display-xl: 1.1;
+  --raster-track-display-xl: -0.03em;
 
-  --raster-text-display-lg: clamp(1.5rem, 3.5vw, 2.5rem);
-  --raster-lead-display-lg: 1.1;
+  --raster-text-display-lg: clamp(1.375rem, 2.4vw, 1.875rem);
+  --raster-lead-display-lg: 1.15;
   --raster-track-display-lg: -0.025em;
 
   /* Mobile Touch Targets */
-  --raster-touch-target: 44px;
-  --raster-touch-target-sm: 36px;
+  --raster-touch-target: 42px;
+  --raster-touch-target-sm: 34px;
 
-  --raster-text-h1: 1.875rem;          /* 30px */
+  --raster-text-h1: 1.75rem;           /* 28px */
   --raster-lead-h1: 1.15;
   --raster-track-h1: -0.025em;
 
-  --raster-text-h2: 1.375rem;          /* 22px */
+  --raster-text-h2: 1.25rem;           /* 20px */
   --raster-lead-h2: 1.25;
   --raster-track-h2: -0.02em;
 
-  --raster-text-h3: 1.0625rem;         /* 17px */
-  --raster-lead-h3: 1.35;
-  --raster-track-h3: -0.015em;
+  --raster-text-h3: 0.9375rem;         /* 15px */
+  --raster-lead-h3: 1.4;
+  --raster-track-h3: -0.01em;
 
-  --raster-text-body: 0.9375rem;       /* 15px */
-  --raster-lead-body: 1.6;
+  --raster-text-body: 0.8125rem;       /* 13px - Crisp editorial body scale */
+  --raster-lead-body: 1.55;
   --raster-track-body: -0.005em;
 
-  --raster-text-small: 0.8125rem;      /* 13px */
+  --raster-text-small: 0.75rem;        /* 12px - Navigation, spec values, card titles */
   --raster-lead-small: 1.5;
-  --raster-track-small: 0em;
+  --raster-track-small: -0.005em;
 
-  --raster-text-micro: 0.6875rem;      /* 11px */
-  --raster-lead-micro: 1.3;
-  --raster-track-micro: 0.08em;        /* Expressive wide letter-spacing for labels */
+  --raster-text-micro: 0.6875rem;      /* 11px - Muted spec keys ("Description", "Fit & care") */
+  --raster-lead-micro: 1.4;
+  --raster-track-micro: 0em;           /* Calm sentence-case tracking */
 
-  /* Spacing Scale (Disciplined 4px/8px modular rhythm) */
+  /* Spacing Scale (8px modular rhythm) */
   --raster-space-1: 4px;
-  --raster-space-2: 8px;
+  --raster-space-2: 8px;               /* Signature tight mosaic gap */
   --raster-space-3: 12px;
   --raster-space-4: 16px;
   --raster-space-5: 20px;
@@ -110,39 +111,38 @@
   --raster-space-24: 96px;
 
   /* Layout Widths */
-  --raster-max-width: 1360px;
+  --raster-max-width: 1440px;
   --raster-max-width-narrow: 860px;
 }
 
-/* Dark Mode Tokens - High Contrast Carbon / Architectural Graphite (Never muddy neon/purple) */
+/* Dark Mode Tokens - Quiet Obsidian & Matte Graphite */
 [data-theme="dark"],
 .dark {
-  --raster-canvas: #0c0c0c;            /* Pure graphite / deep carbon */
-  --raster-surface: #141414;           /* Slightly elevated surface */
-  --raster-surface-subtle: #1c1c1c;    /* Card fill */
-  --raster-surface-hover: #262626;
+  --raster-canvas: #0a0a0a;            /* Pure matte obsidian */
+  --raster-surface: #151515;           /* Soft dark studio well */
+  --raster-surface-subtle: #111111;
+  --raster-surface-hover: #1f1f1f;
 
-  --raster-fg-primary: #f5f5f3;        /* Stark white */
-  --raster-fg-secondary: #b5b5ae;      /* Clean neutral text */
-  --raster-fg-muted: #808078;          /* Micro-labels */
-  --raster-fg-faint: #4d4d47;          /* Indices */
+  --raster-fg-primary: #f5f5f5;        /* Crisp white ink */
+  --raster-fg-secondary: #b0b0b0;      /* Editorial neutral copy */
+  --raster-fg-muted: #787878;          /* Specification keys */
+  --raster-fg-faint: #484848;
 
-  --raster-border: #282826;           /* Crisp architectural hairline */
-  --raster-border-strong: #f5f5f3;    /* Sharp division line */
-  --raster-border-subtle: #1e1e1d;
+  --raster-border: #222222;            /* Subtle 1px dark hairline */
+  --raster-border-strong: #f5f5f5;     /* High-contrast active underline */
+  --raster-border-subtle: #181818;
 
-  --raster-accent: #ff3b14;           /* Vivid Swiss Vermillion in dark */
-  --raster-accent-hover: #ff5433;
-  --raster-accent-subtle: rgba(255, 59, 20, 0.12);
-  --raster-accent-fg: #0c0c0c;
+  --raster-accent: #f5f5f5;            /* Solid white CTA fill in dark mode */
+  --raster-accent-hover: #dcdcdc;
+  --raster-accent-subtle: rgba(245, 245, 245, 0.08);
+  --raster-accent-fg: #0a0a0a;
 
-  --raster-signal-blue: #3b82f6;
-  --raster-signal-emerald: #10b981;
-  --raster-signal-amber: #f59e0b;
+  --raster-signal-blue: #60a5fa;
+  --raster-signal-emerald: #4ade80;
+  --raster-signal-amber: #fbbf24;
+  --raster-signal-red: #f87171;
 
-  --raster-shadow-hard-sm: 2px 2px 0px var(--raster-border-strong);
-  --raster-shadow-hard: 4px 4px 0px var(--raster-border-strong);
-  --raster-shadow-hard-lg: 6px 6px 0px var(--raster-border-strong);
+  --raster-shadow-floating: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 /**
@@ -221,16 +221,18 @@ a {
 
 /**
  * RASTER CSS - Typography
- * Rooted in Josef Müller-Brockmann, Max Bill, and Armin Hofmann's typographic discipline.
+ * Refined Neo-Swiss Grotesque Hierarchy (Motus / Quiet Editorial Discipline)
+ * Calm 400/500 weights, sentence-case restraint, and tabular numeric precision.
  */
 
-/* Display Typography */
+/* Display Typography (Sentence-case, 400/500 weight, tight negative tracking) */
 .raster-display-2xl {
   font-family: var(--raster-font-display);
   font-size: var(--raster-text-display-2xl);
   line-height: var(--raster-lead-display-2xl);
   letter-spacing: var(--raster-track-display-2xl);
-  font-weight: 700;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
   text-wrap: balance;
 }
 
@@ -239,7 +241,8 @@ a {
   font-size: var(--raster-text-display-xl);
   line-height: var(--raster-lead-display-xl);
   letter-spacing: var(--raster-track-display-xl);
-  font-weight: 700;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
   text-wrap: balance;
 }
 
@@ -248,7 +251,8 @@ a {
   font-size: var(--raster-text-display-lg);
   line-height: var(--raster-lead-display-lg);
   letter-spacing: var(--raster-track-display-lg);
-  font-weight: 700;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
 }
 
 /* Headings */
@@ -257,7 +261,8 @@ h1, .raster-h1 {
   font-size: var(--raster-text-h1);
   line-height: var(--raster-lead-h1);
   letter-spacing: var(--raster-track-h1);
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
 }
 
 h2, .raster-h2 {
@@ -265,7 +270,8 @@ h2, .raster-h2 {
   font-size: var(--raster-text-h2);
   line-height: var(--raster-lead-h2);
   letter-spacing: var(--raster-track-h2);
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
 }
 
 h3, .raster-h3 {
@@ -273,22 +279,24 @@ h3, .raster-h3 {
   font-size: var(--raster-text-h3);
   line-height: var(--raster-lead-h3);
   letter-spacing: var(--raster-track-h3);
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--raster-fg-primary);
 }
 
-/* Paragraphs & Copy */
+/* Paragraphs & Editorial Copy */
 p, .raster-body {
   font-size: var(--raster-text-body);
   line-height: var(--raster-lead-body);
   letter-spacing: var(--raster-track-body);
-  color: var(--raster-fg-secondary);
+  color: var(--raster-fg-primary);
+  font-weight: 400;
 }
 
 .raster-lead {
-  font-size: 1.125rem;
+  font-size: 0.9375rem; /* 15px */
   line-height: 1.6;
   letter-spacing: -0.01em;
-  color: var(--raster-fg-primary);
+  color: var(--raster-fg-secondary);
   font-weight: 400;
 }
 
@@ -298,19 +306,37 @@ p, .raster-body {
   letter-spacing: var(--raster-track-small);
 }
 
-/* Swiss Micro-Labels (Crucial signature of Swiss Graphic Design) */
+/* Specification Labels & Metadata ("Size", "Color", "Description", "Fit & care") */
 .raster-label,
 .raster-micro {
   font-size: var(--raster-text-micro);
   line-height: var(--raster-lead-micro);
   letter-spacing: var(--raster-track-micro);
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--raster-fg-muted);
 }
 
+.raster-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .raster-label-accent {
-  color: var(--raster-accent);
+  color: var(--raster-fg-primary);
+  font-weight: 500;
+}
+
+/* Price & Metric Figures ("95€", "$41,111.79") */
+.raster-price,
+.raster-figure {
+  font-family: var(--raster-font-sans);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Monospace & Tabular Data Figures */
@@ -319,6 +345,7 @@ p, .raster-body {
   font-feature-settings: "tnum" 1;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
+  font-size: var(--raster-text-micro);
 }
 
 .raster-tabular {
@@ -326,36 +353,55 @@ p, .raster-body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Section Header with Architectural Hairline Rule */
+/* Breadcrumbs ("Shop / Men / T-Shirts") */
+.raster-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
+}
+
+.raster-breadcrumb a:hover {
+  color: var(--raster-fg-primary);
+}
+
+.raster-breadcrumb .is-current {
+  color: var(--raster-fg-primary);
+}
+
+/* Section Header with Whisper-Thin Bottom Hairline (Matches "You may like" in video) */
 .raster-section-header {
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
   gap: var(--raster-space-4);
-  padding-bottom: var(--raster-space-3);
-  border-bottom: 1px solid var(--raster-border-strong);
-  margin-bottom: var(--raster-space-6);
+  padding-bottom: var(--raster-space-4);
+  border-bottom: 1px solid var(--raster-border);
+  margin-bottom: var(--raster-space-3);
+}
+
+.raster-section-header h2,
+.raster-section-header .raster-h2 {
+  font-size: var(--raster-text-display-xl);
+  font-weight: 400;
+  letter-spacing: var(--raster-track-display-xl);
+  line-height: 1.1;
 }
 
 .raster-section-header .raster-index {
-  font-family: var(--raster-font-mono);
-  font-size: var(--raster-text-small);
-  color: var(--raster-accent);
-  font-weight: 600;
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
+  font-weight: 400;
 }
 
 .raster-section-header .raster-rule {
-  flex: 1;
-  height: 1px;
-  background-color: var(--raster-border);
-  align-self: center;
+  display: none; /* Replaced by clean full-width bottom border */
 }
 
 .raster-section-header .raster-meta {
-  font-family: var(--raster-font-mono);
   font-size: var(--raster-text-micro);
   color: var(--raster-fg-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
 }
 
 /* Typographic Rules & Hairlines */
@@ -363,21 +409,16 @@ p, .raster-body {
   border: 0;
   height: 1px;
   background-color: var(--raster-border);
-  margin: var(--raster-space-6) 0;
+  margin: var(--raster-space-4) 0;
 }
 
 .raster-hr-strong {
   background-color: var(--raster-border-strong);
 }
 
-.raster-hr-accent {
-  background-color: var(--raster-accent);
-  height: 2px;
-}
-
 /**
- * RASTER CSS - Modular Grid System
- * Based on Josef Müller-Brockmann's 12-column architectural raster.
+ * RASTER CSS - Modular Grid & Sticky Split Architecture
+ * Rooted in Neo-Swiss Editorial Layout (Motus / 12-Column Raster)
  */
 
 .raster-container {
@@ -385,8 +426,8 @@ p, .raster-body {
   max-width: var(--raster-max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--raster-space-6);
-  padding-right: var(--raster-space-6);
+  padding-left: var(--raster-space-5);
+  padding-right: var(--raster-space-5);
 }
 
 .raster-container-narrow {
@@ -397,20 +438,20 @@ p, .raster-body {
   max-width: 100%;
 }
 
-/* 12-Column Grid */
+/* 12-Column Grid (Default tight 8px/12px Neo-Swiss gutter) */
 .raster-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-3);
   width: 100%;
 }
 
 .raster-grid-tight {
-  gap: var(--raster-space-3);
+  gap: var(--raster-space-2); /* Signature 8px Motus gutter */
 }
 
 .raster-grid-loose {
-  gap: var(--raster-space-10);
+  gap: var(--raster-space-6);
 }
 
 .raster-grid-none {
@@ -431,29 +472,79 @@ p, .raster-body {
 .col-11 { grid-column: span 11 / span 11; }
 .col-12 { grid-column: span 12 / span 12; }
 
+/* Signature Sticky 4:8 Split Layout (Left spec column sticky, right mosaic scrolls) */
+.raster-split-sticky {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: var(--raster-space-4);
+  align-items: start;
+  width: 100%;
+}
+
+.raster-sticky-pane {
+  position: sticky;
+  top: 56px;
+  min-height: calc(100vh - 76px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--raster-space-8);
+  padding-bottom: var(--raster-space-2);
+}
+
+/* Tight 8px-Gap Media & Surface Mosaic (Right Column in video) */
+.raster-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
+.mosaic-half {
+  grid-column: span 1 / span 1;
+}
+
+.mosaic-full {
+  grid-column: 1 / -1;
+}
+
+/* 4-Column Tight Card Grid ("You may like" section in video) */
+.raster-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
 /* Asymmetrical & Standard Splits */
 .raster-split-asymmetric {
   display: grid;
   grid-template-columns: 8fr 4fr;
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-4);
+}
+
+.raster-split-asymmetric-reverse {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: var(--raster-space-4);
 }
 
 .raster-split-half {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-4);
 }
 
 .raster-split-third {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-4);
 }
 
 .raster-split-quarter {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-2);
 }
 
 /* Architectural Hairline Grid (Cells share 1px hairline borders without gap doubling) */
@@ -468,14 +559,23 @@ p, .raster-body {
 .raster-grid-hairline > * {
   border-right: 1px solid var(--raster-border);
   border-bottom: 1px solid var(--raster-border);
-  padding: var(--raster-space-6);
-  background-color: var(--raster-surface);
+  padding: var(--raster-space-5);
+  background-color: var(--raster-canvas);
 }
 
 /* Responsive Grid Adapters */
 @media (max-width: 1024px) {
-  .raster-split-asymmetric,
+  .raster-split-sticky {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .raster-grid-4,
   .raster-split-quarter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .raster-split-asymmetric,
+  .raster-split-asymmetric-reverse {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   
@@ -491,40 +591,49 @@ p, .raster-body {
     padding-right: var(--raster-space-4);
   }
 
-  /* Default all generic spans to 12 on mobile unless overridden */
   .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
   .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     grid-column: span 12 / span 12;
   }
 
-  /* Explicit mobile column overrides */
   .col-sm-12 { grid-column: span 12 / span 12; }
   .col-sm-6  { grid-column: span 6 / span 6; }
   .col-sm-4  { grid-column: span 4 / span 4; }
 
-  .raster-grid {
-    gap: var(--raster-space-4);
+  .raster-split-sticky {
+    grid-template-columns: 1fr;
+    gap: var(--raster-space-6);
+  }
+
+  .raster-sticky-pane {
+    position: static;
+    min-height: auto;
+    gap: var(--raster-space-6);
   }
 
   .raster-split-asymmetric,
+  .raster-split-asymmetric-reverse,
   .raster-split-half,
   .raster-split-third,
   .raster-split-quarter {
     grid-template-columns: 1fr;
-    gap: var(--raster-space-4);
+    gap: var(--raster-space-3);
   }
 
-  /* 2-Column Mobile option (e.g. for compact metrics on phones) */
+  .raster-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--raster-space-2);
+  }
+
   .raster-grid-mobile-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: var(--raster-space-3) !important;
+    gap: var(--raster-space-2) !important;
   }
 
   .raster-grid-mobile-2 > * {
     grid-column: auto !important;
   }
 
-  /* Hairline grid collapse for mobile: ensures borders stay 1px */
   .raster-grid-hairline {
     grid-template-columns: 1fr;
     border-top: 1px solid var(--raster-border);
@@ -545,8 +654,9 @@ p, .raster-body {
     padding-right: var(--raster-space-3);
   }
 
-  .raster-grid {
-    gap: var(--raster-space-3);
+  .raster-mosaic,
+  .raster-grid-4 {
+    grid-template-columns: 1fr;
   }
 
   .col-xs-12 {
@@ -560,24 +670,280 @@ p, .raster-body {
 
 /**
  * RASTER CSS - Component Architecture
- * Pure CSS components built for extreme legibility, speed, and AI predictability.
+ * Aesthetic: Refined Neo-Swiss Editorial (Motus / Quiet Modernism)
+ * Pure CSS components built for extreme legibility, calm negative space, and AI predictability.
  */
 
 /* ==========================================================================
-   CARDS & PANELS
+   KEY-VALUE HAIRLINE SPECIFICATION ROWS (Signature Left-Column Pattern)
+   ========================================================================== */
+
+.raster-spec-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.raster-spec-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: baseline;
+  gap: var(--raster-space-4);
+  padding: var(--raster-space-3) 0;
+  border-top: 1px solid var(--raster-border);
+}
+
+.raster-spec-row-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--raster-space-3) 0;
+  border-top: 1px solid var(--raster-border);
+}
+
+.raster-spec-key {
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
+  font-weight: 400;
+}
+
+.raster-spec-val {
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-primary);
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-2);
+}
+
+.raster-spec-line {
+  padding-top: var(--raster-space-2);
+  border-top: 1px solid var(--raster-border-subtle);
+}
+
+/* ==========================================================================
+   OPTION PICKERS & SQUARE SWATCHES ("XS S M L XL XXL" & Color Squares)
+   ========================================================================== */
+
+.raster-option-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--raster-space-3);
+  flex-wrap: wrap;
+}
+
+.raster-option-item {
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0 0 2px 0;
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.raster-option-item:hover {
+  color: var(--raster-fg-primary);
+}
+
+.raster-option-item.is-active {
+  color: var(--raster-fg-primary);
+  border-bottom-color: var(--raster-fg-primary);
+  font-weight: 500;
+}
+
+.raster-swatch-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.raster-swatch {
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--raster-border);
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.raster-swatch.is-active {
+  outline: 1px solid var(--raster-fg-primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   QUANTITY STEPPER & ACTION ROW ("[ - 1 + ] [ Add to cart ]")
+   ========================================================================== */
+
+.raster-action-row {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: var(--raster-space-2);
+  align-items: stretch;
+  width: 100%;
+}
+
+.raster-stepper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--raster-border);
+  background-color: var(--raster-canvas);
+  height: 36px;
+  padding: 0 4px;
+  user-select: none;
+}
+
+.raster-stepper button {
+  background: none;
+  border: none;
+  color: var(--raster-fg-muted);
+  font-size: 0.8125rem;
+  padding: 0 6px;
+  height: 100%;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.raster-stepper button:hover {
+  color: var(--raster-fg-primary);
+}
+
+.raster-stepper span {
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   FLOATING SCROLL ACTION BAR (Sticky Top-Center Bar on Scroll)
+   ========================================================================== */
+
+.raster-floating-bar {
+  position: fixed;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  background-color: var(--raster-fg-primary);
+  color: var(--raster-canvas);
+  padding: 6px 8px 6px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--raster-space-6);
+  font-size: var(--raster-text-micro);
+  box-shadow: var(--raster-shadow-floating);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 150;
+  white-space: nowrap;
+}
+
+.raster-floating-bar.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.raster-floating-bar-action {
+  background: transparent;
+  color: inherit;
+  border: none;
+  border-left: 1px solid rgba(128, 128, 128, 0.35);
+  padding: 4px 12px 4px 16px;
+  font-size: var(--raster-text-micro);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.raster-floating-bar-action:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   SURFACE CARDS & STUDIO WELLS (Borderless "#F4F4F4" Cards in "You may like")
+   ========================================================================== */
+
+.raster-media-well {
+  background-color: var(--raster-surface);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.raster-surface-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.raster-surface-card .raster-media-well {
+  aspect-ratio: 4 / 5;
+  transition: background-color 0.2s ease;
+}
+
+.raster-surface-card:hover .raster-media-well {
+  background-color: var(--raster-surface-hover);
+}
+
+.raster-surface-badge {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
+  font-weight: 400;
+  z-index: 2;
+}
+
+.raster-surface-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: var(--raster-space-2);
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-primary);
+}
+
+.raster-surface-card-title {
+  font-weight: 400;
+}
+
+.raster-surface-card-price {
+  font-variant-numeric: tabular-nums;
+  color: var(--raster-fg-primary);
+}
+
+/* ==========================================================================
+   CARDS & PANELS (Architectural Hairline & Surface Containers)
    ========================================================================== */
 
 .raster-card {
   position: relative;
-  background-color: var(--raster-surface);
-  border: 1px solid var(--raster-border);
-  border-radius: var(--raster-radius);
-  padding: var(--raster-space-6);
+  background-color: var(--raster-canvas);
+  border-top: 1px solid var(--raster-border);
+  padding: var(--raster-space-4) 0;
   transition: border-color 0.15s ease;
 }
 
+.raster-card-boxed {
+  border: 1px solid var(--raster-border);
+  padding: var(--raster-space-5);
+  background-color: var(--raster-canvas);
+}
+
 .raster-card-subtle {
-  background-color: var(--raster-surface-subtle);
+  background-color: var(--raster-surface);
+  border: none;
+  padding: var(--raster-space-5);
 }
 
 .raster-card-interactive {
@@ -589,11 +955,7 @@ p, .raster-body {
 }
 
 .raster-card-accent-top {
-  border-top: 3px solid var(--raster-accent);
-}
-
-.raster-card-hard-shadow {
-  box-shadow: var(--raster-shadow-hard);
+  border-top: 1px solid var(--raster-border-strong);
 }
 
 .raster-card-header {
@@ -606,21 +968,21 @@ p, .raster-body {
 .raster-card-title {
   font-family: var(--raster-font-sans);
   font-size: var(--raster-text-h3);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: var(--raster-track-h3);
 }
 
 .raster-card-footer {
-  margin-top: var(--raster-space-6);
+  margin-top: var(--raster-space-5);
   padding-top: var(--raster-space-3);
-  border-top: 1px solid var(--raster-border-subtle);
+  border-top: 1px solid var(--raster-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 /* ==========================================================================
-   STAT & METRIC BLOCKS (Anti-AI slop: massive numbers, strict micro-labels)
+   STAT & METRIC BLOCKS (Calm sentence-case labels + crisp tabular figures)
    ========================================================================== */
 
 .raster-stat {
@@ -631,54 +993,49 @@ p, .raster-body {
 
 .raster-stat-label {
   font-size: var(--raster-text-micro);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
+  font-weight: 400;
   color: var(--raster-fg-muted);
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 
 .raster-stat-value {
   font-family: var(--raster-font-display);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  line-height: 1.05;
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: -0.03em;
   color: var(--raster-fg-primary);
   font-feature-settings: "tnum" 1;
   font-variant-numeric: tabular-nums;
 }
 
 .raster-stat-sub {
-  font-size: var(--raster-text-small);
-  color: var(--raster-fg-secondary);
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
   display: flex;
   align-items: center;
   gap: var(--raster-space-2);
-  margin-top: var(--raster-space-1);
+  margin-top: 2px;
 }
 
 .raster-delta {
-  font-family: var(--raster-font-mono);
   font-size: var(--raster-text-micro);
-  font-weight: 600;
-  padding: 1px 4px;
+  font-weight: 500;
+  color: var(--raster-fg-primary);
 }
 
 .raster-delta-positive {
-  color: var(--raster-signal-emerald);
-  background-color: rgba(5, 130, 73, 0.1);
+  color: var(--raster-fg-primary);
 }
 
 .raster-delta-negative {
-  color: var(--raster-accent);
-  background-color: var(--raster-accent-subtle);
+  color: var(--raster-fg-muted);
 }
 
 /* ==========================================================================
-   BUTTONS & CONTROLS
+   BUTTONS & CONTROLS (Sentence-Case, Solid Black Fill, 0px Radius)
    ========================================================================== */
 
 .raster-btn {
@@ -688,43 +1045,33 @@ p, .raster-body {
   gap: var(--raster-space-2);
   font-family: var(--raster-font-sans);
   font-size: var(--raster-text-small);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: var(--raster-space-2) var(--raster-space-4);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  height: 36px;
+  padding: 0 var(--raster-space-4);
   border-radius: var(--raster-radius);
   border: 1px solid transparent;
   cursor: pointer;
   background: none;
-  transition: all 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   user-select: none;
   white-space: nowrap;
 }
 
 .raster-btn:focus-visible {
-  outline: 2px solid var(--raster-accent);
+  outline: 1px solid var(--raster-fg-primary);
   outline-offset: 2px;
 }
 
-/* Primary Button: Stark contrast inversion */
-.raster-btn-primary {
+/* Primary & Accent Button: Solid Monochrome Fill (Matches "Add to cart" in video) */
+.raster-btn-primary,
+.raster-btn-accent {
   background-color: var(--raster-fg-primary);
   color: var(--raster-canvas);
   border-color: var(--raster-fg-primary);
 }
 
-.raster-btn-primary:hover {
-  background-color: var(--raster-accent);
-  border-color: var(--raster-accent);
-  color: #ffffff;
-}
-
-/* Accent Button: Swiss Vermillion */
-.raster-btn-accent {
-  background-color: var(--raster-accent);
-  color: #ffffff;
-  border-color: var(--raster-accent);
-}
-
+.raster-btn-primary:hover,
 .raster-btn-accent:hover {
   background-color: var(--raster-accent-hover);
   border-color: var(--raster-accent-hover);
@@ -732,97 +1079,86 @@ p, .raster-body {
 
 /* Outline Button */
 .raster-btn-outline {
-  border-color: var(--raster-border-strong);
+  border-color: var(--raster-border);
   color: var(--raster-fg-primary);
   background-color: transparent;
 }
 
 .raster-btn-outline:hover {
-  background-color: var(--raster-fg-primary);
-  color: var(--raster-canvas);
+  border-color: var(--raster-fg-primary);
 }
 
 /* Subtle / Ghost Button */
 .raster-btn-ghost {
-  border-color: var(--raster-border);
-  color: var(--raster-fg-secondary);
-  background-color: var(--raster-surface);
+  border-color: transparent;
+  color: var(--raster-fg-muted);
+  background-color: transparent;
+  padding: 0 var(--raster-space-2);
 }
 
 .raster-btn-ghost:hover {
-  border-color: var(--raster-border-strong);
   color: var(--raster-fg-primary);
 }
 
 /* Micro Button */
 .raster-btn-sm {
   font-size: var(--raster-text-micro);
-  padding: 4px 8px;
-  letter-spacing: var(--raster-track-micro);
-  text-transform: uppercase;
+  height: 30px;
+  padding: 0 var(--raster-space-3);
 }
 
 /* Segmented Control / Button Group */
 .raster-btn-group {
   display: inline-flex;
-  border: 1px solid var(--raster-border);
-  background-color: var(--raster-surface);
-  padding: 2px;
-  gap: 2px;
+  align-items: center;
+  gap: var(--raster-space-3);
 }
 
 .raster-btn-group .raster-btn {
   border: none;
-  padding: 4px 10px;
-  font-size: var(--raster-text-micro);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
+  border-bottom: 1px solid transparent;
+  height: auto;
+  padding: 2px 0;
+  font-size: var(--raster-text-small);
+  font-weight: 400;
   color: var(--raster-fg-muted);
+  background: transparent;
+}
+
+.raster-btn-group .raster-btn:hover {
+  color: var(--raster-fg-primary);
 }
 
 .raster-btn-group .raster-btn.is-active {
-  background-color: var(--raster-fg-primary);
-  color: var(--raster-canvas);
+  color: var(--raster-fg-primary);
+  border-bottom-color: var(--raster-fg-primary);
+  font-weight: 500;
 }
 
 /* ==========================================================================
-   BADGES & TAGS
+   BADGES & TAGS (Subtle Studio Labels)
    ========================================================================== */
 
 .raster-tag {
   display: inline-flex;
   align-items: center;
-  font-family: var(--raster-font-mono);
+  font-family: var(--raster-font-sans);
   font-size: var(--raster-text-micro);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
-  padding: 2px 6px;
-  border: 1px solid var(--raster-border);
+  font-weight: 400;
+  padding: 2px 8px;
   background-color: var(--raster-surface);
-  color: var(--raster-fg-secondary);
+  color: var(--raster-fg-muted);
   white-space: nowrap;
 }
 
-.raster-tag-accent {
-  border-color: var(--raster-accent);
-  color: var(--raster-accent);
-  background-color: var(--raster-accent-subtle);
-}
-
+.raster-tag-accent,
 .raster-tag-solid {
   background-color: var(--raster-fg-primary);
   color: var(--raster-canvas);
-  border-color: var(--raster-fg-primary);
 }
 
-/* Bracket indicator signature */
-.raster-bracket::before { content: "[ "; color: var(--raster-fg-faint); }
-.raster-bracket::after  { content: " ]"; color: var(--raster-fg-faint); }
-
 /* ==========================================================================
-   METERS & BARS (High-discipline data visualization)
+   METERS & BARS (Minimalist Hairline Progress Indicators)
    ========================================================================== */
 
 .raster-meter {
@@ -840,9 +1176,8 @@ p, .raster-body {
 }
 
 .raster-meter-track {
-  height: 6px;
-  background-color: var(--raster-border-subtle);
-  border: 1px solid var(--raster-border);
+  height: 3px;
+  background-color: var(--raster-surface);
   overflow: hidden;
   display: flex;
   position: relative;
@@ -855,21 +1190,16 @@ p, .raster-body {
 }
 
 .raster-meter-fill-accent {
-  background-color: var(--raster-accent);
+  background-color: var(--raster-fg-muted);
 }
 
-.raster-meter-fill-blue {
-  background-color: var(--raster-signal-blue);
-}
-
-/* Segmented Multi-Bar (Clean replacement for muddy donut charts) */
+/* Segmented Multi-Bar */
 .raster-segmented-bar {
   display: flex;
-  height: 8px;
+  height: 4px;
   width: 100%;
-  background-color: var(--raster-border-subtle);
-  border: 1px solid var(--raster-border);
-  gap: 1px;
+  background-color: var(--raster-surface);
+  gap: 2px;
 }
 
 .raster-segmented-bar > * {
@@ -883,8 +1213,9 @@ p, .raster-body {
 .raster-table-container {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--raster-border);
-  background-color: var(--raster-surface);
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--raster-canvas);
+  position: relative;
 }
 
 .raster-table {
@@ -895,52 +1226,45 @@ p, .raster-body {
 .raster-table th {
   font-family: var(--raster-font-sans);
   font-size: var(--raster-text-micro);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
+  font-weight: 400;
   color: var(--raster-fg-muted);
-  background-color: var(--raster-surface-subtle);
-  padding: var(--raster-space-3) var(--raster-space-4);
-  border-bottom: 1px solid var(--raster-border-strong);
+  padding: var(--raster-space-3) var(--raster-space-3) var(--raster-space-3) 0;
+  border-top: 1px solid var(--raster-border);
+  border-bottom: 1px solid var(--raster-border);
 }
 
 .raster-table td {
-  padding: var(--raster-space-3) var(--raster-space-4);
+  padding: var(--raster-space-3) var(--raster-space-3) var(--raster-space-3) 0;
   font-size: var(--raster-text-small);
-  border-bottom: 1px solid var(--raster-border-subtle);
+  border-bottom: 1px solid var(--raster-border);
   vertical-align: middle;
+  color: var(--raster-fg-primary);
 }
 
-.raster-table tr:last-child td {
-  border-bottom: none;
-}
-
-.raster-table tr:hover td {
-  background-color: var(--raster-surface-subtle);
+.raster-table th:last-child,
+.raster-table td:last-child {
+  padding-right: 0;
 }
 
 .raster-table .cell-num {
   text-align: right;
-  font-family: var(--raster-font-mono);
-  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ==========================================================================
-   FORM INPUTS & CONTROLS
+   FORM INPUTS & INLINE UNDERLINE SUBMIT (Matches Footer Newsletter in video)
    ========================================================================== */
 
 .raster-field {
   display: flex;
   flex-direction: column;
-  gap: var(--raster-space-2);
+  gap: var(--raster-space-1);
   width: 100%;
 }
 
 .raster-field-label {
   font-size: var(--raster-text-micro);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
+  font-weight: 400;
   color: var(--raster-fg-muted);
 }
 
@@ -948,10 +1272,10 @@ p, .raster-body {
 .raster-select,
 .raster-textarea {
   width: 100%;
-  padding: var(--raster-space-2) var(--raster-space-3);
+  padding: 8px 10px;
   font-family: var(--raster-font-sans);
-  font-size: var(--raster-text-body);
-  background-color: var(--raster-surface);
+  font-size: var(--raster-text-small);
+  background-color: var(--raster-canvas);
   border: 1px solid var(--raster-border);
   border-radius: var(--raster-radius);
   color: var(--raster-fg-primary);
@@ -963,14 +1287,13 @@ p, .raster-body {
 .raster-select:focus,
 .raster-textarea:focus {
   border-color: var(--raster-fg-primary);
-  box-shadow: 0 0 0 1px var(--raster-fg-primary);
 }
 
 .raster-input::placeholder {
   color: var(--raster-fg-faint);
 }
 
-/* Underline variant (Architectural draughtsman style) */
+/* Underline Input */
 .raster-input-underline {
   border: none;
   border-bottom: 1px solid var(--raster-border);
@@ -980,12 +1303,54 @@ p, .raster-body {
 }
 
 .raster-input-underline:focus {
-  border-bottom-color: var(--raster-accent);
-  box-shadow: none;
+  border-bottom-color: var(--raster-fg-primary);
+}
+
+/* Inline Underline Input + Submit Action (Video Footer Newsletter Pattern) */
+.raster-input-inline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--raster-border);
+  padding-bottom: 6px;
+  gap: var(--raster-space-3);
+  transition: border-color 0.15s ease;
+}
+
+.raster-input-inline:focus-within {
+  border-bottom-color: var(--raster-fg-primary);
+}
+
+.raster-input-inline input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-primary);
+  padding: 0;
+}
+
+.raster-input-inline input::placeholder {
+  color: var(--raster-fg-faint);
+}
+
+.raster-input-inline button {
+  background: none;
+  border: none;
+  font-size: var(--raster-text-small);
+  color: var(--raster-fg-primary);
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.raster-input-inline button:hover {
+  opacity: 0.65;
 }
 
 /* ==========================================================================
-   MASTHEAD & NAVIGATION
+   MASTHEAD & ARCHITECTURAL FOOTER (3-Zone Motus Layout)
    ========================================================================== */
 
 .raster-masthead {
@@ -997,48 +1362,99 @@ p, .raster-body {
 }
 
 .raster-masthead-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 5fr 3fr;
   align-items: center;
-  justify-content: space-between;
-  padding-top: var(--raster-space-4);
-  padding-bottom: var(--raster-space-4);
+  height: 44px;
+  gap: var(--raster-space-4);
 }
 
 .raster-brand {
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
   gap: var(--raster-space-2);
   font-family: var(--raster-font-display);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.25rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--raster-fg-primary);
-}
-
-.raster-brand-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: var(--raster-accent);
 }
 
 .raster-nav-links {
   display: flex;
   align-items: center;
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-5);
   list-style: none;
 }
 
 .raster-nav-link {
   font-size: var(--raster-text-small);
-  font-weight: 500;
-  color: var(--raster-fg-secondary);
-  transition: color 0.15s ease;
+  font-weight: 400;
+  color: var(--raster-fg-primary);
+  transition: opacity 0.15s ease;
 }
 
 .raster-nav-link:hover,
 .raster-nav-link.is-active {
-  color: var(--raster-fg-primary);
+  opacity: 0.6;
+}
+
+.raster-masthead-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--raster-space-4);
+  font-size: var(--raster-text-small);
+}
+
+/* 3-Zone Architectural Footer (Matches 00:06–00:08 in video) */
+.raster-footer {
+  border-top: 1px solid var(--raster-border);
+  padding-top: var(--raster-space-10);
+  padding-bottom: var(--raster-space-6);
+  background-color: var(--raster-canvas);
+}
+
+.raster-footer-grid {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+  gap: var(--raster-space-4);
+  padding-bottom: var(--raster-space-16);
+}
+
+.raster-footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--raster-space-4);
+}
+
+.raster-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--raster-space-3);
+}
+
+.raster-footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--raster-text-small);
+}
+
+.raster-footer-links a:hover {
+  opacity: 0.6;
+}
+
+.raster-footer-bottom {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+  align-items: baseline;
+  gap: var(--raster-space-4);
+  padding-top: var(--raster-space-3);
+  border-top: 1px solid var(--raster-border);
+  font-size: var(--raster-text-micro);
+  color: var(--raster-fg-muted);
 }
 
 /* ==========================================================================
@@ -1046,164 +1462,73 @@ p, .raster-body {
    ========================================================================== */
 
 .raster-callout {
-  padding: var(--raster-space-4);
-  border-left: 3px solid var(--raster-border-strong);
-  background-color: var(--raster-surface-subtle);
+  padding: var(--raster-space-3) 0;
+  border-top: 1px solid var(--raster-border);
+  border-bottom: 1px solid var(--raster-border);
   display: flex;
   flex-direction: column;
-  gap: var(--raster-space-1);
-}
-
-.raster-callout-accent {
-  border-left-color: var(--raster-accent);
+  gap: 4px;
 }
 
 /* ==========================================================================
-   MOBILE ERGONOMICS & RESPONSIVE COMPONENT BEHAVIORS
+   MOBILE ERGONOMICS & RESPONSIVE BEHAVIORS
    ========================================================================== */
 
-/* Touch-Optimized Action Target */
 .raster-btn-touch {
   min-height: var(--raster-touch-target);
-  padding: 10px 18px;
 }
 
-/* Full Width Button on Mobile */
-@media (max-width: 768px) {
-  .raster-btn-full-mobile {
-    width: 100%;
-    display: flex;
-  }
-}
-
-/* Responsive Button Group */
-.raster-btn-group-responsive {
-  display: flex;
-  width: 100%;
-}
-
-.raster-btn-group-responsive .raster-btn {
-  flex: 1 1 0;
-  text-align: center;
-}
-
-/* Mobile-Friendly Table & Ledger Scrolling */
-.raster-table-container {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 1px solid var(--raster-border);
-  background-color: var(--raster-surface);
-  position: relative;
-}
-
-/* Visual fade hint on table edge for mobile scrollability */
-.raster-table-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 24px;
-  background: linear-gradient(to right, transparent, var(--raster-border-subtle));
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-/* Touch-Scrollable Horizontal Tab / Nav Strip */
-.raster-nav-scrollable {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
-  scrollbar-width: none;
-  gap: var(--raster-space-3);
-  padding-bottom: 2px;
-}
-
-.raster-nav-scrollable::-webkit-scrollbar {
-  display: none;
-}
-
-/* Mobile Masthead Navigation Trigger & Drawer */
 .raster-menu-btn {
   display: none;
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: 1px solid var(--raster-border);
-  padding: 8px 12px;
+  border: none;
+  padding: 6px 0;
   cursor: pointer;
-  font-family: var(--raster-font-mono);
-  font-size: var(--raster-text-micro);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: var(--raster-track-micro);
+  font-family: var(--raster-font-sans);
+  font-size: var(--raster-text-small);
+  font-weight: 400;
   color: var(--raster-fg-primary);
-  min-height: 38px;
-}
-
-.raster-menu-btn:focus-visible {
-  outline: 2px solid var(--raster-accent);
 }
 
 .raster-nav-mobile {
   display: none;
   width: 100%;
   border-top: 1px solid var(--raster-border);
-  padding: var(--raster-space-4) 0;
+  padding: var(--raster-space-3) 0;
   background-color: var(--raster-canvas);
 }
 
 .raster-nav-mobile.is-open {
   display: flex;
   flex-direction: column;
-  gap: var(--raster-space-2);
+  gap: var(--raster-space-1);
 }
 
 .raster-nav-mobile .raster-nav-link {
   display: block;
-  padding: var(--raster-space-3) var(--raster-space-4);
+  padding: var(--raster-space-2) 0;
   font-size: var(--raster-text-body);
-  font-weight: 600;
-  border-left: 3px solid transparent;
 }
 
-.raster-nav-mobile .raster-nav-link:hover,
-.raster-nav-mobile .raster-nav-link.is-active {
-  border-left-color: var(--raster-accent);
-  background-color: var(--raster-surface-subtle);
-  color: var(--raster-fg-primary);
-}
-
-/* Global Mobile Component Adjustments (<= 768px) */
 @media (max-width: 768px) {
-  /* Prevent iOS Safari 16px auto-zoom */
+  .raster-masthead-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .raster-input,
   .raster-select,
-  .raster-textarea {
+  .raster-textarea,
+  .raster-input-inline input {
     font-size: 16px !important;
-    min-height: 44px;
   }
 
-  /* Compact card padding for small screens */
-  .raster-card {
-    padding: var(--raster-space-4);
-  }
-
-  /* Accessible touch targets */
   .raster-btn {
-    min-height: 40px;
-    padding: 8px 14px;
+    min-height: 38px;
   }
 
-  /* Adaptive display scale */
-  .raster-stat-value {
-    font-size: clamp(1.6rem, 6.5vw, 2.25rem);
-  }
-
-  /* Show mobile menu trigger & hide desktop nav row */
   .raster-menu-btn {
     display: inline-flex;
   }
@@ -1212,11 +1537,25 @@ p, .raster-body {
     display: none !important;
   }
 
-  /* Wrap segmented bar info on small screens */
-  .raster-meter-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+  .raster-spec-row {
+    grid-template-columns: 90px 1fr;
+    gap: var(--raster-space-3);
+  }
+
+  .raster-footer-grid,
+  .raster-footer-bottom {
+    grid-template-columns: 1fr;
+    gap: var(--raster-space-6);
+  }
+
+  .raster-footer-grid {
+    padding-bottom: var(--raster-space-8);
+  }
+
+  .raster-floating-bar {
+    width: calc(100% - 24px);
+    justify-content: space-between;
+    gap: var(--raster-space-2);
   }
 }
 

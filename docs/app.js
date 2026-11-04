@@ -1,6 +1,12 @@
-// RASTER CSS — Interactive Showcase & Live Demo Engine
+// RASTER CSS — Refined Neo-Swiss Interactive Demo & Storefront Engine
 
 const BASE_INCOME_ANNUAL = 54000.00;
+const UNIT_PRICE_EUR = 95;
+
+let selectedSize = 'M';
+let selectedColor = 'Black';
+let selectedQty = 1;
+let cartTotalItems = 0;
 
 let currentHorizon = 'yr'; // 'day' | 'wk' | 'mo' | 'yr'
 let currentFilter = 'ALL'; // 'ALL' | 'Essential' | 'Discretionary'
@@ -16,10 +22,10 @@ const ledgerItems = [
 ];
 
 const HORIZON_DIVISORS = {
-  yr: { divisor: 1, label: 'ANNUAL COST', colHeader: 'Annual Amount', suffix: 'baseline income' },
-  mo: { divisor: 12, label: 'MONTHLY COST', colHeader: 'Monthly Amount', suffix: 'monthly income' },
-  wk: { divisor: 52, label: 'WEEKLY COST', colHeader: 'Weekly Amount', suffix: 'weekly income' },
-  day: { divisor: 365, label: 'DAILY COST', colHeader: 'Daily Amount', suffix: 'daily income' }
+  yr: { divisor: 1, label: 'Annual cost', colHeader: 'Annual amount', suffix: 'baseline income' },
+  mo: { divisor: 12, label: 'Monthly cost', colHeader: 'Monthly amount', suffix: 'monthly income' },
+  wk: { divisor: 52, label: 'Weekly cost', colHeader: 'Weekly amount', suffix: 'weekly income' },
+  day: { divisor: 365, label: 'Daily cost', colHeader: 'Daily amount', suffix: 'daily income' }
 };
 
 function formatUSD(val) {
@@ -32,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const gridToggle = document.getElementById('grid-toggle');
   const gridText = document.getElementById('grid-text');
   const gridOverlay = document.getElementById('grid-inspector');
+  const floatingBar = document.getElementById('floating-cart-bar');
+  const primaryTrigger = document.getElementById('primary-cart-trigger');
   const html = document.documentElement;
 
   // Initialize theme
@@ -51,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateThemeButton(theme) {
     if (!themeText) return;
-    themeText.textContent = theme === 'dark' ? 'THEME: DARK' : 'THEME: LIGHT';
+    themeText.textContent = theme === 'dark' ? 'Theme: Dark' : 'Theme: Light';
   }
 
   // Initialize 12-column Swiss Grid Inspector Overlay
@@ -59,11 +67,19 @@ document.addEventListener('DOMContentLoaded', () => {
     gridToggle.addEventListener('click', () => {
       const isVisible = gridOverlay.classList.toggle('is-visible');
       if (gridText) {
-        gridText.textContent = isVisible ? 'GRID: ON' : 'GRID: OFF';
+        gridText.textContent = isVisible ? 'Grid: On' : 'Grid: Off';
       }
-      gridToggle.classList.toggle('raster-btn-accent', isVisible);
-      gridToggle.classList.toggle('raster-btn-ghost', !isVisible);
+      gridToggle.classList.toggle('is-active', isVisible);
     });
+  }
+
+  // Scroll listener for the Floating Top-Center Bar (Matches 00:05 in reference video)
+  if (floatingBar && primaryTrigger) {
+    window.addEventListener('scroll', () => {
+      const rect = primaryTrigger.getBoundingClientRect();
+      const shouldShow = rect.bottom < 48;
+      floatingBar.classList.toggle('is-visible', shouldShow);
+    }, { passive: true });
   }
 
   // Mobile menu toggle
@@ -73,11 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileToggle && mobileNav) {
     mobileToggle.addEventListener('click', () => {
       const isOpen = mobileNav.classList.toggle('is-open');
-      mobileToggle.textContent = isOpen ? 'CLOSE' : 'MENU';
+      mobileToggle.textContent = isOpen ? 'Close' : 'Menu';
     });
   }
 
-  // Render initial Financial Ledger state
   renderFinanceDashboard();
 });
 
@@ -86,21 +101,77 @@ function closeMobileNav() {
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   if (mobileNav && mobileNav.classList.contains('is-open')) {
     mobileNav.classList.remove('is-open');
-    if (mobileToggle) mobileToggle.textContent = 'MENU';
+    if (mobileToggle) mobileToggle.textContent = 'Menu';
   }
 }
 
-// Switch between the 3 Live Application Demos
-function switchDemoApp(appKey, btnEl) {
-  const apps = ['finance', 'telemetry', 'editorial'];
-  apps.forEach(k => {
-    const el = document.getElementById(`demo-app-${k}`);
-    if (el) el.style.display = k === appKey ? 'block' : 'none';
-  });
+// Switch / Scroll to Showcase Section
+function switchShowcaseMode(mode, btnEl) {
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.view-pill').forEach(b => b.classList.remove('is-active'));
+    btnEl.classList.add('is-active');
+  }
 
-  const buttons = document.querySelectorAll('.demo-tab-btn');
-  buttons.forEach(b => b.classList.remove('active'));
-  if (btnEl) btnEl.classList.add('active');
+  const targetMap = {
+    storefront: 'storefront-view',
+    finance: 'finance-section',
+    system: 'system-section'
+  };
+
+  const targetId = targetMap[mode];
+  const targetEl = document.getElementById(targetId);
+  if (targetEl) {
+    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Storefront Product Controls (Size, Color, Quantity, Add to Cart)
+function selectSize(size, btnEl) {
+  selectedSize = size;
+  const picker = document.getElementById('size-picker');
+  if (picker) {
+    picker.querySelectorAll('.raster-option-item').forEach(b => b.classList.remove('is-active'));
+  }
+  if (btnEl) btnEl.classList.add('is-active');
+
+  const floatSize = document.getElementById('floating-size');
+  if (floatSize) floatSize.textContent = size;
+}
+
+function selectColor(colorName, hexValue, btnEl) {
+  selectedColor = colorName;
+  const picker = document.getElementById('color-picker');
+  if (picker) {
+    picker.querySelectorAll('.raster-swatch').forEach(b => b.classList.remove('is-active'));
+  }
+  if (btnEl) btnEl.classList.add('is-active');
+
+  const floatColor = document.getElementById('floating-color');
+  if (floatColor) floatColor.textContent = colorName;
+}
+
+function adjustQty(delta) {
+  selectedQty = Math.max(1, Math.min(20, selectedQty + delta));
+  const qtyEl = document.getElementById('qty-value');
+  const priceEl = document.getElementById('product-price-display');
+  const floatPrice = document.getElementById('floating-price');
+
+  const totalEur = `${selectedQty * UNIT_PRICE_EUR}€`;
+  if (qtyEl) qtyEl.textContent = String(selectedQty);
+  if (priceEl) priceEl.textContent = totalEur;
+  if (floatPrice) floatPrice.textContent = totalEur;
+}
+
+function triggerAddToCart(customItemName) {
+  const addedCount = customItemName ? 1 : selectedQty;
+  cartTotalItems += addedCount;
+  const cartEl = document.getElementById('cart-count');
+  if (cartEl) cartEl.textContent = String(cartTotalItems);
+
+  const label = customItemName
+    ? `Added ${customItemName} to cart`
+    : `Added ${selectedQty} × Essential T-Shirt (${selectedSize}, ${selectedColor})`;
+  showToast(label);
 }
 
 // Financial Dashboard Interactive Engine
@@ -108,7 +179,7 @@ function setBudgetHorizon(horizon, btnEl) {
   currentHorizon = horizon;
   const group = document.getElementById('horizon-group');
   if (group) {
-    group.querySelectorAll('.raster-btn').forEach(b => b.classList.remove('is-active'));
+    group.querySelectorAll('.raster-option-item').forEach(b => b.classList.remove('is-active'));
   }
   if (btnEl) btnEl.classList.add('is-active');
   renderFinanceDashboard();
@@ -117,7 +188,7 @@ function setBudgetHorizon(horizon, btnEl) {
 function filterLedger(filterType, btnEl) {
   currentFilter = filterType;
   if (btnEl && btnEl.parentElement) {
-    btnEl.parentElement.querySelectorAll('.raster-btn').forEach(b => b.classList.remove('is-active'));
+    btnEl.parentElement.querySelectorAll('.raster-option-item').forEach(b => b.classList.remove('is-active'));
     btnEl.classList.add('is-active');
   }
   renderFinanceDashboard();
@@ -126,16 +197,11 @@ function filterLedger(filterType, btnEl) {
 function toggleWhatIfSimulation() {
   whatIfActive = !whatIfActive;
   const btnLabel = document.getElementById('whatif-btn-label');
-  const statusTag = document.getElementById('simulation-status-tag');
   if (btnLabel) {
-    btnLabel.textContent = whatIfActive ? 'RESET BASELINE' : 'SIMULATE -10% RENT';
-  }
-  if (statusTag) {
-    statusTag.textContent = whatIfActive ? 'SIMULATION: -10% HOUSING' : 'BASELINE MODE';
-    statusTag.style.color = whatIfActive ? 'var(--raster-accent)' : '';
+    btnLabel.textContent = whatIfActive ? 'Reset baseline' : 'Simulate -10% rent';
   }
   renderFinanceDashboard();
-  showToast(whatIfActive ? 'WHAT-IF SIMULATION ACTIVE (-10% RENT)' : 'RESTORED BASELINE LEDGER');
+  showToast(whatIfActive ? 'Simulation active: -10% housing cost' : 'Restored baseline ledger');
 }
 
 function toggleAddEntryRow() {
@@ -154,7 +220,7 @@ function addNewAllocation() {
   const amount = parseFloat(amountInput.value);
 
   if (!name || isNaN(amount) || amount <= 0) {
-    showToast('ENTER VALID CATEGORY & AMOUNT');
+    showToast('Enter valid category and amount');
     return;
   }
 
@@ -163,18 +229,17 @@ function addNewAllocation() {
   amountInput.value = '1200';
   toggleAddEntryRow();
   renderFinanceDashboard();
-  showToast(`ADDED: ${name.toUpperCase()}`);
+  showToast(`Added allocation: ${name}`);
 }
 
 function renderFinanceDashboard() {
   const cfg = HORIZON_DIVISORS[currentHorizon] || HORIZON_DIVISORS.yr;
   const divisor = cfg.divisor;
 
-  // Compute adjusted items
   const computedItems = ledgerItems.map(item => {
     let annual = item.annual;
     if (whatIfActive && item.name.toLowerCase().includes('housing')) {
-      annual = annual * 0.9; // -10% housing simulation
+      annual = annual * 0.9;
     }
     return { ...item, effectiveAnnual: annual, periodAmount: annual / divisor };
   });
@@ -189,7 +254,6 @@ function renderFinanceDashboard() {
   const savingsPct = Math.max(0, 100 - needsPct - wantsPct);
   const exactSurplusPct = ((savingsAnnual / BASE_INCOME_ANNUAL) * 100).toFixed(1);
 
-  // Update KPI Cards
   const setTxt = (id, text) => {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -197,21 +261,21 @@ function renderFinanceDashboard() {
 
   setTxt('stat-cost-title', cfg.label);
   setTxt('stat-cost-val', formatUSD(totalAnnualCost / divisor));
-  setTxt('stat-income-sub', `of ${formatUSD(BASE_INCOME_ANNUAL / divisor)} ${cfg.suffix}`);
+  setTxt('stat-cost-card', formatUSD(totalAnnualCost / divisor));
+  setTxt('stat-income-sub', `Allocated from ${formatUSD(BASE_INCOME_ANNUAL / divisor)} ${cfg.suffix}.`);
 
   setTxt('stat-needs-val', formatUSD(needsAnnual / divisor));
-  setTxt('stat-needs-pct', `${needsPct}% OF INC`);
+  setTxt('stat-needs-pct', `${needsPct}% of inc`);
 
   setTxt('stat-wants-val', formatUSD(wantsAnnual / divisor));
-  setTxt('stat-wants-pct', `${wantsPct}% OF INC`);
+  setTxt('stat-wants-pct', `${wantsPct}% of inc`);
 
   setTxt('stat-savings-val', formatUSD(savingsAnnual / divisor));
-  setTxt('stat-savings-pct', `${savingsPct}% SAVED`);
+  setTxt('stat-savings-pct', `${savingsPct}% saved`);
 
-  // Update 50/30/20 Bar
-  setTxt('bar-label-needs', `■ NEEDS: ${needsPct}%`);
-  setTxt('bar-label-wants', `■ WANTS: ${wantsPct}%`);
-  setTxt('bar-label-savings', `■ SAVINGS: ${savingsPct}%`);
+  setTxt('bar-label-needs', `Needs ${needsPct}%`);
+  setTxt('bar-label-wants', `Wants ${wantsPct}%`);
+  setTxt('bar-label-savings', `Saved ${savingsPct}%`);
 
   const segNeeds = document.getElementById('bar-seg-needs');
   const segWants = document.getElementById('bar-seg-wants');
@@ -220,60 +284,43 @@ function renderFinanceDashboard() {
   if (segWants) segWants.style.width = `${wantsPct}%`;
   if (segSavings) segSavings.style.width = `${savingsPct}%`;
 
-  // Update Surplus Right Panel
   setTxt('surplus-big-rate', `${exactSurplusPct}%`);
-  setTxt('surplus-sub-caption', `${formatUSD(savingsAnnual / divisor)} retained per ${currentHorizon.toUpperCase()} period`);
   setTxt('metric-burn-rate', `${formatUSD(totalAnnualCost / 12)} / mo`);
   setTxt('metric-daily-rate', `${formatUSD(totalAnnualCost / 365)} / day`);
 
-  // Update Table Header & Rows
   setTxt('table-amount-col-header', cfg.colHeader);
 
   const filtered = computedItems.filter(i => currentFilter === 'ALL' || i.type === currentFilter);
-  setTxt('ledger-count-badge', `[ ${filtered.length} ITEMS ]`);
+  setTxt('ledger-count-badge', `${filtered.length} categories`);
 
   const tbody = document.getElementById('finance-ledger-tbody');
   if (tbody) {
     tbody.innerHTML = filtered.map(item => {
       const sharePct = Math.min(100, Math.round((item.effectiveAnnual / totalAnnualCost) * 100));
       const isEssential = item.type === 'Essential';
-      const tagClass = isEssential ? 'raster-tag-solid' : 'raster-tag-accent';
       const fillClass = isEssential ? '' : 'raster-meter-fill-accent';
 
       return `
         <tr>
-          <td style="font-weight: 600;">${item.name}</td>
-          <td><span class="raster-tag ${tagClass}">${item.type}</span></td>
+          <td>${item.name}</td>
+          <td style="color: var(--raster-fg-muted);">${item.type}</td>
           <td>
-            <div class="raster-flex raster-items-center gap-2">
-              <div class="raster-meter-track" style="height: 4px; width: 72px;">
+            <div class="raster-flex raster-items-center gap-3">
+              <div class="raster-meter-track" style="width: 80px;">
                 <div class="raster-meter-fill ${fillClass}" style="width: ${sharePct}%;"></div>
               </div>
-              <span class="raster-mono text-muted" style="font-size: 11px;">${sharePct}%</span>
+              <span class="raster-tabular" style="color: var(--raster-fg-muted); font-size: 11px;">${sharePct}%</span>
             </div>
           </td>
-          <td class="cell-num" style="font-weight: 600;">${formatUSD(item.periodAmount)}</td>
+          <td class="cell-num">${formatUSD(item.periodAmount)}</td>
         </tr>
       `;
     }).join('');
   }
 }
 
-// Framework Code Snippet Tab Switcher
-function switchTab(framework) {
-  const buttons = document.querySelectorAll('.tab-btn');
-  buttons.forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(framework));
-  });
-
-  const contents = document.querySelectorAll('.tab-content');
-  contents.forEach(content => {
-    content.style.display = content.id === `tab-${framework}` ? 'block' : 'none';
-  });
-}
-
 // Toast Notification Helper
-function showToast(message = 'COPIED TO CLIPBOARD') {
+function showToast(message = 'Copied to clipboard') {
   const toast = document.getElementById('toast');
   if (!toast) return;
   toast.textContent = message;
@@ -284,32 +331,16 @@ function showToast(message = 'COPIED TO CLIPBOARD') {
   }, 2400);
 }
 
-// Copy CSS Token Swatch
-function copyToken(tokenName) {
-  const cssVar = `var(${tokenName})`;
-  navigator.clipboard.writeText(cssVar).then(() => {
-    showToast(`COPIED: ${cssVar}`);
-  });
-}
-
 // Copy One-Line GitHub Repo Prompt
 function copyAgentRepoPrompt() {
   const el = document.getElementById('repo-prompt-snippet');
   const text = el ? el.innerText : 'Use the UI/UX framework from https://github.com/arron21/raster-css (read AI.md and llms.txt).';
   navigator.clipboard.writeText(text).then(() => {
-    showToast('GITHUB REPO PROMPT COPIED');
+    showToast('Copied GitHub repo prompt');
   });
 }
 
-// Copy System Prompt
-function copyPromptText() {
-  const snippet = document.getElementById('prompt-snippet').innerText;
-  navigator.clipboard.writeText(snippet).then(() => {
-    showToast('SYSTEM PROMPT COPIED');
-  });
-}
-
-// Copy Full AI.md Codex (Works both on GitHub Pages /docs root and locally)
+// Copy Full AI.md Codex
 function copyAiCodex() {
   fetch('./AI.md')
     .then(res => {
@@ -319,10 +350,15 @@ function copyAiCodex() {
     .catch(() => fetch('../AI.md').then(r => r.text()))
     .then(text => {
       navigator.clipboard.writeText(text).then(() => {
-        showToast('FULL AI.MD CODEX COPIED');
+        showToast('Copied full AI.md codex');
       });
     })
     .catch(() => {
-      copyPromptText();
+      const snippet = document.getElementById('prompt-snippet');
+      if (snippet) {
+        navigator.clipboard.writeText(snippet.innerText).then(() => {
+          showToast('Copied system prompt');
+        });
+      }
     });
 }

@@ -2,8 +2,60 @@ import React, { ReactNode } from 'react';
 
 /**
  * RASTER CSS - React Component Wrappers
- * Lightweight, zero-dependency, type-safe components.
+ * Aesthetic: Refined Neo-Swiss Editorial (Motus / Quiet Modernism)
  */
+
+export interface SpecRowProps {
+  label: string;
+  children: ReactNode;
+  split?: boolean;
+  className?: string;
+}
+
+export const SpecRow: React.FC<SpecRowProps> = ({
+  label,
+  children,
+  split = false,
+  className = '',
+}) => {
+  return (
+    <div className={`${split ? 'raster-spec-row-split' : 'raster-spec-row'} ${className}`}>
+      <span className="raster-spec-key">{label}</span>
+      <div className="raster-spec-val">{children}</div>
+    </div>
+  );
+};
+
+export interface SurfaceCardProps {
+  title: string;
+  priceOrValue: string | number;
+  badge?: string;
+  children?: ReactNode;
+  onClick?: () => void;
+  className?: string;
+}
+
+export const SurfaceCard: React.FC<SurfaceCardProps> = ({
+  title,
+  priceOrValue,
+  badge,
+  children,
+  onClick,
+  className = '',
+}) => {
+  return (
+    <div className={`raster-surface-card ${className}`} onClick={onClick}>
+      <div className="raster-media-well">
+        {badge && <span className="raster-surface-badge">{badge}</span>}
+        {children}
+      </div>
+      <div className="raster-surface-card-meta">
+        <span className="raster-surface-card-title">{title}</span>
+        <span className="raster-surface-card-price">{priceOrValue}</span>
+      </div>
+    </div>
+  );
+};
 
 export interface StatCardProps {
   label: string;
@@ -11,7 +63,7 @@ export interface StatCardProps {
   subtext?: string;
   delta?: string;
   deltaType?: 'positive' | 'negative';
-  index?: string | number;
+  meta?: string;
   className?: string;
 }
 
@@ -21,7 +73,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   subtext,
   delta,
   deltaType = 'positive',
-  index,
+  meta,
   className = '',
 }) => {
   return (
@@ -29,7 +81,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       <div className="raster-stat">
         <div className="raster-stat-label">
           <span>{label}</span>
-          {index !== undefined && <span className="raster-mono">[{String(index).padStart(2, '0')}]</span>}
+          {meta && <span>{meta}</span>}
         </div>
         <div className="raster-stat-value">{value}</div>
         {(subtext || delta) && (
@@ -48,32 +100,26 @@ export const StatCard: React.FC<StatCardProps> = ({
 };
 
 export interface SectionHeaderProps {
-  index?: string | number;
   title: string;
   meta?: string;
   className?: string;
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
-  index,
   title,
   meta,
   className = '',
 }) => {
   return (
     <div className={`raster-section-header ${className}`}>
-      {index !== undefined && (
-        <span className="raster-index">[{String(index).padStart(2, '0')}]</span>
-      )}
       <h2 className="raster-h2">{title}</h2>
-      <div className="raster-rule" />
       {meta && <span className="raster-meta">{meta}</span>}
     </div>
   );
 };
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'accent' | 'outline' | 'ghost';
+  variant?: 'primary' | 'outline' | 'ghost';
   size?: 'default' | 'sm';
   children: ReactNode;
 }
@@ -91,47 +137,5 @@ export const Button: React.FC<ButtonProps> = ({
     <button className={`raster-btn ${variantClass} ${sizeClass} ${className}`} {...props}>
       {children}
     </button>
-  );
-};
-
-export interface SegmentedBarProps {
-  label: string;
-  totalLabel?: string;
-  segments: {
-    label: string;
-    percentage: number;
-    color?: string; // CSS color string or var
-  }[];
-}
-
-export const SegmentedBar: React.FC<SegmentedBarProps> = ({
-  label,
-  totalLabel,
-  segments,
-}) => {
-  return (
-    <div className="raster-meter">
-      <div className="raster-meter-header">
-        <span className="raster-label">{label}</span>
-        {totalLabel && <span className="raster-mono">{totalLabel}</span>}
-      </div>
-      <div className="raster-segmented-bar">
-        {segments.map((seg, i) => (
-          <div
-            key={i}
-            style={{
-              width: `${seg.percentage}%`,
-              backgroundColor: seg.color || 'var(--raster-fg-primary)',
-            }}
-            title={`${seg.label}: ${seg.percentage}%`}
-          />
-        ))}
-      </div>
-      <div className="raster-flex raster-justify-between mt-2 raster-label">
-        {segments.map((seg, i) => (
-          <span key={i}>■ {seg.label}: {seg.percentage}%</span>
-        ))}
-      </div>
-    </div>
   );
 };

@@ -1,11 +1,11 @@
 # RASTER CSS 🇨🇭
-> **The International Typographic Design System for Humans & AI Agents.**
-> Distinct, authoritative Swiss typography. Zero generic AI slop.
+> **The Refined Neo-Swiss Editorial Design System for Humans & AI Agents.**
+> Whisper-quiet monochrome, calm sentence-case Grotesque typography, 1px hairline specification rows, and zero generic AI slop.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-E62E00.svg)](https://arron21.github.io/raster-css/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-111111.svg)](https://arron21.github.io/raster-css/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](#license)
-[![Style: Swiss Modernism](https://img.shields.io/badge/Style-Swiss%20Modernism-0A0A0A.svg)](#design-philosophy)
-[![AI Compatibility](https://img.shields.io/badge/AI%20Friendly-LLMS.txt%20%7C%20AI.md-0044FF.svg)](AI.md)
+[![Style: Neo-Swiss Editorial](https://img.shields.io/badge/Style-Neo--Swiss%20Editorial-767676.svg)](#design-philosophy)
+[![AI Compatibility](https://img.shields.io/badge/AI%20Friendly-LLMS.txt%20%7C%20AI.md-111111.svg)](AI.md)
 
 ### 🌐 [View Live Interactive Demo & Showcase → https://arron21.github.io/raster-css/](https://arron21.github.io/raster-css/)
 
@@ -18,48 +18,25 @@ Most AI-generated web interfaces (from ChatGPT, v0, Bolt, Lovable, Cursor) conve
 - Over-rounded jelly cards (`rounded-2xl` to `rounded-3xl` / 16px–24px)
 - Glowing neon drop-shadows and translucent glassmorphism blurs
 - Redundant outline icons in rounded pastel boxes in every stat corner
-- Low-data-ink rainbow donut charts
 
-**Raster CSS breaks this cycle.** It is built strictly on **Swiss Design (International Typographic Style)** and Josef Müller-Brockmann's modular grid discipline:
-- 📐 **Rigid Architectural Grids:** 12-column modular rhythm with razor-sharp 1px hairlines.
-- 🔠 **Monolithic Typographic Hierarchy:** Huge tabular display numerals contrasted against tracked-out uppercase micro-labels (`11px`, `letter-spacing: 0.08em`).
-- ⬛ **Disciplined Geometry:** 0px sharp corners or 2px micro-chamfers. Zero mushy jelly pills.
-- 🔴 **High-Signal Color Restraint:** Stark paper canvas and deep architectural carbon, accented with precision Swiss Vermillion (`#E62E00` / `#FF3B14`).
-- 📱 **Mobile-First & Touch Ergonomics:** 44px accessible touch targets, iOS Safari auto-zoom prevention (16px base inputs), touch-scrollable ledgers, responsive grid tiers (`col-sm-*`, `col-xs-*`), and collapsible navigation.
-- 🤖 **Engineered for AI Coding Agents:** Pre-baked [`AI.md`](AI.md) and [`llms.txt`](llms.txt) codex files so an AI agent pointed at this repository immediately knows exactly how to build world-class, distinctive UI.
-
----
-
-## 📸 The Rebuild: Generic AI Slop vs. Swiss Precision
-
-We directly redesigned the common AI budgeting app (*"What The Cost"*) using Raster CSS:
-
-| Generic AI Dashboard Cliché | Raster CSS (Swiss Modernism) |
-| :--- | :--- |
-| Muddy glowing purple/cyan shadows | Crisp 1px architectural hairline dividers |
-| 16px–24px rounded corners | 0px sharp architectural borders |
-| Tiny icon inside rounded box in corner | Monolithic tabular numerals (`$41,111.79`) with tracked micro-labels |
-| Unreadable 3-color circular donut rings | High-density segmented proportional meters & ledger tables |
-| Indistinguishable medium-weight fonts | Severe contrast between display headers and uppercase tags |
+**Raster CSS breaks this cycle.** Inspired by contemporary Swiss editorial minimalism (*Motus*, *Dieter Rams*, *Vitsoe*, *International Typographic Style*):
+- ⬜ **Whisper-Quiet Monochrome Palette:** Pure gallery white (`#FFFFFF`), soft studio gray media/card wells (`#F4F4F4`), and deep architectural ink (`#111111`) in Light Mode; matte obsidian (`#0A0A0A`) and dark studio wells (`#151515`) in Dark Mode.
+- 🔠 **Calm Sentence-Case Grotesque Typography:** Regular-weight (`400`) display headings with tight `-0.03em` tracking paired with `11px` muted sentence-case specification keys (`#767676`)—never shouty all-caps brutalism.
+- 📏 **Hairline Key-Value Specification Rows (`.raster-spec-row`):** Full-width `1px solid` horizontal hairlines separating structured key-value rows (`Size`, `Color`, `Description`, `Fit & care`, `Velocity`).
+- 📐 **Sticky 4:8 Asymmetric Splits & Tight 8px Mosaics:** Pin specifications and controls in a 4-column sticky left pane (`.raster-split-sticky`) while an 8-column media/content mosaic (`.raster-mosaic`) scrolls beside it.
+- 📱 **Mobile-First & Touch Ergonomics:** 16px mobile inputs (prevents iOS Safari auto-zoom), responsive grid tiers, and collapsible navigation.
+- 🤖 **Engineered for AI Coding Agents:** Pre-baked [`AI.md`](AI.md) and [`llms.txt`](llms.txt) codex files with strict instructions to never output self-referential "Raster CSS" branding in your project's HTML.
 
 ---
 
 ## 🚀 Quick Start
 
 ### 1. Zero Build (Plain HTML)
-Download or link `dist/raster.css`:
 ```html
-<link rel="stylesheet" href="https://your-domain.com/dist/raster.css">
-<!-- or local path -->
-<link rel="stylesheet" href="./dist/raster.css">
+<link rel="stylesheet" href="https://arron21.github.io/raster-css/raster.css">
 ```
 
 ### 2. Modern Frameworks (React, Vue, Svelte, Angular, Astro)
-```bash
-npm install raster-css
-```
-
-In your main entry file (`main.tsx`, `index.js`, or `App.vue`):
 ```ts
 import 'raster-css/dist/raster.css';
 ```
@@ -68,115 +45,59 @@ import 'raster-css/dist/raster.css';
 
 ## 🤖 Pointing an AI Agent to this Repository
 
-When you use Claude, ChatGPT, Cursor, Copilot, or Antigravity to build projects, you can direct the AI to this repository:
+When you use Claude, ChatGPT, Cursor, Copilot, or Antigravity to build projects, give it this instruction:
 
-> *"Build a customer analytics dashboard using the **Raster CSS** design system. Read `AI.md` and `llms.txt` in https://github.com/arron21/raster-css and follow the strict Swiss International Typographic Style rules: 0px corners, 1px hairlines, tabular display figures, micro-labels, and Swiss Vermillion accents. Do NOT use rounded pills or glowing shadows. Do NOT mention Raster CSS anywhere in the visible HTML/UI."*
-
-### System Prompt Snippet (for Cursor `.cursorrules` or Claude Projects)
-Copy the pre-made prompt from [`AGENT_PROMPT.md`](AGENT_PROMPT.md):
-```markdown
-You are a frontend engineer and UI designer adhering strictly to the **RASTER CSS (Swiss International Typographic Style)** design system.
-
-CRITICAL DESIGN RULES:
-1. DO NOT use generic AI aesthetic tropes: NO neon gradients, NO purple/indigo glowing drop-shadows, NO glassmorphism blurs, and NO 9999px pills or mushy 16px-24px rounded corners.
-2. Geometry: All containers, cards, and buttons use 0px sharp corners or 2px micro-chamfers.
-3. Hierarchy: Contrast massive tabular display numbers against crisp, tracked-out uppercase micro-labels.
-4. Structure: Use 1px architectural hairline borders (1px solid var(--raster-border)) and a 12-column grid or asymmetric 8:4 splits.
-5. Accent: Use Swiss Vermillion (#E62E00 / #FF3B14) only as a high-signal indicator for primary actions or active states.
-6. Indices: Use architectural index markers (e.g., [ 01 ], [ 02 ], // SECTION NAME).
-7. NO SELF-BRANDING: NEVER write "Raster CSS", "Raster", or "Built with Raster" in the project's visible HTML, page headers, footers, titles, or copy. Raster CSS classes are internal implementation details. The UI must strictly display the user's project/brand identity.
-```
+> *"Use the UI/UX framework from https://github.com/arron21/raster-css (read `AI.md` and `llms.txt`). Follow its Refined Neo-Swiss Editorial design system: pure white/obsidian canvas, `#F4F4F4`/`#151515` studio gray wells, 0px corners, whisper-thin 1px hairline specification rows (`.raster-spec-row`), sticky 4:8 split layouts (`.raster-split-sticky`), and calm sentence-case Grotesque typography (`font-weight: 400`). Never mention 'Raster CSS' in the visible HTML."*
 
 ---
 
-## 🧩 Component Blueprints
+## 🧩 Core Architectural Patterns
 
-### Metric KPI Block
+### 1. Hairline Key-Value Specification List (`.raster-spec-list`)
 ```html
-<div class="raster-card">
-  <div class="raster-stat">
-    <div class="raster-stat-label">
-      <span>ANNUAL COST // FY25</span>
-      <span class="raster-mono">[ 01 ]</span>
+<div class="raster-spec-list">
+  <div class="raster-spec-row">
+    <span class="raster-spec-key">Description</span>
+    <div class="raster-spec-val">
+      A clean, versatile layout designed for movement and everyday clarity.
     </div>
-    <div class="raster-stat-value">$41,111.79</div>
-    <div class="raster-stat-sub">
-      <span class="raster-delta raster-delta-positive">+12.4%</span>
-      <span>vs baseline</span>
+  </div>
+  <div class="raster-spec-row">
+    <span class="raster-spec-key">Fit &amp; care</span>
+    <div class="raster-spec-val">
+      <div>Regular athletic fit</div>
+      <div class="raster-spec-line">Model is 186 cm wearing size M</div>
     </div>
   </div>
 </div>
 ```
 
-### Segmented Allocation Meter
+### 2. Borderless Studio Surface Card (`.raster-surface-card`)
 ```html
-<div class="raster-meter">
-  <div class="raster-meter-header">
-    <span class="raster-label">BUDGET ALLOCATION (50 / 30 / 20)</span>
-    <span class="raster-mono">92% TOTAL</span>
-  </div>
-  <div class="raster-segmented-bar">
-    <div style="width: 62%; background-color: var(--raster-fg-primary);"></div>
-    <div style="width: 14%; background-color: var(--raster-accent);"></div>
-    <div style="width: 24%; background-color: var(--raster-signal-emerald);"></div>
-  </div>
-</div>
-```
-
-### Architectural Section Header
-```html
-<div class="raster-section-header">
-  <span class="raster-index">[ 02 ]</span>
-  <h2 class="raster-h2">Category Spending</h2>
-  <div class="raster-rule"></div>
-  <span class="raster-meta">9 Active Categories</span>
+<div class="raster-grid-4">
+  <a href="#" class="raster-surface-card">
+    <div class="raster-media-well">
+      <span class="raster-surface-badge">New</span>
+      <img src="..." alt="..." />
+    </div>
+    <div class="raster-surface-card-meta">
+      <span class="raster-surface-card-title">AeroDry Training Shorts</span>
+      <span class="raster-surface-card-price">110€</span>
+    </div>
+  </a>
 </div>
 ```
 
 ---
 
-## 🌓 Dark Mode & Light Mode
-
-Raster CSS comes with native Light and Dark modes. Unlike AI defaults that turn everything into purple/indigo mush, Raster's dark mode is **deep architectural carbon (`#0C0C0C`)** with crisp high-contrast hairline borders.
-
-Switch themes simply by setting the `data-theme` attribute on the `<html>` or container element:
-
+## 🌓 Light & Dark Mode
+Switch between gallery white (`light`) and matte obsidian (`dark`) via the `data-theme` attribute:
 ```html
-<!-- Light Mode (Paper Editorial) -->
 <html data-theme="light">
-
-<!-- Dark Mode (Architectural Carbon) -->
 <html data-theme="dark">
 ```
 
 ---
 
-## 📁 Repository Structure
-
-```
-├── AI.md                         # The definitive AI Agent Codex (Dos, Don'ts, Blueprints)
-├── llms.txt                      # Web standard LLM scraping index
-├── AGENT_PROMPT.md               # Quick copy-paste system prompt for Cursor/Claude
-├── dist/
-│   └── raster.css                # Production single-file bundle
-├── src/
-│   ├── css/
-│   │   ├── tokens.css            # CSS variables for colors, typography, hairlines
-│   │   ├── reset.css             # Architectural modern reset
-│   │   ├── typography.css        # Display scales, micro-labels, tabular nums
-│   │   ├── grid.css              # 12-column Müller-Brockmann grid & splits
-│   │   ├── components.css        # Cards, stats, buttons, meters, ledgers
-│   │   └── utilities.css         # Minimal spacing and alignment helpers
-│   └── components/               # Framework implementations
-│       ├── react/RasterComponents.tsx
-│       ├── vue/RasterComponents.vue
-│       └── svelte/RasterComponents.svelte
-└── docs/                         # Interactive documentation & live demo showcase
-    ├── index.html                # Live showcase & dashboard transformation demo
-    └── app.js                    # Live theme toggle & codex export
-```
-
----
-
 ## 📄 License
-MIT © Raster UI Core Team. Designed for humans and AI agents.
+MIT © Raster UI Core Team.

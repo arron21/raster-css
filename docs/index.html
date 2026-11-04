@@ -3,164 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RASTER CSS — Swiss International Typographic Design System & Live Demo</title>
-  <meta name="description" content="A distinct, AI-friendly CSS framework based on Swiss Design (International Typographic Style). Built for React, Vue, Svelte, Angular, and HTML.">
+  <title>RASTER CSS — Refined Neo-Swiss Editorial Design System</title>
+  <meta name="description" content="A distinct, AI-friendly CSS framework based on Refined Neo-Swiss Editorial Design (Motus / Quiet Modernism). Built for React, Vue, Svelte, Angular, and HTML.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./raster.css">
   <style>
-    /* ==========================================================================
-       DEMO PAGE & INTERACTIVE SHOWCASE STYLES
-       ========================================================================== */
     html {
       scroll-behavior: smooth;
     }
 
-    .hero-poster {
-      border-bottom: 2px solid var(--raster-border-strong);
-      padding: clamp(2.5rem, 6vw, 5.5rem) 0;
-      position: relative;
+    /* Subtle View Switcher Strip above Masthead */
+    .system-control-bar {
+      border-bottom: 1px solid var(--raster-border);
+      background-color: var(--raster-surface-subtle);
+      font-size: var(--raster-text-micro);
+      color: var(--raster-fg-muted);
     }
 
-    .badge-swiss {
+    .system-control-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 32px;
+      gap: var(--raster-space-3);
+      flex-wrap: wrap;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .view-pill-group {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-family: var(--raster-font-mono);
-      font-size: var(--raster-text-micro);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 3px 8px;
-      background-color: var(--raster-accent);
-      color: #ffffff;
-      font-weight: 700;
+      gap: var(--raster-space-4);
     }
 
+    .view-pill {
+      background: none;
+      border: none;
+      border-bottom: 1px solid transparent;
+      padding: 2px 0;
+      font-family: var(--raster-font-sans);
+      font-size: var(--raster-text-micro);
+      color: var(--raster-fg-muted);
+      cursor: pointer;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .view-pill:hover {
+      color: var(--raster-fg-primary);
+    }
+
+    .view-pill.is-active {
+      color: var(--raster-fg-primary);
+      border-bottom-color: var(--raster-fg-primary);
+      font-weight: 500;
+    }
+
+    /* Studio Photography & Architectural Garment Visuals */
+    .studio-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: contrast(1.02);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .raster-media-well:hover .studio-photo {
+      transform: scale(1.015);
+    }
+
+    /* Macro Fabric Weave Pattern (Matches 00:03 bottom-left panel in video) */
+    .fabric-macro-texture {
+      width: 100%;
+      height: 100%;
+      background-color: #1c1d1f;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0),
+        radial-gradient(rgba(0, 0, 0, 0.4) 1px, transparent 0);
+      background-size: 4px 4px;
+      background-position: 0 0, 2px 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fabric-macro-texture::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 65% 30%, rgba(255,255,255,0.12), transparent 55%),
+                  linear-gradient(135deg, transparent 35%, rgba(0,0,0,0.55) 75%, rgba(255,255,255,0.05) 100%);
+    }
+
+    /* Code Preview Blocks */
     .code-preview {
-      background-color: var(--raster-surface-subtle);
-      border: 1px solid var(--raster-border);
+      background-color: var(--raster-surface);
       padding: var(--raster-space-4);
       font-family: var(--raster-font-mono);
-      font-size: var(--raster-text-small);
-      line-height: 1.55;
+      font-size: var(--raster-text-micro);
+      line-height: 1.6;
       overflow-x: auto;
       white-space: pre;
       color: var(--raster-fg-primary);
     }
 
-    .comparison-box {
-      border: 1px solid var(--raster-border);
-      background-color: var(--raster-surface);
-      overflow: hidden;
-    }
-
-    .comparison-header {
-      padding: var(--raster-space-3) var(--raster-space-4);
-      border-bottom: 1px solid var(--raster-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: var(--raster-text-micro);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background-color: var(--raster-surface-subtle);
-    }
-
-    .tab-nav {
-      display: flex;
-      border-bottom: 1px solid var(--raster-border);
-      background: var(--raster-surface-subtle);
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .tab-btn {
-      padding: 10px 18px;
-      border: none;
-      background: transparent;
-      font-family: var(--raster-font-mono);
-      font-size: var(--raster-text-micro);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      border-right: 1px solid var(--raster-border);
-      color: var(--raster-fg-secondary);
-      white-space: nowrap;
-      transition: all 0.15s ease;
-    }
-
-    .tab-btn:hover {
-      color: var(--raster-fg-primary);
-      background-color: var(--raster-surface-hover);
-    }
-
-    .tab-btn.active {
-      background: var(--raster-surface);
-      color: var(--raster-fg-primary);
-      border-bottom: 2px solid var(--raster-accent);
-      margin-bottom: -1px;
-    }
-
-    /* Demo App Switcher Bar */
-    .demo-switcher-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--raster-fg-primary);
-      color: var(--raster-canvas);
-      padding: var(--raster-space-2) var(--raster-space-4);
-      border: 2px solid var(--raster-border-strong);
-      border-bottom: none;
-      flex-wrap: wrap;
-      gap: var(--raster-space-2);
-    }
-
-    .demo-tab-btn {
-      background: transparent;
-      border: 1px solid rgba(128, 128, 128, 0.4);
-      color: var(--raster-canvas);
-      opacity: 0.7;
-      padding: 6px 14px;
-      font-family: var(--raster-font-mono);
-      font-size: var(--raster-text-micro);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .demo-tab-btn:hover {
-      opacity: 1;
-    }
-
-    .demo-tab-btn.active {
-      background-color: var(--raster-accent);
-      border-color: var(--raster-accent);
-      color: #ffffff;
-      opacity: 1;
-    }
-
-    .demo-viewport {
-      border: 2px solid var(--raster-border-strong);
-      padding: var(--raster-space-6);
-      background-color: var(--raster-canvas);
-    }
-
-    @media (max-width: 768px) {
-      .demo-viewport {
-        padding: var(--raster-space-4);
-      }
-    }
-
     /* Anti-AI Visual Slop Mockup (For Contrast Demonstration Only) */
     .ai-slop-showcase {
       background: radial-gradient(circle at top right, #312e81, #0f172a 70%);
-      border-radius: 24px;
+      border-radius: 20px;
       padding: 24px;
       color: #e2e8f0;
       box-shadow: 0 12px 32px -4px rgba(99, 102, 241, 0.35);
@@ -171,44 +124,10 @@
     .ai-slop-inner-card {
       background: rgba(30, 41, 59, 0.75);
       backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 20px;
+      border-radius: 16px;
+      padding: 18px;
       border: 1px solid rgba(139, 92, 246, 0.35);
       box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
-    }
-
-    .ai-slop-icon-pill {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 16px;
-    }
-
-    /* Interactive Color Swatches */
-    .swatch-card {
-      border: 1px solid var(--raster-border);
-      background-color: var(--raster-surface);
-      cursor: pointer;
-      transition: border-color 0.15s ease, transform 0.1s ease;
-    }
-
-    .swatch-card:hover {
-      border-color: var(--raster-border-strong);
-    }
-
-    .swatch-color {
-      height: 72px;
-      width: 100%;
-      border-bottom: 1px solid var(--raster-border);
-    }
-
-    .swatch-meta {
-      padding: var(--raster-space-3);
     }
 
     /* 12-Column Swiss Grid Inspector Overlay */
@@ -231,9 +150,9 @@
 
     .grid-inspector-col {
       height: 100%;
-      background-color: rgba(230, 46, 0, 0.07);
-      border-left: 1px dashed rgba(230, 46, 0, 0.35);
-      border-right: 1px dashed rgba(230, 46, 0, 0.35);
+      background-color: rgba(17, 17, 17, 0.03);
+      border-left: 1px dashed rgba(120, 120, 120, 0.25);
+      border-right: 1px dashed rgba(120, 120, 120, 0.25);
     }
 
     /* Toast Notification */
@@ -243,14 +162,11 @@
       right: 24px;
       background: var(--raster-fg-primary);
       color: var(--raster-canvas);
-      padding: 12px 20px;
-      font-family: var(--raster-font-mono);
-      font-size: var(--raster-text-micro);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      box-shadow: var(--raster-shadow-hard);
-      border: 1px solid var(--raster-border-strong);
+      padding: 10px 18px;
+      font-family: var(--raster-font-sans);
+      font-size: var(--raster-text-small);
+      font-weight: 400;
+      box-shadow: var(--raster-shadow-floating);
       display: none;
       z-index: 10000;
     }
@@ -278,1033 +194,648 @@
     </div>
   </div>
 
-  <!-- Masthead -->
+  <!-- Scroll-Triggered Floating Action Bar (Matches 00:05 in reference video) -->
+  <div id="floating-cart-bar" class="raster-floating-bar">
+    <span>Essential T-Shirt</span>
+    <span class="raster-tabular" id="floating-price">95€</span>
+    <span id="floating-size">M</span>
+    <span id="floating-color">Black</span>
+    <button type="button" class="raster-floating-bar-action" onclick="triggerAddToCart()">Add to cart</button>
+  </div>
+
+  <!-- Top System Control Strip (Demo Mode Switcher + Theme + AI Codex Export) -->
+  <div class="system-control-bar">
+    <div class="raster-container system-control-inner">
+      <div class="view-pill-group">
+        <span style="color: var(--raster-fg-primary); font-weight: 500;">Raster CSS Demo:</span>
+        <button class="view-pill is-active" onclick="switchShowcaseMode('storefront', this)">01. Editorial Storefront (Video Match)</button>
+        <button class="view-pill" onclick="switchShowcaseMode('finance', this)">02. Financial Ledger Rebuild</button>
+        <button class="view-pill" onclick="switchShowcaseMode('system', this)">03. System &amp; AI Codex</button>
+      </div>
+
+      <div class="view-pill-group">
+        <button id="grid-toggle" class="view-pill" title="Toggle 12-Column Grid Overlay">
+          <span id="grid-text">Grid: Off</span>
+        </button>
+        <button id="theme-toggle" class="view-pill" title="Toggle Light / Dark Mode">
+          <span id="theme-text">Theme: Light</span>
+        </button>
+        <button class="view-pill" onclick="copyAiCodex()" style="color: var(--raster-fg-primary); font-weight: 500;">
+          Copy AI.md
+        </button>
+        <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener" class="view-pill">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary 3-Zone Architectural Masthead (Exact Motus Video Proportions) -->
   <header class="raster-masthead">
     <div class="raster-container">
       <div class="raster-masthead-inner">
-        <a href="#" class="raster-brand">
-          <span class="badge-swiss">+</span>
-          <span>RASTER</span>
-          <span class="raster-hide-xs" style="font-family: var(--raster-font-mono); font-size: 0.75rem; color: var(--raster-fg-muted); font-weight: 500;">// SWISS DESIGN SYSTEM</span>
-        </a>
+        <a href="#" class="raster-brand" id="masthead-brand">Motus</a>
 
         <nav class="raster-nav-desktop">
           <ul class="raster-nav-links">
-            <li><a href="#demos" class="raster-nav-link">Live Demos</a></li>
-            <li><a href="#manifesto" class="raster-nav-link">Anti-AI vs Swiss</a></li>
-            <li><a href="#tokens" class="raster-nav-link">Typography & Tokens</a></li>
-            <li><a href="#components" class="raster-nav-link">Kitchen Sink</a></li>
-            <li><a href="#ai-guide" class="raster-nav-link">AI Codex</a></li>
+            <li><a href="#storefront-view" class="raster-nav-link" onclick="switchShowcaseMode('storefront')">Catalog</a></li>
+            <li><a href="#related-section" class="raster-nav-link">New arrivals</a></li>
+            <li><a href="#finance-section" class="raster-nav-link" onclick="switchShowcaseMode('finance')">Ledger</a></li>
+            <li><a href="#system-section" class="raster-nav-link" onclick="switchShowcaseMode('system')">System</a></li>
+            <li><a href="#ai-codex-section" class="raster-nav-link" onclick="switchShowcaseMode('system')">AI Codex</a></li>
           </ul>
         </nav>
 
-        <div class="raster-flex raster-items-center gap-2">
-          <button id="grid-toggle" class="raster-btn raster-btn-ghost raster-btn-sm" title="Toggle 12-Column Müller-Brockmann Grid Overlay">
-            <span>⊞</span>
-            <span id="grid-text" class="raster-hide-xs">GRID: OFF</span>
+        <div class="raster-masthead-actions">
+          <a href="#ai-codex-section" class="raster-nav-link raster-hide-xs">Search</a>
+          <a href="#system-section" class="raster-nav-link raster-hide-xs">Account</a>
+          <span class="raster-nav-link raster-hide-xs" style="color: var(--raster-fg-muted);">EUR €</span>
+          <button type="button" class="raster-btn-ghost" style="font-size: var(--raster-text-small); color: var(--raster-fg-primary); padding: 0;" onclick="triggerAddToCart()">
+            Cart (<span id="cart-count">0</span>)
           </button>
-          <button id="theme-toggle" class="raster-btn raster-btn-ghost raster-btn-sm" title="Toggle Light/Dark Theme">
-            <span id="theme-icon">◐</span>
-            <span id="theme-text" class="raster-hide-xs">THEME: LIGHT</span>
-          </button>
-          <button onclick="copyAiCodex()" class="raster-btn raster-btn-primary raster-btn-sm raster-hide-xs">
-            <span>COPY AI.MD</span>
-          </button>
-          <button id="mobile-menu-toggle" class="raster-menu-btn" aria-label="Toggle Navigation Menu">
-            <span>MENU</span>
-          </button>
+          <button id="mobile-menu-toggle" class="raster-menu-btn" aria-label="Toggle Menu">Menu</button>
         </div>
       </div>
 
       <!-- Mobile Navigation Drawer -->
       <nav id="mobile-nav" class="raster-nav-mobile">
-        <a href="#demos" class="raster-nav-link" onclick="closeMobileNav()">[ 01 ] Interactive Live Demos</a>
-        <a href="#manifesto" class="raster-nav-link" onclick="closeMobileNav()">[ 02 ] Anti-AI Manifesto</a>
-        <a href="#tokens" class="raster-nav-link" onclick="closeMobileNav()">[ 03 ] Typography & Tokens</a>
-        <a href="#components" class="raster-nav-link" onclick="closeMobileNav()">[ 04 ] Component Kitchen Sink</a>
-        <a href="#ai-guide" class="raster-nav-link" onclick="closeMobileNav()">[ 05 ] AI Agent Codex</a>
-        <div style="padding: var(--raster-space-3) var(--raster-space-4);" class="raster-flex raster-flex-col gap-2">
-          <button onclick="copyAiCodex(); closeMobileNav();" class="raster-btn raster-btn-primary raster-btn-sm w-full">
-            <span>COPY FULL AI.MD CODEX</span>
-          </button>
-          <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener" class="raster-btn raster-btn-outline raster-btn-sm w-full">
-            <span>VIEW GITHUB REPOSITORY ↗</span>
-          </a>
+        <a href="#storefront-view" class="raster-nav-link" onclick="switchShowcaseMode('storefront'); closeMobileNav();">01. Editorial Storefront</a>
+        <a href="#finance-section" class="raster-nav-link" onclick="switchShowcaseMode('finance'); closeMobileNav();">02. Financial Ledger Rebuild</a>
+        <a href="#system-section" class="raster-nav-link" onclick="switchShowcaseMode('system'); closeMobileNav();">03. System &amp; AI Codex</a>
+        <div class="raster-flex gap-2 mt-2">
+          <button onclick="copyAiCodex(); closeMobileNav();" class="raster-btn raster-btn-primary raster-btn-sm w-full">Copy AI.md Codex</button>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Poster -->
-  <section class="hero-poster">
-    <div class="raster-container">
-      <div class="raster-flex raster-wrap-mobile raster-justify-between raster-items-baseline mb-3 gap-2">
-        <span class="raster-label raster-label-accent">INTERNATIONAL TYPOGRAPHIC STYLE FOR HUMANS & AI AGENTS</span>
-        <span class="raster-mono raster-label">[ ZÜRICH // 1957 — 2026 ]</span>
-      </div>
-
-      <h1 class="raster-display-2xl mb-6" style="max-width: 1120px;">
-        DISCIPLINED TYPOGRAPHY. ARCHITECTURAL GRIDS. ZERO AI SLOP.
-      </h1>
-      
-      <div class="raster-split-asymmetric mt-8 raster-items-start">
-        <div>
-          <p class="raster-lead" style="max-width: 680px;">
-            Generic AI web interfaces all converge on the same visual clichés: dark purple glow meshes, mushy 24px rounded pills, translucent glass blurs, and floating icon clutter. <strong>Raster CSS</strong> is a framework-agnostic design system rooted in Swiss Modernism, Josef Müller-Brockmann grid mathematics, and ruthless negative space.
-          </p>
-          <div class="raster-flex raster-wrap-mobile gap-3 mt-6">
-            <a href="#demos" class="raster-btn raster-btn-primary raster-btn-touch">EXPLORE LIVE DEMOS ↓</a>
-            <button onclick="copyAgentRepoPrompt()" class="raster-btn raster-btn-accent raster-btn-touch">COPY AI REPO PROMPT</button>
-            <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener" class="raster-btn raster-btn-outline raster-btn-touch">GITHUB REPO ↗</a>
-          </div>
-        </div>
-        
-        <div class="raster-card raster-card-subtle">
-          <div class="raster-flex raster-justify-between raster-items-baseline mb-2">
-            <span class="raster-label">[ SPECIFICATION SHEET ]</span>
-            <span class="raster-tag raster-tag-solid">V1.0.0</span>
-          </div>
-          <table class="raster-table" style="background: transparent;">
-            <tbody>
-              <tr>
-                <td class="raster-label" style="padding: 8px 0;">Aesthetic Lineage</td>
-                <td style="text-align: right; font-weight: 600; padding: 8px 0;">Swiss International Style</td>
-              </tr>
-              <tr>
-                <td class="raster-label" style="padding: 8px 0;">Dependencies</td>
-                <td style="text-align: right; font-weight: 600; padding: 8px 0;">0 (Pure CSS Custom Props)</td>
-              </tr>
-              <tr>
-                <td class="raster-label" style="padding: 8px 0;">Frameworks</td>
-                <td style="text-align: right; font-weight: 600; padding: 8px 0;">React, Vue, Svelte, Angular</td>
-              </tr>
-              <tr>
-                <td class="raster-label" style="padding: 8px 0;">Self-Branding</td>
-                <td style="text-align: right; font-weight: 600; padding: 8px 0;">Strictly Forbidden in Output</td>
-              </tr>
-              <tr>
-                <td class="raster-label" style="padding: 8px 0;">AI Discovery</td>
-                <td style="text-align: right; font-weight: 600; color: var(--raster-accent); padding: 8px 0;">AI.md + llms.txt Included</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Content Container -->
-  <main class="raster-container py-12">
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="raster-container" style="padding-top: var(--raster-space-3); padding-bottom: var(--raster-space-16);">
 
     <!-- ========================================================================
-         SECTION 01: INTERACTIVE MULTI-APPLICATION DEMOS
+         VIEW 01: EDITORIAL STOREFRONT (EXACT REFERENCE VIDEO LAYOUT)
          ======================================================================== -->
-    <section id="demos" class="mb-16">
-      <div class="raster-section-header">
-        <span class="raster-index">[ 01 ]</span>
-        <h2 class="raster-h2">INTERACTIVE APPLICATION DEMOS</h2>
-        <div class="raster-rule"></div>
-        <span class="raster-meta">3 REAL-WORLD SWISS INTERFACES</span>
-      </div>
-
-      <p class="raster-body mb-6">
-        Switch between three complete application interfaces built with Raster CSS. Notice that none of these applications mention "Raster CSS" in their UI—each carries its own authentic product identity while sharing strict Swiss typographic and structural discipline.
-      </p>
-
-      <!-- Demo Switcher Top Bar -->
-      <div class="demo-switcher-bar">
-        <div class="raster-flex raster-wrap-mobile gap-2">
-          <button class="demo-tab-btn active" onclick="switchDemoApp('finance', this)">
-            01 // FINANCIAL LEDGER (REBUILD)
-          </button>
-          <button class="demo-tab-btn" onclick="switchDemoApp('telemetry', this)">
-            02 // CLOUD & AI TELEMETRY
-          </button>
-          <button class="demo-tab-btn" onclick="switchDemoApp('editorial', this)">
-            03 // EDITORIAL ARCHIVE
-          </button>
-        </div>
-        <span class="raster-mono" style="font-size: 11px; opacity: 0.75;">INTERACTIVE SANDBOX // TRY THE CONTROLS</span>
-      </div>
-
-      <!-- ======================================================================
-           DEMO APP 1: WHAT THE COST (INTERACTIVE FINANCIAL LEDGER REBUILD)
-           ====================================================================== -->
-      <div id="demo-app-finance" class="demo-viewport">
+    <section id="storefront-view">
+      <div class="raster-split-sticky">
         
-        <!-- App Masthead -->
-        <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-6 pb-4 border-bottom gap-mobile-3">
-          <div class="raster-flex raster-wrap-mobile raster-items-baseline gap-2">
-            <span class="badge-swiss">$</span>
-            <div class="raster-flex raster-items-baseline gap-2">
-              <span style="font-family: var(--raster-font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">WHAT THE COST</span>
-              <span class="raster-tag raster-tag-accent">PWA // V2.4</span>
-            </div>
-            <span class="raster-label raster-hide-xs" style="border-left: 1px solid var(--raster-border); padding-left: 12px;">Needs vs. Wants Capital Ledger</span>
-          </div>
-
-          <div class="raster-flex raster-wrap-mobile raster-items-center gap-2 w-full-mobile raster-justify-start-mobile">
-            <!-- Interactive Segmented Time Horizon -->
-            <div class="raster-btn-group" id="horizon-group">
-              <button class="raster-btn" onclick="setBudgetHorizon('day', this)">Day</button>
-              <button class="raster-btn" onclick="setBudgetHorizon('wk', this)">Wk</button>
-              <button class="raster-btn" onclick="setBudgetHorizon('mo', this)">Mo</button>
-              <button class="raster-btn is-active" onclick="setBudgetHorizon('yr', this)">Yr</button>
-            </div>
-
-            <button class="raster-btn raster-btn-outline raster-btn-sm" onclick="toggleWhatIfSimulation()">
-              <span id="whatif-btn-label">SIMULATE -10% RENT</span>
-            </button>
-            
-            <button class="raster-btn raster-btn-accent raster-btn-sm" onclick="toggleAddEntryRow()">
-              <span>+ ALLOCATION</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Add Allocation Inline Drawer (Hidden by default) -->
-        <div id="add-allocation-drawer" class="raster-card raster-card-subtle mb-6" style="display: none; border-left: 3px solid var(--raster-accent);">
-          <div class="raster-flex raster-justify-between raster-items-baseline mb-3">
-            <span class="raster-label" style="color: var(--raster-accent);">// NEW LEDGER ALLOCATION ENTRY</span>
-            <button class="raster-btn raster-btn-ghost raster-btn-sm" onclick="toggleAddEntryRow()">CLOSE ✕</button>
-          </div>
-          <div class="raster-grid">
-            <div class="col-5 col-sm-12">
-              <div class="raster-field">
-                <label class="raster-field-label">Category Name</label>
-                <input type="text" id="new-cat-name" class="raster-input" placeholder="e.g. Cloud Compute & Tools" value="Transit & Commute" />
-              </div>
-            </div>
-            <div class="col-3 col-sm-6">
-              <div class="raster-field">
-                <label class="raster-field-label">Classification</label>
-                <select id="new-cat-type" class="raster-select">
-                  <option value="Essential">Essential (Need)</option>
-                  <option value="Discretionary">Discretionary (Want)</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-2 col-sm-6">
-              <div class="raster-field">
-                <label class="raster-field-label">Annual USD ($)</label>
-                <input type="number" id="new-cat-amount" class="raster-input" value="2400" />
-              </div>
-            </div>
-            <div class="col-2 col-sm-12 raster-flex raster-items-center" style="padding-top: 20px;">
-              <button class="raster-btn raster-btn-primary w-full" onclick="addNewAllocation()">COMMIT ENTRY</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Metric KPI Cards (4-Column Swiss Grid) -->
-        <div class="raster-grid mb-6">
+        <!-- Left Sticky Column (4 cols): Product Spec + Bottom Description/Care -->
+        <div class="raster-sticky-pane">
           
-          <!-- Annual Cost -->
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card raster-card-accent-top">
-              <div class="raster-stat">
-                <div class="raster-stat-label">
-                  <span id="stat-cost-title">ANNUAL COST</span>
-                  <span class="raster-mono">[ 01 ]</span>
+          <!-- Top Group: Breadcrumb, Title, Size/Color Spec Rows, Stepper + Add to Cart -->
+          <div>
+            <div class="raster-breadcrumb mb-2">
+              <a href="#">Shop</a>
+              <span>/</span>
+              <a href="#">Men</a>
+              <span>/</span>
+              <span class="is-current">T-Shirts</span>
+            </div>
+
+            <h1 class="raster-display-xl" style="margin-bottom: var(--raster-space-6);">Essential T-Shirt</h1>
+
+            <div class="raster-spec-list">
+              <!-- Size Row -->
+              <div class="raster-spec-row">
+                <span class="raster-spec-key">Size</span>
+                <div class="raster-option-picker" id="size-picker">
+                  <button type="button" class="raster-option-item" onclick="selectSize('XS', this)">XS</button>
+                  <button type="button" class="raster-option-item" onclick="selectSize('S', this)">S</button>
+                  <button type="button" class="raster-option-item is-active" onclick="selectSize('M', this)">M</button>
+                  <button type="button" class="raster-option-item" onclick="selectSize('L', this)">L</button>
+                  <button type="button" class="raster-option-item" onclick="selectSize('XL', this)">XL</button>
+                  <button type="button" class="raster-option-item" onclick="selectSize('XXL', this)">XXL</button>
                 </div>
-                <div class="raster-stat-value" id="stat-cost-val">$41,111.79</div>
-                <div class="raster-stat-sub">
-                  <span id="stat-income-sub">of $54,000.00 baseline income</span>
+              </div>
+
+              <!-- Color + Price Row -->
+              <div class="raster-spec-row-split">
+                <div class="raster-flex raster-items-center" style="gap: 82px;">
+                  <span class="raster-spec-key">Color</span>
+                  <div class="raster-swatch-group" id="color-picker">
+                    <button type="button" class="raster-swatch is-active" style="background-color: #141414;" title="Black" onclick="selectColor('Black', '#141414', this)"></button>
+                    <button type="button" class="raster-swatch" style="background-color: #6e7073;" title="Slate" onclick="selectColor('Slate', '#6e7073', this)"></button>
+                    <button type="button" class="raster-swatch" style="background-color: #e2e2df;" title="Stone" onclick="selectColor('Stone', '#e2e2df', this)"></button>
+                  </div>
                 </div>
+                <div class="raster-price" id="product-price-display">95€</div>
+              </div>
+            </div>
+
+            <!-- Quantity Stepper + Solid Black Add to Cart Button -->
+            <div class="raster-action-row" id="primary-cart-trigger">
+              <div class="raster-stepper">
+                <button type="button" onclick="adjustQty(-1)" aria-label="Decrease quantity">-</button>
+                <span id="qty-value">1</span>
+                <button type="button" onclick="adjustQty(1)" aria-label="Increase quantity">+</button>
+              </div>
+              <button type="button" class="raster-btn raster-btn-primary w-full" onclick="triggerAddToCart()">
+                Add to cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom-Anchored Group: Description & Fit/Care Hairline Spec Rows -->
+          <div class="raster-spec-list">
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">Description</span>
+              <div class="raster-spec-val">
+                A clean, versatile t-shirt designed for movement and everyday wear. The MOTUS Essential T-Shirt combines a structured silhouette with soft, breathable fabric, making it suitable for training, commuting, and daily life.
+              </div>
+            </div>
+
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">Fit &amp; care</span>
+              <div class="raster-spec-val">
+                <div>Regular athletic fit</div>
+                <div class="raster-spec-line">Model is 186 cm wearing size M</div>
+                <div class="raster-spec-line">Machine wash cold, hang dry</div>
               </div>
             </div>
           </div>
 
-          <!-- Needs -->
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card">
+        </div>
+
+        <!-- Right Scrolling Column (8 cols): Tight 8px-Gap Studio Mosaic -->
+        <div class="raster-mosaic">
+          <!-- Panel 1: Front Studio Portrait (Half Width) -->
+          <div class="raster-media-well mosaic-half" style="aspect-ratio: 4 / 5;">
+            <img class="studio-photo" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=85" alt="Essential T-Shirt Front Study" />
+          </div>
+
+          <!-- Panel 2: Back Studio Portrait (Half Width) -->
+          <div class="raster-media-well mosaic-half" style="aspect-ratio: 4 / 5;">
+            <img class="studio-photo" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=85" alt="Essential T-Shirt Back Study" />
+          </div>
+
+          <!-- Panel 3: Full-Width Editorial Movement Portrait (Full Width) -->
+          <div class="raster-media-well mosaic-full" style="aspect-ratio: 16 / 10;">
+            <img class="studio-photo" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1500&q=85" alt="Essential T-Shirt Editorial Portrait" />
+          </div>
+
+          <!-- Panel 4: Macro Technical Jersey Weave Study (Half Width) -->
+          <div class="raster-media-well mosaic-half" style="aspect-ratio: 1 / 1;">
+            <div class="fabric-macro-texture"></div>
+          </div>
+
+          <!-- Panel 5: Flat-Lay Garment Silhouette Study (Half Width) -->
+          <div class="raster-media-well mosaic-half" style="aspect-ratio: 1 / 1; padding: 12%;">
+            <svg viewBox="0 0 240 240" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Technical Garment Silhouette">
+              <path d="M74 36 C90 46, 150 46, 166 36 L216 68 L194 106 L168 92 L168 206 L72 206 L72 92 L46 106 L24 68 Z" fill="#18191b" stroke="#2c2d30" stroke-width="1.5"/>
+              <path d="M90 38 C105 50, 135 50, 150 38" stroke="#3a3b3e" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- "You may like" 4-Column Section (Matches 00:05–00:08 in video) -->
+      <div id="related-section" style="margin-top: var(--raster-space-20);">
+        <div class="raster-section-header">
+          <h2 class="raster-h2">You may like</h2>
+        </div>
+
+        <div class="raster-grid-4">
+          <!-- Card 1 -->
+          <div class="raster-surface-card" onclick="triggerAddToCart('AeroDry Training Shorts')">
+            <div class="raster-media-well">
+              <span class="raster-surface-badge">New</span>
+              <svg viewBox="0 0 200 220" width="68%" height="68%" fill="none">
+                <path d="M52 44 L148 44 L162 172 L110 172 L100 112 L90 172 L38 172 Z" fill="#46484c"/>
+                <line x1="52" y1="56" x2="148" y2="56" stroke="#2d2f33" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="raster-surface-card-meta">
+              <span class="raster-surface-card-title">AeroDry Training Shorts</span>
+              <span class="raster-surface-card-price">110€</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="raster-surface-card" onclick="triggerAddToCart('AeroLine Performance Jacket')">
+            <div class="raster-media-well">
+              <span class="raster-surface-badge">New</span>
+              <svg viewBox="0 0 200 220" width="72%" height="72%" fill="none">
+                <path d="M72 34 L128 34 L168 62 L156 182 L134 182 L134 86 L128 178 L72 178 L66 86 L66 182 L44 182 L32 62 Z" fill="#dcdcdc" stroke="#bdbdbd" stroke-width="1.5"/>
+                <line x1="100" y1="34" x2="100" y2="178" stroke="#222222" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="raster-surface-card-meta">
+              <span class="raster-surface-card-title">AeroLine Performance Jacket</span>
+              <span class="raster-surface-card-price">240€</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="raster-surface-card" onclick="triggerAddToCart('AeroCore Performance Tank')">
+            <div class="raster-media-well">
+              <span class="raster-surface-badge">New</span>
+              <svg viewBox="0 0 200 220" width="66%" height="66%" fill="none">
+                <path d="M72 36 C85 62, 115 62, 128 36 L142 36 C138 78, 146 95, 146 184 L54 184 C54 95, 62 78, 58 36 Z" fill="#171717"/>
+              </svg>
+            </div>
+            <div class="raster-surface-card-meta">
+              <span class="raster-surface-card-title">AeroCore Performance Tank</span>
+              <span class="raster-surface-card-price">85€</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="raster-surface-card" onclick="triggerAddToCart('Core Ultra Baselayer LS')">
+            <div class="raster-media-well">
+              <span class="raster-surface-badge">New</span>
+              <svg viewBox="0 0 200 220" width="66%" height="66%" fill="none">
+                <path d="M64 28 L136 28 L148 192 L118 192 L100 76 L82 192 L52 192 Z" fill="#191919"/>
+              </svg>
+            </div>
+            <div class="raster-surface-card-meta">
+              <span class="raster-surface-card-title">Core Ultra Baselayer LS</span>
+              <span class="raster-surface-card-price">115€</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 02: FINANCIAL LEDGER REBUILD (IN QUIET NEO-SWISS MOTUS STYLE)
+         ======================================================================== -->
+    <section id="finance-section" style="margin-top: var(--raster-space-20); padding-top: var(--raster-space-8); border-top: 1px solid var(--raster-border);">
+      <div class="raster-split-sticky">
+        
+        <!-- Left Sticky Spec Column (4 cols): Budget Controls & Ratios -->
+        <div class="raster-sticky-pane">
+          <div>
+            <div class="raster-breadcrumb mb-2">
+              <a href="#">Ledger</a>
+              <span>/</span>
+              <a href="#">Personal</a>
+              <span>/</span>
+              <span class="is-current">Needs vs. Wants</span>
+            </div>
+
+            <h2 class="raster-display-xl" style="margin-bottom: var(--raster-space-6);">What The Cost</h2>
+
+            <div class="raster-spec-list">
+              <!-- Horizon Picker Row -->
+              <div class="raster-spec-row">
+                <span class="raster-spec-key">Horizon</span>
+                <div class="raster-option-picker" id="horizon-group">
+                  <button type="button" class="raster-option-item" onclick="setBudgetHorizon('day', this)">Day</button>
+                  <button type="button" class="raster-option-item" onclick="setBudgetHorizon('wk', this)">Wk</button>
+                  <button type="button" class="raster-option-item" onclick="setBudgetHorizon('mo', this)">Mo</button>
+                  <button type="button" class="raster-option-item is-active" onclick="setBudgetHorizon('yr', this)">Yr</button>
+                </div>
+              </div>
+
+              <!-- Filter + Total Expenditure Figure Row -->
+              <div class="raster-spec-row-split">
+                <div class="raster-flex raster-items-center" style="gap: 54px;">
+                  <span class="raster-spec-key">Filter</span>
+                  <div class="raster-option-picker">
+                    <button type="button" class="raster-option-item is-active" onclick="filterLedger('ALL', this)">All</button>
+                    <button type="button" class="raster-option-item" onclick="filterLedger('Essential', this)">Needs</button>
+                    <button type="button" class="raster-option-item" onclick="filterLedger('Discretionary', this)">Wants</button>
+                  </div>
+                </div>
+                <div class="raster-price" id="stat-cost-val">$41,111.79</div>
+              </div>
+            </div>
+
+            <!-- Action Row: Simulation + Add Entry -->
+            <div class="raster-flex gap-2 mt-2">
+              <button type="button" class="raster-btn raster-btn-outline w-full" onclick="toggleWhatIfSimulation()">
+                <span id="whatif-btn-label">Simulate -10% rent</span>
+              </button>
+              <button type="button" class="raster-btn raster-btn-primary w-full" onclick="toggleAddEntryRow()">
+                + Add allocation
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom-Anchored Spec Rows: Allocation Ratio & Velocity -->
+          <div class="raster-spec-list">
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">50 / 30 / 20</span>
+              <div class="raster-spec-val">
+                <span id="stat-income-sub">Allocated from $54,000.00 baseline income.</span>
+                <div class="raster-segmented-bar mt-1">
+                  <div id="bar-seg-needs" style="width: 62%; background-color: var(--raster-fg-primary);"></div>
+                  <div id="bar-seg-wants" style="width: 14%; background-color: var(--raster-fg-muted);"></div>
+                  <div id="bar-seg-savings" style="width: 24%; background-color: var(--raster-border);"></div>
+                </div>
+                <div class="raster-flex raster-justify-between raster-label mt-1">
+                  <span id="bar-label-needs">Needs 62%</span>
+                  <span id="bar-label-wants">Wants 14%</span>
+                  <span id="bar-label-savings">Saved 24%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">Velocity</span>
+              <div class="raster-spec-val">
+                <div class="raster-flex raster-justify-between">
+                  <span>Monthly burn</span>
+                  <span class="raster-tabular" id="metric-burn-rate">$3,425.98 / mo</span>
+                </div>
+                <div class="raster-spec-line raster-flex raster-justify-between">
+                  <span>Daily allowance</span>
+                  <span class="raster-tabular" id="metric-daily-rate">$112.63 / day</span>
+                </div>
+                <div class="raster-spec-line raster-flex raster-justify-between">
+                  <span>Net surplus rate</span>
+                  <span class="raster-tabular" id="surplus-big-rate">24.0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column (8 cols): 4 Studio Surface KPI Cards + Clean Hairline Ledger -->
+        <div>
+          <!-- Add Allocation Inline Drawer -->
+          <div id="add-allocation-drawer" class="raster-card-subtle mb-4" style="display: none;">
+            <div class="raster-flex raster-justify-between raster-items-baseline mb-3">
+              <span class="raster-small" style="font-weight: 500;">New ledger allocation</span>
+              <button type="button" class="raster-btn-ghost raster-small" onclick="toggleAddEntryRow()">Close</button>
+            </div>
+            <div class="raster-grid">
+              <div class="col-5 col-sm-12">
+                <div class="raster-field">
+                  <label class="raster-field-label">Category</label>
+                  <input type="text" id="new-cat-name" class="raster-input" value="Transit &amp; Commute" />
+                </div>
+              </div>
+              <div class="col-4 col-sm-6">
+                <div class="raster-field">
+                  <label class="raster-field-label">Classification</label>
+                  <select id="new-cat-type" class="raster-select">
+                    <option value="Essential">Essential (Need)</option>
+                    <option value="Discretionary">Discretionary (Want)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-3 col-sm-6">
+                <div class="raster-field">
+                  <label class="raster-field-label">Annual USD</label>
+                  <input type="number" id="new-cat-amount" class="raster-input" value="2400" />
+                </div>
+              </div>
+            </div>
+            <button type="button" class="raster-btn raster-btn-primary mt-3" onclick="addNewAllocation()">Save allocation</button>
+          </div>
+
+          <!-- 4 Studio Gray Surface KPI Wells -->
+          <div class="raster-grid-4 mb-8">
+            <div class="raster-card-subtle">
               <div class="raster-stat">
                 <div class="raster-stat-label">
-                  <span>NEEDS <span class="raster-tag raster-tag-solid" style="font-size: 9px; padding: 1px 4px;">REQ</span></span>
-                  <span class="raster-mono">[ 02 ]</span>
+                  <span id="stat-cost-title">Annual cost</span>
+                  <span>Total</span>
+                </div>
+                <div class="raster-stat-value" id="stat-cost-card">$41,111.79</div>
+                <div class="raster-stat-sub">76% of income</div>
+              </div>
+            </div>
+
+            <div class="raster-card-subtle">
+              <div class="raster-stat">
+                <div class="raster-stat-label">
+                  <span>Needs</span>
+                  <span>Req</span>
                 </div>
                 <div class="raster-stat-value" id="stat-needs-val">$33,344.31</div>
-                <div class="raster-stat-sub">
-                  <span class="raster-delta raster-delta-negative" id="stat-needs-pct">62% OF INC</span>
-                  <span class="raster-mono">GOAL: ~50%</span>
-                </div>
+                <div class="raster-stat-sub"><span id="stat-needs-pct">62% of inc</span> · Goal 50%</div>
               </div>
             </div>
-          </div>
 
-          <!-- Wants -->
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card">
+            <div class="raster-card-subtle">
               <div class="raster-stat">
                 <div class="raster-stat-label">
-                  <span>WANTS <span class="raster-tag" style="font-size: 9px; padding: 1px 4px;">OPT</span></span>
-                  <span class="raster-mono">[ 03 ]</span>
+                  <span>Wants</span>
+                  <span>Opt</span>
                 </div>
                 <div class="raster-stat-value" id="stat-wants-val">$7,767.48</div>
-                <div class="raster-stat-sub">
-                  <span class="raster-delta raster-delta-positive" id="stat-wants-pct">14% OF INC</span>
-                  <span class="raster-mono">GOAL: ~30%</span>
-                </div>
+                <div class="raster-stat-sub"><span id="stat-wants-pct">14% of inc</span> · Goal 30%</div>
               </div>
             </div>
-          </div>
 
-          <!-- Savings / Surplus -->
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card">
+            <div class="raster-card-subtle">
               <div class="raster-stat">
                 <div class="raster-stat-label">
-                  <span>SAVINGS / SURPLUS</span>
-                  <span class="raster-mono">[ 04 ]</span>
+                  <span>Surplus</span>
+                  <span>Saved</span>
                 </div>
                 <div class="raster-stat-value" id="stat-savings-val">$12,888.21</div>
-                <div class="raster-stat-sub">
-                  <span class="raster-delta raster-delta-positive" id="stat-savings-pct">24% SAVED</span>
-                  <span class="raster-mono">GOAL: ~20%</span>
-                </div>
+                <div class="raster-stat-sub"><span id="stat-savings-pct">24% saved</span> · Goal 20%</div>
               </div>
             </div>
           </div>
 
-        </div>
-
-        <!-- 50/30/20 Budget Health Metric Bar -->
-        <div class="raster-card mb-6">
-          <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-2 gap-mobile-2">
-            <div class="raster-flex raster-items-center gap-2">
-              <span class="raster-label">50 / 30 / 20 BUDGET HEALTH ALLOCATION</span>
-            </div>
-            <div class="raster-label raster-mono raster-wrap-mobile raster-flex gap-3">
-              <span style="color: var(--raster-fg-primary);" id="bar-label-needs">■ NEEDS: 62%</span>
-              <span style="color: var(--raster-accent);" id="bar-label-wants">■ WANTS: 14%</span>
-              <span style="color: var(--raster-signal-emerald);" id="bar-label-savings">■ SAVINGS: 24%</span>
-            </div>
+          <!-- Category Spending Table -->
+          <div class="raster-section-header">
+            <h3 class="raster-h2">Category spending</h3>
+            <span class="raster-meta" id="ledger-count-badge">6 categories</span>
           </div>
 
-          <!-- Segmented Multi-Bar -->
-          <div class="raster-segmented-bar" style="height: 12px;">
-            <div id="bar-seg-needs" style="width: 62%; background-color: var(--raster-fg-primary);" title="Needs"></div>
-            <div id="bar-seg-wants" style="width: 14%; background-color: var(--raster-accent);" title="Wants"></div>
-            <div id="bar-seg-savings" style="width: 24%; background-color: var(--raster-signal-emerald);" title="Savings"></div>
+          <div class="raster-table-container">
+            <table class="raster-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Share</th>
+                  <th class="cell-num" id="table-amount-col-header">Annual amount</th>
+                </tr>
+              </thead>
+              <tbody id="finance-ledger-tbody">
+                <!-- Populated by app.js -->
+              </tbody>
+            </table>
           </div>
-
-          <div class="raster-flex raster-wrap-mobile raster-justify-between mt-2 raster-label gap-mobile-1" style="font-size: 10px;">
-            <span>TARGET: 50% NEEDS</span>
-            <span>TARGET: 30% WANTS</span>
-            <span>TARGET: 20% SAVINGS</span>
-          </div>
-        </div>
-
-        <!-- Asymmetric Split: Category Breakdown vs Financial Ledger -->
-        <div class="raster-split-asymmetric">
-          
-          <!-- Left: Interactive Ledger Table -->
-          <div class="raster-card">
-            <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-4 gap-2">
-              <div>
-                <span class="raster-card-title">Category Spending Allocation</span>
-                <span class="raster-label ml-2" id="ledger-count-badge">[ 6 ITEMS ]</span>
-              </div>
-
-              <!-- Filter & Search Controls -->
-              <div class="raster-flex raster-wrap-mobile gap-2">
-                <div class="raster-btn-group">
-                  <button class="raster-btn is-active" onclick="filterLedger('ALL', this)">All</button>
-                  <button class="raster-btn" onclick="filterLedger('Essential', this)">Needs</button>
-                  <button class="raster-btn" onclick="filterLedger('Discretionary', this)">Wants</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="raster-table-container">
-              <table class="raster-table" id="finance-ledger-table">
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Classification</th>
-                    <th>Share</th>
-                    <th class="cell-num" id="table-amount-col-header">Annual Amount</th>
-                  </tr>
-                </thead>
-                <tbody id="finance-ledger-tbody">
-                  <!-- Populated dynamically by app.js -->
-                </tbody>
-              </table>
-            </div>
-
-            <div class="raster-card-footer">
-              <span class="raster-label">TABULAR NUMERIC ALIGNMENT // TNUM-1</span>
-              <span class="raster-mono raster-label" id="simulation-status-tag">BASELINE MODE</span>
-            </div>
-          </div>
-
-          <!-- Right: Direct Swiss Surplus Ratio -->
-          <div class="raster-card raster-flex-col raster-justify-between">
-            <div>
-              <div class="raster-label mb-1">// SURPLUS RATIO</div>
-              <h3 class="raster-h3 mb-4">Capital Retention</h3>
-
-              <!-- Huge architectural percentage -->
-              <div style="padding: var(--raster-space-4) 0; border-top: 1px solid var(--raster-border); border-bottom: 1px solid var(--raster-border);">
-                <div class="raster-label">Net Surplus Rate</div>
-                <div class="raster-display-xl" style="color: var(--raster-accent);" id="surplus-big-rate">24.0%</div>
-                <div class="raster-label" style="color: var(--raster-fg-secondary);" id="surplus-sub-caption">$12,888.21 retained after taxes & expenditures</div>
-              </div>
-
-              <div class="mt-4">
-                <div class="raster-label mb-2">TARGET VELOCITY METRICS</div>
-                <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
-                  <span class="raster-mono">Monthly Burn:</span>
-                  <span class="raster-mono" id="metric-burn-rate">$3,425.98 / mo</span>
-                </div>
-                <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
-                  <span class="raster-mono">Daily Allowance:</span>
-                  <span class="raster-mono" id="metric-daily-rate">$112.63 / day</span>
-                </div>
-                <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
-                  <span class="raster-mono">Runway Margin:</span>
-                  <span class="raster-mono">14.2 months</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="raster-callout raster-callout-accent mt-6">
-              <span class="raster-label" style="color: var(--raster-accent);">EXPENDITURE AUDIT</span>
-              <span class="raster-small" id="audit-callout-copy">Housing accounts for 48.1% of total expenditures. Click "SIMULATE -10% RENT" above to test surplus impact.</span>
-            </div>
-          </div>
-
         </div>
 
       </div>
-
-      <!-- ======================================================================
-           DEMO APP 2: KRONOS CLOUD & AI TELEMETRY CONSOLE
-           ====================================================================== -->
-      <div id="demo-app-telemetry" class="demo-viewport" style="display: none;">
-        <div class="raster-flex raster-flex-col-mobile raster-justify-between raster-items-baseline mb-6 pb-4 border-bottom gap-mobile-3">
-          <div class="raster-flex raster-wrap-mobile raster-items-baseline gap-3">
-            <span class="badge-swiss" style="background-color: var(--raster-fg-primary); color: var(--raster-canvas);">▲</span>
-            <span style="font-family: var(--raster-font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">KRONOS // TELEMETRY</span>
-            <span class="raster-tag raster-tag-solid">CLUSTER: EU-CENTRAL-1</span>
-            <span class="raster-tag" style="color: var(--raster-signal-emerald); border-color: var(--raster-signal-emerald);">● ALL SYSTEMS NOMINAL</span>
-          </div>
-          <div class="raster-flex gap-2">
-            <span class="raster-mono raster-label">UTC 19:50:14 // REFRESH: 5S</span>
-          </div>
-        </div>
-
-        <div class="raster-grid mb-6">
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card">
-              <div class="raster-stat">
-                <div class="raster-stat-label"><span>INGEST THROUGHPUT</span><span class="raster-mono">[ 01 ]</span></div>
-                <div class="raster-stat-value">142,890<span style="font-size: 1rem; color: var(--raster-fg-muted);">/s</span></div>
-                <div class="raster-stat-sub"><span class="raster-delta raster-delta-positive">+8.2%</span><span>peak load window</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card raster-card-accent-top">
-              <div class="raster-stat">
-                <div class="raster-stat-label"><span>P99 EDGE LATENCY</span><span class="raster-mono">[ 02 ]</span></div>
-                <div class="raster-stat-value">14.2<span style="font-size: 1rem; color: var(--raster-fg-muted);">ms</span></div>
-                <div class="raster-stat-sub"><span class="raster-delta raster-delta-positive">-2.1ms</span><span>SLA target &lt; 25.0ms</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card">
-              <div class="raster-stat">
-                <div class="raster-stat-label"><span>ERROR BUDGET</span><span class="raster-mono">[ 03 ]</span></div>
-                <div class="raster-stat-value">99.984%</div>
-                <div class="raster-stat-sub"><span class="raster-delta raster-delta-positive">5XX: 0.001%</span><span>30d rolling</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 col-lg-6 col-sm-6 col-xs-12">
-            <div class="raster-card">
-              <div class="raster-stat">
-                <div class="raster-stat-label"><span>ACTIVE WORKER NODES</span><span class="raster-mono">[ 04 ]</span></div>
-                <div class="raster-stat-value">64 / 64</div>
-                <div class="raster-stat-sub"><span class="raster-mono">CPU: 68.4% // MEM: 71.2%</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="raster-split-asymmetric">
-          <div class="raster-card">
-            <div class="raster-card-header">
-              <span class="raster-card-title">Regional Worker Pool Status</span>
-              <span class="raster-label">4 Active Zones</span>
-            </div>
-            <div class="raster-table-container">
-              <table class="raster-table">
-                <thead>
-                  <tr>
-                    <th>Region ID</th>
-                    <th>State</th>
-                    <th>Saturation</th>
-                    <th class="cell-num">P95 Latency</th>
-                    <th class="cell-num">Req / Sec</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="raster-mono" style="font-weight: 600;">eu-central-z1 (Frankfurt)</td>
-                    <td><span class="raster-tag raster-tag-solid">HEALTHY</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
-                        <div class="raster-meter-fill" style="width: 72%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num">9.4 ms</td>
-                    <td class="cell-num">64,120</td>
-                  </tr>
-                  <tr>
-                    <td class="raster-mono" style="font-weight: 600;">us-east-va1 (Ashburn)</td>
-                    <td><span class="raster-tag raster-tag-solid">HEALTHY</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
-                        <div class="raster-meter-fill" style="width: 58%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num">11.8 ms</td>
-                    <td class="cell-num">48,910</td>
-                  </tr>
-                  <tr>
-                    <td class="raster-mono" style="font-weight: 600;">ap-northeast-tk1 (Tokyo)</td>
-                    <td><span class="raster-tag raster-tag-accent">ELEVATED</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
-                        <div class="raster-meter-fill raster-meter-fill-accent" style="width: 89%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num" style="color: var(--raster-accent); font-weight: 700;">22.6 ms</td>
-                    <td class="cell-num">21,400</td>
-                  </tr>
-                  <tr>
-                    <td class="raster-mono" style="font-weight: 600;">eu-west-ln1 (London)</td>
-                    <td><span class="raster-tag raster-tag-solid">HEALTHY</span></td>
-                    <td>
-                      <div class="raster-meter-track" style="height: 5px; width: 90px;">
-                        <div class="raster-meter-fill" style="width: 34%;"></div>
-                      </div>
-                    </td>
-                    <td class="cell-num">8.1 ms</td>
-                    <td class="cell-num">8,460</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="raster-card">
-            <div class="raster-label mb-2">// EVENT STREAM</div>
-            <h3 class="raster-h3 mb-4">Audit Log</h3>
-            <div class="raster-flex raster-flex-col gap-3">
-              <div style="border-bottom: 1px solid var(--raster-border-subtle); padding-bottom: 8px;">
-                <div class="raster-flex raster-justify-between raster-label">
-                  <span style="color: var(--raster-accent);">[ WARN // 19:48:02 ]</span>
-                  <span>AP-NORTHEAST</span>
-                </div>
-                <p class="raster-small mt-1">Auto-scaler provisioned +4 replica pods due to 89% ingress threshold.</p>
-              </div>
-              <div style="border-bottom: 1px solid var(--raster-border-subtle); padding-bottom: 8px;">
-                <div class="raster-flex raster-justify-between raster-label">
-                  <span>[ INFO // 19:30:00 ]</span>
-                  <span>GLOBAL-TLS</span>
-                </div>
-                <p class="raster-small mt-1">Zero-downtime certificate rotation completed across 64 edge nodes.</p>
-              </div>
-              <div>
-                <div class="raster-flex raster-justify-between raster-label">
-                  <span>[ DEPLOY // 18:15:44 ]</span>
-                  <span>BUILD #8841</span>
-                </div>
-                <p class="raster-small mt-1">Canary rollout promoted to 100% production traffic.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ======================================================================
-           DEMO APP 3: KUNSTHALLE ZÜRICH (EDITORIAL / EXHIBITION ARCHIVE)
-           ====================================================================== -->
-      <div id="demo-app-editorial" class="demo-viewport" style="display: none;">
-        <div class="raster-grid" style="border-bottom: 2px solid var(--raster-border-strong); padding-bottom: var(--raster-space-6); margin-bottom: var(--raster-space-6);">
-          <div class="col-4 col-sm-12">
-            <div class="raster-label raster-label-accent mb-2">KUNSTHALLE ZÜRICH // ARCHIVE</div>
-            <div class="raster-mono raster-small">LIMMATSTRASSE 270<br>CH-8005 ZÜRICH<br>SWITZERLAND</div>
-          </div>
-          <div class="col-8 col-sm-12">
-            <h2 class="raster-display-xl mb-3">KONSTRUKTIVE GRAFIK: 1955–1972</h2>
-            <p class="raster-lead">
-              An architectural retrospective examining mathematical grid systems, objective photography, and sans-serif typographic hierarchy in post-war Swiss visual communication.
-            </p>
-          </div>
-        </div>
-
-        <div class="raster-grid">
-          <div class="col-4 col-sm-12">
-            <div class="raster-label mb-3">[ EXHIBITION SCHEDULE ]</div>
-            <div class="raster-card">
-              <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
-                <span class="raster-label">TUE – FRI</span>
-                <span class="raster-mono">11:00 – 18:00</span>
-              </div>
-              <div class="raster-flex raster-justify-between py-2 border-bottom raster-small">
-                <span class="raster-label">THU (LATE)</span>
-                <span class="raster-mono">11:00 – 20:00</span>
-              </div>
-              <div class="raster-flex raster-justify-between py-2 raster-small">
-                <span class="raster-label">SAT – SUN</span>
-                <span class="raster-mono">10:00 – 17:00</span>
-              </div>
-              <button class="raster-btn raster-btn-primary w-full mt-4">RESERVE TIMED ENTRY →</button>
-            </div>
-          </div>
-
-          <div class="col-8 col-sm-12">
-            <div class="raster-label mb-3">[ CATALOG OF WORKS // SELECTED PLATES ]</div>
-            <div class="raster-table-container">
-              <table class="raster-table">
-                <thead>
-                  <tr>
-                    <th>Cat. No</th>
-                    <th>Artist / Designer</th>
-                    <th>Title of Work</th>
-                    <th class="cell-num">Year</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="raster-mono">[ 001 ]</td>
-                    <td style="font-weight: 600;">Josef Müller-Brockmann</td>
-                    <td>Tonhalle Zürich — Beethoven Poster</td>
-                    <td class="cell-num">1955</td>
-                  </tr>
-                  <tr>
-                    <td class="raster-mono">[ 002 ]</td>
-                    <td style="font-weight: 600;">Armin Hofmann</td>
-                    <td>Giselle — Basler Freilichtspiele</td>
-                    <td class="cell-num">1959</td>
-                  </tr>
-                  <tr>
-                    <td class="raster-mono">[ 003 ]</td>
-                    <td style="font-weight: 600;">Max Bill</td>
-                    <td>Die Gute Form — Werkbund Exhibition</td>
-                    <td class="cell-num">1949</td>
-                  </tr>
-                  <tr>
-                    <td class="raster-mono">[ 004 ]</td>
-                    <td style="font-weight: 600;">Karl Gerstner</td>
-                    <td>National-Zeitung Modular Typography</td>
-                    <td class="cell-num">1962</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </section>
 
     <!-- ========================================================================
-         SECTION 02: THE ANTI-AI MANIFESTO (VISUAL COMPARISON)
+         VIEW 03: SYSTEM ANATOMY, COMPONENTS & AI AGENT CODEX
          ======================================================================== -->
-    <section id="manifesto" class="mb-16">
+    <section id="system-section" style="margin-top: var(--raster-space-20); padding-top: var(--raster-space-8); border-top: 1px solid var(--raster-border);">
       <div class="raster-section-header">
-        <span class="raster-index">[ 02 ]</span>
-        <h2 class="raster-h2">THE ANTI-AI MANIFESTO // SIDE-BY-SIDE ANATOMY</h2>
-        <div class="raster-rule"></div>
-        <span class="raster-meta">WHY AI UI LOOKS THE SAME VS SWISS CLARITY</span>
+        <h2 class="raster-h2">Why Raster CSS looks distinct</h2>
+        <span class="raster-meta">Aesthetic comparison</span>
       </div>
 
-      <div class="raster-split-half mb-8">
-        
-        <!-- Left: Live Visual Mockup of Generic AI Slop -->
-        <div>
-          <div class="raster-label mb-2" style="color: #6366f1;">✕ BEFORE: THE DEFAULT AI AESTHETIC TRAP</div>
-          <div class="ai-slop-showcase">
-            <div class="ai-slop-inner-card">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <span style="font-size: 13px; color: #94a3b8; font-weight: 500;">Annual Revenue</span>
-                <div class="ai-slop-icon-pill">✨</div>
-              </div>
-              <div style="font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 8px;">$41,111.79</div>
-              <div style="display: inline-block; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 12px; border-radius: 9999px; font-size: 12px;">
-                ↗ +12.4% from last month
-              </div>
+      <div class="raster-split-half mt-6 mb-12">
+        <!-- Generic AI Trap -->
+        <div class="ai-slop-showcase">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #a5b4fc; margin-bottom: 12px;">✕ Generic AI Template Cliché</div>
+          <div class="ai-slop-inner-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 13px; color: #94a3b8;">Essential T-Shirt</span>
+              <span style="background: linear-gradient(135deg, #6366f1, #ec4899); padding: 4px 10px; border-radius: 999px; font-size: 11px; color: white;">✨ Hot</span>
             </div>
-            <ul style="margin-top: 16px; padding-left: 18px; font-size: 13px; color: #cbd5e1; line-height: 1.7;">
-              <li>Muddy dark indigo/purple radial gradient background</li>
-              <li>20px–24px mushy jelly border-radius &amp; 9999px pills</li>
-              <li>Glowing neon drop-shadows &amp; glassmorphic blur</li>
-              <li>Obligatory floating gradient icon box in the top-right corner</li>
-            </ul>
+            <div style="font-size: 26px; font-weight: 700; color: #ffffff;">95.00 €</div>
           </div>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 14px; line-height: 1.6;">
+            Dark purple glowing gradients, 20px mushy corners, translucent blur cards, and floating neon badges immediately signal "AI-generated template."
+          </p>
         </div>
 
-        <!-- Right: Live Visual Mockup of Raster Swiss Resolution -->
-        <div class="raster-flex raster-flex-col raster-justify-between">
+        <!-- Refined Neo-Swiss Resolution -->
+        <div class="raster-card-boxed raster-flex raster-flex-col raster-justify-between">
           <div>
-            <div class="raster-label mb-2" style="color: var(--raster-accent);">✓ AFTER: RASTER SWISS ARCHITECTURAL PRECISION</div>
-            <div style="border: 1px solid var(--raster-border-strong); padding: var(--raster-space-6); background-color: var(--raster-canvas);">
-              <div class="raster-card raster-card-accent-top">
-                <div class="raster-stat">
-                  <div class="raster-stat-label">
-                    <span>ANNUAL REVENUE // FY26</span>
-                    <span class="raster-mono">[ 01 ]</span>
-                  </div>
-                  <div class="raster-stat-value">$41,111.79</div>
-                  <div class="raster-stat-sub">
-                    <span class="raster-delta raster-delta-positive">+12.4%</span>
-                    <span class="raster-mono">VS PRIOR BASELINE</span>
-                  </div>
-                </div>
+            <div class="raster-label mb-3">✓ Raster CSS — Refined Neo-Swiss Editorial</div>
+            <div class="raster-spec-list">
+              <div class="raster-spec-row">
+                <span class="raster-spec-key">Palette</span>
+                <div class="raster-spec-val">Pure gallery white (<code>#FFFFFF</code>), soft studio gray wells (<code>#F4F4F4</code>), and deep architectural ink (<code>#111111</code>).</div>
               </div>
-              <ul style="margin-top: 18px; padding-left: 18px; font-size: var(--raster-text-small); color: var(--raster-fg-secondary); line-height: 1.75;">
-                <li><strong>0px Sharp Corners:</strong> Crisp 1px architectural hairline borders</li>
-                <li><strong>Extreme Typographic Contrast:</strong> Monumental tabular figures vs 11px tracked-out micro-labels</li>
-                <li><strong>Zero Decorative Clutter:</strong> Index numeration <code>[ 01 ]</code> replaces pointless floating icons</li>
-                <li><strong>Restrained Signal Color:</strong> Editorial paper/carbon with laser-focused Swiss Vermillion</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         SECTION 03: TYPOGRAPHY & DESIGN TOKENS (CLICK TO COPY)
-         ======================================================================== -->
-    <section id="tokens" class="mb-16">
-      <div class="raster-section-header">
-        <span class="raster-index">[ 03 ]</span>
-        <h2 class="raster-h2">TYPOGRAPHY &amp; COLOR TOKENS</h2>
-        <div class="raster-rule"></div>
-        <span class="raster-meta">CLICK ANY TOKEN TO COPY CSS VARIABLE</span>
-      </div>
-
-      <!-- Color Swatches Grid -->
-      <div class="raster-label mb-3">// ARCHITECTURAL COLOR PALETTE (ADAPTS AUTOMATICALLY TO LIGHT &amp; DARK MODE)</div>
-      <div class="raster-grid mb-8">
-        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-canvas')">
-          <div class="swatch-card">
-            <div class="swatch-color" style="background-color: var(--raster-canvas);"></div>
-            <div class="swatch-meta">
-              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-canvas</div>
-              <div class="raster-label mt-1">Paper #F6F6F4 / Carbon #0C0C0C</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-surface')">
-          <div class="swatch-card">
-            <div class="swatch-color" style="background-color: var(--raster-surface);"></div>
-            <div class="swatch-meta">
-              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-surface</div>
-              <div class="raster-label mt-1">Crisp #FFFFFF / Graphite #141414</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-fg-primary')">
-          <div class="swatch-card">
-            <div class="swatch-color" style="background-color: var(--raster-fg-primary);"></div>
-            <div class="swatch-meta">
-              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-fg-primary</div>
-              <div class="raster-label mt-1">Ink #0A0A0A / Stark White #F5F5F3</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3 col-lg-6 col-sm-6" onclick="copyToken('--raster-accent')">
-          <div class="swatch-card">
-            <div class="swatch-color" style="background-color: var(--raster-accent);"></div>
-            <div class="swatch-meta">
-              <div class="raster-mono raster-small" style="font-weight: 600;">--raster-accent</div>
-              <div class="raster-label mt-1">Swiss Vermillion #E62E00 / #FF3B14</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Typography Scale Specimen -->
-      <div class="raster-label mb-3">// MODULAR TYPOGRAPHIC SCALE SPECIMEN</div>
-      <div class="raster-table-container">
-        <table class="raster-table">
-          <thead>
-            <tr>
-              <th style="width: 180px;">Class / Token</th>
-              <th style="width: 160px;">Specification</th>
-              <th>Live Typographic Specimen</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="raster-mono">.raster-display-xl</td>
-              <td class="raster-mono text-muted">clamp(1.85rem, 5vw, 3.75rem)<br>track: -0.035em</td>
-              <td><span class="raster-display-xl">NEUE GRAFIK 59</span></td>
-            </tr>
-            <tr>
-              <td class="raster-mono">.raster-h1</td>
-              <td class="raster-mono text-muted">1.875rem (30px)<br>track: -0.025em</td>
-              <td><span class="raster-h1">International Typographic Grid</span></td>
-            </tr>
-            <tr>
-              <td class="raster-mono">.raster-h2</td>
-              <td class="raster-mono text-muted">1.375rem (22px)<br>track: -0.02em</td>
-              <td><span class="raster-h2">Objective Visual Communication</span></td>
-            </tr>
-            <tr>
-              <td class="raster-mono">.raster-body</td>
-              <td class="raster-mono text-muted">0.9375rem (15px)<br>line-height: 1.6</td>
-              <td><span class="raster-body">The grid is an organizational system that makes information easier to read and comprehend.</span></td>
-            </tr>
-            <tr>
-              <td class="raster-mono">.raster-mono</td>
-              <td class="raster-mono text-muted">Tabular Numerals<br>tnum: 1</td>
-              <td><span class="raster-mono" style="font-size: 1.1rem; font-weight: 600;">$19,800.00 // 99.984% // [ 01 ]</span></td>
-            </tr>
-            <tr>
-              <td class="raster-mono">.raster-label</td>
-              <td class="raster-mono text-muted">0.6875rem (11px)<br>track: +0.08em UPPER</td>
-              <td><span class="raster-label">ARCHITECTURAL MICRO-LABEL // METADATA</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         SECTION 04: COMPONENT KITCHEN SINK
-         ======================================================================== -->
-    <section id="components" class="mb-16">
-      <div class="raster-section-header">
-        <span class="raster-index">[ 04 ]</span>
-        <h2 class="raster-h2">COMPONENT KITCHEN SINK</h2>
-        <div class="raster-rule"></div>
-        <span class="raster-meta">MODULAR UI PRIMITIVES</span>
-      </div>
-
-      <!-- Hairline Grid of Components -->
-      <div class="raster-grid-hairline mb-8">
-        
-        <!-- Button Variations -->
-        <div>
-          <div class="raster-label mb-3">// 01. BUTTON SPECIFICATION</div>
-          <div class="raster-flex raster-flex-col gap-3">
-            <button class="raster-btn raster-btn-primary">PRIMARY ACTION</button>
-            <button class="raster-btn raster-btn-accent">ACCENT VERMILLION</button>
-            <button class="raster-btn raster-btn-outline">OUTLINE DRAUGHTSMAN</button>
-            <button class="raster-btn raster-btn-ghost">GHOST SURFACE</button>
-          </div>
-        </div>
-
-        <!-- Form Fields -->
-        <div>
-          <div class="raster-label mb-3">// 02. FORM FIELDS &amp; INPUTS</div>
-          <div class="raster-flex raster-flex-col gap-3">
-            <div class="raster-field">
-              <label class="raster-field-label">Standard Boxed Input (16px Mobile Safe)</label>
-              <input type="text" class="raster-input" value="Zürich Hauptbahnhof" />
-            </div>
-            <div class="raster-field">
-              <label class="raster-field-label">Architectural Underline Input</label>
-              <input type="text" class="raster-input raster-input-underline" placeholder="Enter specification..." />
-            </div>
-          </div>
-        </div>
-
-        <!-- Badges, Tags & Meters -->
-        <div>
-          <div class="raster-label mb-3">// 03. TAGS, BRACKETS &amp; METERS</div>
-          <div class="raster-flex raster-flex-col gap-3">
-            <div class="raster-flex raster-wrap-mobile gap-2">
-              <span class="raster-tag raster-tag-solid">STATUS: ACTIVE</span>
-              <span class="raster-tag raster-tag-accent">SIGNAL // 01</span>
-              <span class="raster-tag">CODE [ 200 ]</span>
-            </div>
-            <div class="raster-small raster-bracket">
-              STRUCTURAL BRACKET NUMERATION
-            </div>
-            <div class="raster-meter mt-2">
-              <div class="raster-meter-header">
-                <span class="raster-label">CPU SATURATION</span>
-                <span class="raster-mono raster-small">74%</span>
+              <div class="raster-spec-row">
+                <span class="raster-spec-key">Typography</span>
+                <div class="raster-spec-val">Calm sentence-case Grotesque (<code>400</code> weight, <code>-0.03em</code> tracking) paired with <code>11px</code> muted specification keys.</div>
               </div>
-              <div class="raster-meter-track">
-                <div class="raster-meter-fill raster-meter-fill-accent" style="width: 74%;"></div>
+              <div class="raster-spec-row">
+                <span class="raster-spec-key">Structure</span>
+                <div class="raster-spec-val">Whisper-thin <code>1px solid</code> hairlines, sticky 4:8 split panes, and tight <code>8px</code>-gap media mosaics.</div>
               </div>
             </div>
           </div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         SECTION 05: AI AGENT CODEX & PROMPTS
-         ======================================================================== -->
-    <section id="ai-guide" class="mb-16">
-      <div class="raster-section-header">
-        <span class="raster-index">[ 05 ]</span>
-        <h2 class="raster-h2">AI AGENT CODEX &amp; INTEGRATION</h2>
-        <div class="raster-rule"></div>
-        <span class="raster-meta">POINT ANY AI AGENT TO THIS REPO</span>
       </div>
 
-      <div class="raster-split-half mb-6">
-        <div class="raster-card">
-          <div class="raster-label raster-label-accent mb-2">// OPTION A: POINT AI TO GITHUB REPOSITORY</div>
-          <h3 class="raster-h3 mb-2">One-Line Agent Instruction</h3>
-          <p class="raster-small text-secondary mb-4">
-            Paste this instruction into Claude, Cursor, ChatGPT, or Antigravity when starting any new project:
-          </p>
-          <pre class="code-preview" id="repo-prompt-snippet" style="white-space: pre-wrap;">Use the UI/UX framework from https://github.com/arron21/raster-css (read AI.md and llms.txt). Follow its Swiss Design rules: 0px corners, 1px hairline borders, massive tabular numbers vs 11px uppercase micro-labels, and Swiss Vermillion accents. Never mention "Raster CSS" in the visible HTML.</pre>
-          <button onclick="copyAgentRepoPrompt()" class="raster-btn raster-btn-primary raster-btn-sm mt-3">COPY REPO PROMPT</button>
+      <!-- AI Agent Integration Codex -->
+      <div id="ai-codex-section" style="margin-top: var(--raster-space-16);">
+        <div class="raster-section-header">
+          <h2 class="raster-h2">Point your AI agent to this framework</h2>
+          <span class="raster-meta">Claude · Cursor · ChatGPT · Copilot</span>
         </div>
 
-        <div class="raster-card">
-          <div class="raster-label mb-2">// OPTION B: DIRECT HTML / CSS INSTALLATION</div>
-          <h3 class="raster-h3 mb-2">Include in Any Project</h3>
-          <p class="raster-small text-secondary mb-4">
-            Works zero-build in plain HTML or imported inside React, Vue, Svelte, or Angular:
-          </p>
-          <pre class="code-preview" style="white-space: pre-wrap;">&lt;!-- Direct Stylesheet Link --&gt;
-&lt;link rel="stylesheet" href="https://arron21.github.io/raster-css/raster.css"&gt;
+        <div class="raster-split-sticky mt-6" style="min-height: auto;">
+          <div class="raster-spec-list">
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">Repository</span>
+              <div class="raster-spec-val">
+                <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener" style="text-decoration: underline;">github.com/arron21/raster-css</a>
+              </div>
+            </div>
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">Machine files</span>
+              <div class="raster-spec-val">
+                <div><code>AI.md</code> — Full design rules &amp; component recipes</div>
+                <div class="raster-spec-line"><code>llms.txt</code> — LLM crawler index</div>
+                <div class="raster-spec-line"><code>AGENT_PROMPT.md</code> — System prompt</div>
+              </div>
+            </div>
+            <div class="raster-spec-row">
+              <span class="raster-spec-key">Zero branding</span>
+              <div class="raster-spec-val">
+                AI instructions strictly forbid outputting "Raster CSS" in your project's HTML.
+              </div>
+            </div>
+            <div class="mt-4 raster-flex gap-2">
+              <button type="button" class="raster-btn raster-btn-primary w-full" onclick="copyAgentRepoPrompt()">Copy repo prompt</button>
+              <button type="button" class="raster-btn raster-btn-outline w-full" onclick="copyAiCodex()">Copy full AI.md</button>
+            </div>
+          </div>
 
-// Or in React / Vite / Next.js / Vue / Svelte:
-import 'raster-css/dist/raster.css';</pre>
-          <a href="./raster.css" download="raster.css" class="raster-btn raster-btn-outline raster-btn-sm mt-3">DOWNLOAD RASTER.CSS (RAW) ↓</a>
-        </div>
-      </div>
+          <div>
+            <div class="raster-label mb-2">Prompt to give your AI coding agent</div>
+            <pre class="code-preview" id="repo-prompt-snippet" style="white-space: pre-wrap;">Use the UI/UX framework from https://github.com/arron21/raster-css (read AI.md and llms.txt). Follow its Refined Neo-Swiss Editorial design system: pure white/obsidian canvas, #F4F4F4/#151515 studio gray wells, 0px corners, whisper-thin 1px hairline specification rows (.raster-spec-row), sticky 4:8 split layouts (.raster-split-sticky), and calm sentence-case Grotesque typography (font-weight: 400). Never mention "Raster CSS" in the visible HTML.</pre>
 
-      <div class="comparison-box">
-        <div class="comparison-header">
-          <span>SYSTEM PROMPT FOR .CURSORRULES / CLAUDE PROJECTS (AGENT_PROMPT.MD)</span>
-          <button onclick="copyPromptText()" class="raster-btn raster-btn-primary raster-btn-sm">COPY SYSTEM PROMPT</button>
-        </div>
-        <pre class="code-preview" id="prompt-snippet">You are a frontend engineer and UI designer adhering strictly to the **RASTER CSS (Swiss International Typographic Style)** design system.
+            <div class="raster-label mt-6 mb-2">System prompt (.cursorrules / Claude Project Instructions)</div>
+            <pre class="code-preview" id="prompt-snippet" style="white-space: pre-wrap;">You are a frontend engineer and UI designer adhering strictly to the RASTER CSS (Refined Neo-Swiss Editorial / Quiet Modernism) design system.
 
 CRITICAL DESIGN RULES:
 1. DO NOT use generic AI aesthetic tropes: NO neon gradients, NO purple/indigo glowing drop-shadows, NO glassmorphism blurs, and NO 9999px pills or mushy 16px-24px rounded corners.
-2. Geometry: All containers, cards, and buttons use 0px sharp corners or 2px micro-chamfers.
-3. Hierarchy: Contrast massive tabular display numbers (font-variant-numeric: tabular-nums) against crisp, tracked-out uppercase micro-labels (font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--raster-fg-muted)).
-4. Structure: Use 1px architectural hairline borders (1px solid var(--raster-border)) and a 12-column grid or asymmetric 8:4 splits.
-5. Accent: Use Swiss Vermillion (#E62E00 / #FF3B14) only as a high-signal indicator for primary actions or active states—never for ambient wallpaper.
-6. Indices: Use architectural index markers (e.g., [ 01 ], [ 02 ], // SECTION NAME) to guide the eye.
-7. NO SELF-BRANDING: NEVER write "Raster CSS", "Raster", or "Built with Raster" in the project's visible HTML, page headers, footers, titles, or copy. Raster CSS classes (raster-card, raster-stat, etc.) are internal implementation details. The UI must strictly display the user's project/brand identity.
-
-When producing HTML, React, Vue, or Svelte code, use Raster CSS classes (raster-card, raster-stat, raster-btn, raster-section-header, raster-table, raster-meter, raster-tag).</pre>
-      </div>
-
-      <!-- Framework Code Snippets Tabs -->
-      <div class="comparison-box mt-8">
-        <div class="tab-nav">
-          <button class="tab-btn active" onclick="switchTab('html')">HTML</button>
-          <button class="tab-btn" onclick="switchTab('react')">React (TSX)</button>
-          <button class="tab-btn" onclick="switchTab('vue')">Vue 3</button>
-          <button class="tab-btn" onclick="switchTab('svelte')">Svelte</button>
+2. Palette &amp; Geometry: Use a whisper-quiet monochrome palette (#FFFFFF gallery canvas, #F4F4F4 studio gray wells, #111111 ink in light mode; #0A0A0A obsidian and #151515 wells in dark mode). All containers, buttons, and media wells use 0px sharp corners.
+3. Typography: Use calm, sentence-case Grotesque typography (font-weight: 400 and 500, tight -0.03em tracking on display headings, 12px-13px body copy, and 11px muted sentence-case specification keys). Avoid shouty bold all-caps headers.
+4. Structure &amp; Hairlines: Separate sections and key-value specification rows (.raster-spec-row) with whisper-thin 1px solid var(--raster-border) hairlines. Use sticky 4:8 asymmetric split layouts (.raster-split-sticky), tight 8px-gap mosaics (.raster-mosaic), and borderless studio surface cards (.raster-surface-card).
+5. NO SELF-BRANDING: NEVER write "Raster CSS", "Raster", or "Built with Raster" in the project's visible HTML, page headers, footers, titles, or copy.</pre>
+          </div>
         </div>
-
-        <div id="tab-html" class="tab-content" style="display: block;">
-          <pre class="code-preview">&lt;!-- Metric Stat Card in Pure HTML --&gt;
-&lt;div class="raster-card"&gt;
-  &lt;div class="raster-stat"&gt;
-    &lt;div class="raster-stat-label"&gt;
-      &lt;span&gt;Annual Cost // FY26&lt;/span&gt;
-      &lt;span class="raster-mono"&gt;[ 01 ]&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;div class="raster-stat-value"&gt;$41,111.79&lt;/div&gt;
-    &lt;div class="raster-stat-sub"&gt;
-      &lt;span class="raster-delta raster-delta-positive"&gt;+12.4%&lt;/span&gt;
-      &lt;span&gt;vs previous baseline&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-        </div>
-
-        <div id="tab-react" class="tab-content" style="display: none;">
-          <pre class="code-preview">import { StatCard } from './components/react/RasterComponents';
-
-export default function Dashboard() {
-  return (
-    &lt;div className="raster-grid"&gt;
-      &lt;StatCard 
-        index="01"
-        label="Annual Cost // FY26"
-        value="$41,111.79"
-        delta="+12.4%"
-        deltaType="positive"
-        subtext="vs previous baseline"
-        className="col-3 col-lg-6 col-sm-6 col-xs-12"
-      /&gt;
-    &lt;/div&gt;
-  );
-}</pre>
-        </div>
-
-        <div id="tab-vue" class="tab-content" style="display: none;">
-          <pre class="code-preview">&lt;template&gt;
-  &lt;div class="raster-card"&gt;
-    &lt;div class="raster-stat"&gt;
-      &lt;div class="raster-stat-label"&gt;
-        &lt;span&gt;{{ label }}&lt;/span&gt;
-        &lt;span class="raster-mono"&gt;[{{ index }}]&lt;/span&gt;
-      &lt;/div&gt;
-      &lt;div class="raster-stat-value"&gt;{{ value }}&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/template&gt;</pre>
-        </div>
-
-        <div id="tab-svelte" class="tab-content" style="display: none;">
-          <pre class="code-preview">&lt;script&gt;
-  export let label = 'Annual Cost';
-  export let value = '$41,111.79';
-  export let index = '01';
-&lt;/script&gt;
-
-&lt;div class="raster-card"&gt;
-  &lt;div class="raster-stat"&gt;
-    &lt;div class="raster-stat-label"&gt;
-      &lt;span&gt;{label}&lt;/span&gt;
-      &lt;span class="raster-mono"&gt;[{index}]&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;div class="raster-stat-value"&gt;{value}&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-        </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer style="border-top: 1px solid var(--raster-border); padding: var(--raster-space-8) 0; background-color: var(--raster-surface);">
-    <div class="raster-container raster-flex raster-flex-col-mobile raster-justify-between raster-items-center gap-4">
-      <div class="raster-brand">
-        <span class="badge-swiss">+</span>
-        <span>RASTER CSS</span>
+  <!-- ==========================================================================
+       3-ZONE ARCHITECTURAL FOOTER (MATCHES 00:06–00:08 IN VIDEO)
+       ========================================================================== -->
+  <footer class="raster-footer">
+    <div class="raster-container">
+      <div class="raster-footer-grid">
+        <!-- Zone 1: Brand Wordmark -->
+        <div>
+          <a href="#" class="raster-brand">Motus</a>
+        </div>
+
+        <!-- Zone 2: 3-Column Navigation Links -->
+        <div class="raster-footer-nav">
+          <div class="raster-footer-col">
+            <span class="raster-label">Explore</span>
+            <ul class="raster-footer-links">
+              <li><a href="#storefront-view">Philosophy</a></li>
+              <li><a href="#system-section">System</a></li>
+              <li><a href="#finance-section">Journal</a></li>
+              <li><a href="#related-section">Craft</a></li>
+            </ul>
+          </div>
+
+          <div class="raster-footer-col">
+            <span class="raster-label">Company</span>
+            <ul class="raster-footer-links">
+              <li><a href="#system-section">About</a></li>
+              <li><a href="#ai-codex-section">Contact</a></li>
+              <li><a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="./AI.md" target="_blank">AI.md</a></li>
+            </ul>
+          </div>
+
+          <div class="raster-footer-col">
+            <span class="raster-label">Support</span>
+            <ul class="raster-footer-links">
+              <li><a href="#storefront-view">Delivery &amp; Returns</a></li>
+              <li><a href="#storefront-view">Size Guide</a></li>
+              <li><a href="#storefront-view">Care Instructions</a></li>
+              <li><a href="./llms.txt" target="_blank">llms.txt</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Zone 3: Newsletter with Inline Underline Submit -->
+        <div class="raster-footer-col">
+          <span class="raster-label">Newsletter</span>
+          <p class="raster-small" style="color: var(--raster-fg-primary); line-height: 1.45;">
+            Enjoy 10% off your first order.<br>
+            Elevate your daily training routine.
+          </p>
+          <form class="raster-input-inline mt-2" onsubmit="event.preventDefault(); showToast('Subscribed to newsletter');">
+            <input type="email" placeholder="Enter your email..." required />
+            <button type="submit">Submit</button>
+          </form>
+          <p class="raster-label" style="font-size: 10px; margin-top: 4px;">
+            By subscribing you agree to our <a href="#" style="text-decoration: underline;">Privacy Policy</a> and <a href="#" style="text-decoration: underline;">Terms &amp; Conditions</a>.
+          </p>
+        </div>
       </div>
-      <div class="raster-flex raster-wrap-mobile gap-4 raster-label">
-        <a href="https://github.com/arron21/raster-css" target="_blank" rel="noopener">GITHUB REPOSITORY ↗</a>
-        <a href="./AI.md" target="_blank">RAW AI.MD</a>
-        <a href="./llms.txt" target="_blank">LLMS.TXT</a>
-        <a href="./raster.css" target="_blank">RASTER.CSS</a>
-      </div>
-      <div class="raster-label">
-        JOSEF MÜLLER-BROCKMANN GRID STANDARDS // MIT LICENSE
+
+      <!-- Bottom Hairline Bar -->
+      <div class="raster-footer-bottom">
+        <div class="raster-flex gap-4">
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div>Clothing that moves with purpose. Built with Neo-Swiss precision.</div>
+        <div class="text-right text-left-mobile">© 2026 MOTUS. All rights reserved.</div>
       </div>
     </div>
   </footer>
 
-  <div id="toast" class="toast">COPIED TO CLIPBOARD</div>
+  <div id="toast" class="toast">Copied to clipboard</div>
 
   <script src="./app.js"></script>
 </body>

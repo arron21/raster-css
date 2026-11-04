@@ -1,6 +1,6 @@
 /**
- * RASTER CSS - Modular Grid System
- * Based on Josef Müller-Brockmann's 12-column architectural raster.
+ * RASTER CSS - Modular Grid & Sticky Split Architecture
+ * Rooted in Neo-Swiss Editorial Layout (Motus / 12-Column Raster)
  */
 
 .raster-container {
@@ -8,8 +8,8 @@
   max-width: var(--raster-max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--raster-space-6);
-  padding-right: var(--raster-space-6);
+  padding-left: var(--raster-space-5);
+  padding-right: var(--raster-space-5);
 }
 
 .raster-container-narrow {
@@ -20,20 +20,20 @@
   max-width: 100%;
 }
 
-/* 12-Column Grid */
+/* 12-Column Grid (Default tight 8px/12px Neo-Swiss gutter) */
 .raster-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-3);
   width: 100%;
 }
 
 .raster-grid-tight {
-  gap: var(--raster-space-3);
+  gap: var(--raster-space-2); /* Signature 8px Motus gutter */
 }
 
 .raster-grid-loose {
-  gap: var(--raster-space-10);
+  gap: var(--raster-space-6);
 }
 
 .raster-grid-none {
@@ -54,29 +54,79 @@
 .col-11 { grid-column: span 11 / span 11; }
 .col-12 { grid-column: span 12 / span 12; }
 
+/* Signature Sticky 4:8 Split Layout (Left spec column sticky, right mosaic scrolls) */
+.raster-split-sticky {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: var(--raster-space-4);
+  align-items: start;
+  width: 100%;
+}
+
+.raster-sticky-pane {
+  position: sticky;
+  top: 56px;
+  min-height: calc(100vh - 76px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--raster-space-8);
+  padding-bottom: var(--raster-space-2);
+}
+
+/* Tight 8px-Gap Media & Surface Mosaic (Right Column in video) */
+.raster-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
+.mosaic-half {
+  grid-column: span 1 / span 1;
+}
+
+.mosaic-full {
+  grid-column: 1 / -1;
+}
+
+/* 4-Column Tight Card Grid ("You may like" section in video) */
+.raster-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--raster-space-2);
+  width: 100%;
+}
+
 /* Asymmetrical & Standard Splits */
 .raster-split-asymmetric {
   display: grid;
   grid-template-columns: 8fr 4fr;
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-4);
+}
+
+.raster-split-asymmetric-reverse {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: var(--raster-space-4);
 }
 
 .raster-split-half {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-4);
 }
 
 .raster-split-third {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-4);
 }
 
 .raster-split-quarter {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--raster-space-6);
+  gap: var(--raster-space-2);
 }
 
 /* Architectural Hairline Grid (Cells share 1px hairline borders without gap doubling) */
@@ -91,14 +141,23 @@
 .raster-grid-hairline > * {
   border-right: 1px solid var(--raster-border);
   border-bottom: 1px solid var(--raster-border);
-  padding: var(--raster-space-6);
-  background-color: var(--raster-surface);
+  padding: var(--raster-space-5);
+  background-color: var(--raster-canvas);
 }
 
 /* Responsive Grid Adapters */
 @media (max-width: 1024px) {
-  .raster-split-asymmetric,
+  .raster-split-sticky {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .raster-grid-4,
   .raster-split-quarter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .raster-split-asymmetric,
+  .raster-split-asymmetric-reverse {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   
@@ -114,40 +173,49 @@
     padding-right: var(--raster-space-4);
   }
 
-  /* Default all generic spans to 12 on mobile unless overridden */
   .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
   .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     grid-column: span 12 / span 12;
   }
 
-  /* Explicit mobile column overrides */
   .col-sm-12 { grid-column: span 12 / span 12; }
   .col-sm-6  { grid-column: span 6 / span 6; }
   .col-sm-4  { grid-column: span 4 / span 4; }
 
-  .raster-grid {
-    gap: var(--raster-space-4);
+  .raster-split-sticky {
+    grid-template-columns: 1fr;
+    gap: var(--raster-space-6);
+  }
+
+  .raster-sticky-pane {
+    position: static;
+    min-height: auto;
+    gap: var(--raster-space-6);
   }
 
   .raster-split-asymmetric,
+  .raster-split-asymmetric-reverse,
   .raster-split-half,
   .raster-split-third,
   .raster-split-quarter {
     grid-template-columns: 1fr;
-    gap: var(--raster-space-4);
+    gap: var(--raster-space-3);
   }
 
-  /* 2-Column Mobile option (e.g. for compact metrics on phones) */
+  .raster-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--raster-space-2);
+  }
+
   .raster-grid-mobile-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: var(--raster-space-3) !important;
+    gap: var(--raster-space-2) !important;
   }
 
   .raster-grid-mobile-2 > * {
     grid-column: auto !important;
   }
 
-  /* Hairline grid collapse for mobile: ensures borders stay 1px */
   .raster-grid-hairline {
     grid-template-columns: 1fr;
     border-top: 1px solid var(--raster-border);
@@ -168,8 +236,9 @@
     padding-right: var(--raster-space-3);
   }
 
-  .raster-grid {
-    gap: var(--raster-space-3);
+  .raster-mosaic,
+  .raster-grid-4 {
+    grid-template-columns: 1fr;
   }
 
   .col-xs-12 {

@@ -1,32 +1,31 @@
 # RASTER CSS
 
-> The International Typographic Design System for Humans & AI Agents.
-> Clean, distinct, architecture-grade Swiss typography with zero generic AI slop.
+> The Refined Neo-Swiss Editorial Design System for Humans & AI Agents.
+> Whisper-quiet monochrome, sentence-case Grotesque typography, 1px hairline specification rows, and zero generic AI slop.
 
 ## Overview
-Raster CSS is a framework-agnostic CSS design system built on the principles of Swiss Design (International Typographic Style), Josef Müller-Brockmann's modular grids, and modern CSS custom properties. It is designed to work seamlessly across React, Vue, Svelte, Angular, Astro, and plain HTML.
+Raster CSS is a framework-agnostic CSS design system inspired by contemporary Swiss editorial minimalism (Motus, Dieter Rams, Vitsoe, International Typographic Style). It works seamlessly across React, Vue, Svelte, Angular, Astro, and plain HTML.
 
 ## Key Links
 - [AI Agent Codex & Strict Rules](AI.md): Complete machine-readable instructions, rules, anti-patterns, and component blueprints.
 - [Main Bundle](dist/raster.css): Consolidated single-file distribution.
 - [Design Tokens](src/css/tokens.css): CSS variables for Light & Dark mode, colors, typography, spacing.
-- [Typography](src/css/typography.css): Display scales, micro-labels, tabular numerals.
-- [Grid System](src/css/grid.css): 12-column Müller-Brockmann grid and asymmetric split utilities.
-- [Components](src/css/components.css): Cards, stat blocks, buttons, meters, ledgers, inputs.
+- [Typography](src/css/typography.css): Calm sentence-case display scales, muted specification keys, tabular numerals.
+- [Grid System](src/css/grid.css): Sticky 4:8 split layouts (`.raster-split-sticky`), tight 8px mosaics (`.raster-mosaic`), and 12-column grids.
+- [Components](src/css/components.css): Hairline spec rows (`.raster-spec-row`), borderless studio surface cards (`.raster-surface-card`), steppers, floating scroll bars, ledgers, and 3-zone footers.
 
-## The Anti-AI Aesthetic Rules
+## The Refined Neo-Swiss Rules
 - NO neon glows, glowing shadows, or purple radial gradients.
-- NO 9999px pills or mushy 16-24px rounded corners (Corners are 0px or 2px).
-- NO floating icons in rounded pastel boxes without purpose.
-- HIGH typographic contrast: monolithic tabular numbers vs uppercase tracked micro-labels.
-- HAIRLINE 1px architectural borders.
-- Swiss Vermillion (#E62E00 / #FF3B14) signal accent used strictly for action/status.
+- NO 9999px pills or mushy 16-24px rounded corners (All corners are 0px).
+- NO heavy brutalist borders or shouty all-caps headers.
+- Whisper-quiet monochrome palette: `#FFFFFF` canvas + `#F4F4F4` studio gray wells + `#111111` ink (Light) and `#0A0A0A` + `#151515` + `#F5F5F5` (Dark).
+- Calm sentence-case Grotesque headings (`font-weight: 400`, `-0.03em` tracking) paired with `11px` sentence-case muted specification keys (`#767676`).
+- Whisper-thin `1px solid` horizontal hairlines separating key-value specification rows.
 - ZERO SELF-BRANDING: NEVER write "Raster CSS" or "Raster" on project HTML/UI. Output strictly the user's project brand.
 
 ## Minimal Setup
 ```html
 <link rel="stylesheet" href="dist/raster.css">
-<!-- or import in React/Vue/Svelte -->
 ```
 
 ## Theme Switching
